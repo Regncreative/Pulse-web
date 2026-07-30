@@ -12,15 +12,15 @@ const en = {
     why: 'Why Pulse',
     download: 'Download',
     faq: 'FAQ',
-    githubBtn: 'GitHub',
-    downloadBtn: 'Get Pulse',
+    githubBtn: 'Coming soon',
+    downloadBtn: 'Coming soon',
   },
   hero: {
     tagline:
       'Read-only diagnostics for Windows — human-readable events, not Event Viewer XML.',
-    primaryBtn: 'View on GitHub',
-    secondaryBtn: 'Releases',
-    downloadBtn: 'Download for Windows',
+    primaryBtn: 'Coming soon',
+    secondaryBtn: 'Notify me later',
+    downloadBtn: 'Coming soon',
     promise: 'Observation only. No injection. No telemetry. No cloud.',
   },
   translate: {
@@ -131,14 +131,14 @@ const en = {
     eyebrow: 'Download',
     title: 'Get Pulse for Windows',
     description:
-      'Open source on GitHub. Installer from Releases when published — no account, no telemetry cloud.',
+      'Public release is not available yet. Installer and source will open when Pulse ships — no account, no telemetry cloud.',
     latestVersion: 'Latest version',
     win10Badge: 'Windows 10 compatible',
-    downloadBtn: 'Download Pulse',
-    githubBtn: 'View on GitHub',
-    releasesBtn: 'GitHub Releases',
-    sourcePrefix: 'Prefer source? Clone from',
-    comingSoon: 'Packaged installer coming soon — clone and build today.',
+    downloadBtn: 'Coming soon',
+    githubBtn: 'Coming soon',
+    releasesBtn: 'Coming soon',
+    sourcePrefix: 'Source and installer',
+    comingSoon: 'Public release coming soon — check back shortly.',
   },
   faq: {
     eyebrow: 'FAQ',
@@ -172,9 +172,9 @@ const en = {
     ],
   },
   footer: {
-    github: 'GitHub',
-    releases: 'Releases',
-    license: 'License',
+    github: 'Coming soon',
+    releases: 'Coming soon',
+    license: 'Coming soon',
   },
   floating: {
     hint: 'Live timeline peek',
@@ -194,15 +194,15 @@ const tr: Dict = {
     why: 'Neden Pulse',
     download: 'İndir',
     faq: 'SSS',
-    githubBtn: 'GitHub',
-    downloadBtn: 'Pulse’u al',
+    githubBtn: 'Yakında',
+    downloadBtn: 'Yakında',
   },
   hero: {
     tagline:
       'Windows için salt okunur tanılama — Event Viewer XML’i değil, okunabilir olaylar.',
-    primaryBtn: 'GitHub’da görüntüle',
-    secondaryBtn: 'Sürümler',
-    downloadBtn: 'Windows için indir',
+    primaryBtn: 'Yakında',
+    secondaryBtn: 'Daha sonra',
+    downloadBtn: 'Yakında',
     promise: 'Yalnızca gözlem. Enjeksiyon yok. Telemetri yok. Bulut yok.',
   },
   translate: {
@@ -312,14 +312,14 @@ const tr: Dict = {
     eyebrow: 'İndir',
     title: 'Pulse’u Windows için edinin',
     description:
-      'GitHub’da açık kaynak. Yayınlandığında Releases’ten kurulum — hesap yok, telemetri bulutu yok.',
+      'Herkese açık sürüm henüz yok. Kurulum ve kaynak Pulse yayınlandığında açılacak — hesap yok, telemetri bulutu yok.',
     latestVersion: 'En son sürüm',
     win10Badge: 'Windows 10 uyumlu',
-    downloadBtn: 'Pulse’u indir',
-    githubBtn: 'GitHub’da görüntüle',
-    releasesBtn: 'GitHub Releases',
-    sourcePrefix: 'Kaynak mı tercih edersiniz? Şuradan klonlayın:',
-    comingSoon: 'Paketli kurulum yakında — bugün klonlayıp derleyin.',
+    downloadBtn: 'Yakında',
+    githubBtn: 'Yakında',
+    releasesBtn: 'Yakında',
+    sourcePrefix: 'Kaynak ve kurulum',
+    comingSoon: 'Herkese açık sürüm yakında — kısa süre sonra tekrar bakın.',
   },
   faq: {
     eyebrow: 'SSS',
@@ -353,9 +353,9 @@ const tr: Dict = {
     ],
   },
   footer: {
-    github: 'GitHub',
-    releases: 'Sürümler',
-    license: 'Lisans',
+    github: 'Yakında',
+    releases: 'Yakında',
+    license: 'Yakında',
   },
   floating: {
     hint: 'Canlı timeline önizleme',
@@ -388,8 +388,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const saved = window.localStorage.getItem(STORAGE_KEY)
     if (saved === 'tr' || saved === 'en') {
       setLang(saved)
-    } else if (navigator.language.toLowerCase().startsWith('tr')) {
-      setLang('tr')
     }
   }, [])
 

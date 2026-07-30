@@ -7,9 +7,9 @@ type BadgeProps = {
 }
 
 const tones = {
-  neutral: 'bg-white/[0.04] text-[var(--muted)] ring-[var(--border)]',
+  neutral: 'bg-[var(--tile)] text-[var(--muted)] ring-[var(--border)]',
   accent: 'bg-[var(--accent-soft)] text-[var(--accent)] ring-[var(--accent-ring)]',
-  success: 'bg-emerald-500/10 text-emerald-400 ring-emerald-500/25',
+  success: 'bg-emerald-500/10 text-emerald-700 ring-emerald-500/25',
 }
 
 export function Badge({ children, className, tone = 'neutral' }: BadgeProps) {

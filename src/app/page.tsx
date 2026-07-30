@@ -1,4 +1,3 @@
-import { FloatingDemo } from '@/components/FloatingDemo'
 import { Navbar } from '@/components/sections/Navbar'
 import { Hero } from '@/components/sections/Hero'
 import { Translate } from '@/components/sections/Translate'
@@ -12,32 +11,25 @@ import { Footer } from '@/components/sections/Footer'
 import { JsonLd } from '@/components/JsonLd'
 import { fetchLatestRelease } from '@/lib/github'
 import { LanguageProvider } from '@/lib/i18n'
-import { SITE } from '@/lib/constants'
 
 export default async function Home() {
   const release = await fetchLatestRelease()
-  const ctaUrl = release.downloadUrl ?? SITE.github
 
   return (
     <LanguageProvider>
       <JsonLd version={release.version} />
-      <Navbar ctaUrl={ctaUrl} hasInstaller={Boolean(release.downloadUrl)} />
+      <Navbar />
       <main className="flex-1">
-        <Hero version={release.version} downloadUrl={release.downloadUrl} />
+        <Hero version={release.version} />
         <Translate />
         <ProductDemo />
         <Features />
         <WhyPulse />
         <Screens />
-        <DownloadSection
-          version={release.version}
-          downloadUrl={release.downloadUrl}
-          releaseUrl={release.url}
-        />
+        <DownloadSection version={release.version} />
         <FAQ />
       </main>
       <Footer />
-      <FloatingDemo />
     </LanguageProvider>
   )
 }

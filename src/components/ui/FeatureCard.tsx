@@ -24,8 +24,8 @@ export function FeatureCard({
   return (
     <motion.article
       className={cn(
-        'group relative rounded-2xl bg-[var(--surface)] p-6 ring-1 ring-[var(--border)] transition-[transform,box-shadow,background-color] duration-300',
-        'hover:-translate-y-1 hover:bg-[var(--surface-2)] hover:shadow-[var(--shadow-md)] hover:ring-[var(--accent-ring)]',
+        'group relative rounded-2xl bg-[var(--surface)] p-6 ring-1 ring-[var(--border)] shadow-[var(--shadow-sm)] transition-[transform,box-shadow,background-color] duration-300',
+        'hover:-translate-y-1 hover:shadow-[var(--shadow-md)] hover:ring-[var(--accent-ring)]',
         className,
       )}
       initial={reduceMotion ? false : { opacity: 0, y: 16 }}

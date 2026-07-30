@@ -45,8 +45,8 @@ export function ProductDemo() {
             className={cn(
               'rounded-full px-4 py-2 text-sm font-medium transition-colors',
               active === tab.id
-                ? 'bg-[var(--accent)] text-[#070a0e]'
-                : 'border border-[var(--line)] text-[var(--fg-dim)] hover:text-[var(--fg)]',
+                ? 'bg-[var(--accent)] text-white shadow-[var(--accent-glow)]'
+                : 'border border-[var(--line)] bg-[var(--surface)] text-[var(--fg-dim)] hover:text-[var(--fg)]',
             )}
           >
             {labels[tab.id].title}
@@ -56,9 +56,7 @@ export function ProductDemo() {
 
       <p className="mb-5 text-center text-sm text-[var(--fg-dim)]">{labels[active].desc}</p>
 
-      <div className="mx-auto max-w-5xl">
-        <ActiveDemo />
-      </div>
+      <ActiveDemo />
     </Section>
   )
 }

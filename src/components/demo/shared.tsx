@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { PulseLogo } from '@/components/icons/PulseLogo'
 import { cn } from '@/lib/cn'
 
@@ -41,20 +42,43 @@ export function ScaleToFit({
   return (
     <div
       ref={hostRef}
-      className={cn('relative w-full overflow-hidden', className)}
+      className={cn('relative mx-auto w-full overflow-hidden', className)}
       style={{ height: height * scale }}
     >
       <div
-        className="absolute top-0 left-0 origin-top-left"
+        className="absolute top-0 left-1/2"
         style={{
           width,
           height,
-          transform: `scale(${scale})`,
+          transform: `translateX(-50%) scale(${scale})`,
+          transformOrigin: 'top center',
         }}
       >
         {children}
       </div>
     </div>
+  )
+}
+
+export function DemoFrame({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  const reduceMotion = useReducedMotion()
+
+  return (
+    <motion.div
+      className={cn('mx-auto w-full max-w-5xl', className)}
+      initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
   )
 }
 
@@ -85,7 +109,7 @@ export function DemoStage({
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-[20px] border border-[var(--line)] bg-[linear-gradient(180deg,#121820_0%,#0d1218_55%,#070a0e_100%)]',
+        'relative overflow-hidden rounded-[20px] border border-[var(--line)] bg-[var(--surface)]',
         className,
       )}
     >

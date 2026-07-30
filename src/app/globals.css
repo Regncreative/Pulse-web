@@ -1,19 +1,19 @@
 @import 'tailwindcss';
 
 :root {
-  --bg: #070a0e;
-  --bg-elevated: #0d1218;
-  --fg: #e8eef5;
-  --fg-dim: #8b9bb0;
-  --line: rgba(96, 205, 255, 0.12);
-  --line-strong: rgba(96, 205, 255, 0.28);
-  --accent: #60cdff;
-  --accent-dim: rgba(96, 205, 255, 0.14);
-  --accent-glow: 0 0 40px rgba(96, 205, 255, 0.22);
-  --ok: #3dd68c;
-  --warn: #f5a524;
-  --err: #f87171;
-  --tile: #1b1f24;
+  --bg: #f3f6fa;
+  --bg-elevated: #ffffff;
+  --fg: #1a2330;
+  --fg-dim: #5c6b7a;
+  --line: rgba(15, 40, 70, 0.08);
+  --line-strong: rgba(0, 120, 212, 0.28);
+  --accent: #0078d4;
+  --accent-dim: rgba(0, 120, 212, 0.08);
+  --accent-glow: 0 8px 28px rgba(0, 120, 212, 0.18);
+  --ok: #0f7b4c;
+  --warn: #b87a00;
+  --err: #c42b1c;
+  --tile: #e8eef5;
   --mono: var(--font-jetbrains), ui-monospace, monospace;
   --sans: 'Segoe UI Variable', 'Segoe UI', var(--font-manrope), sans-serif;
 
@@ -21,14 +21,14 @@
   --background: var(--bg);
   --foreground: var(--fg);
   --muted: var(--fg-dim);
-  --surface: rgba(13, 18, 24, 0.92);
-  --surface-2: #121820;
-  --border: rgba(255, 255, 255, 0.07);
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --border: rgba(15, 23, 42, 0.08);
   --accent-soft: var(--accent-dim);
   --accent-ring: var(--line-strong);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 18px 48px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 32px 80px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 1px 2px rgba(26, 35, 48, 0.06);
+  --shadow-md: 0 16px 40px rgba(26, 35, 48, 0.1);
+  --shadow-lg: 0 28px 64px rgba(26, 35, 48, 0.14);
 }
 
 @theme inline {
@@ -66,8 +66,8 @@
   }
 
   ::selection {
-    background: rgba(96, 205, 255, 0.3);
-    color: #fff;
+    background: rgba(0, 120, 212, 0.18);
+    color: var(--fg);
   }
 
   :focus-visible {
@@ -79,21 +79,17 @@
 @layer utilities {
   .pulse-grid {
     background-image:
-      linear-gradient(rgba(96, 205, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(96, 205, 255, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(0, 120, 212, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 120, 212, 0.045) 1px, transparent 1px);
     background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 55% at 50% 20%, black, transparent 75%);
   }
 
-  .pulse-scan {
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(96, 205, 255, 0.04) 50%,
-      transparent 100%
-    );
-    background-size: 100% 220%;
-    animation: pulse-scan 7s linear infinite;
+  .pulse-wash {
+    background:
+      radial-gradient(ellipse 55% 40% at 15% 10%, rgba(0, 120, 212, 0.1), transparent 60%),
+      radial-gradient(ellipse 45% 35% at 90% 20%, rgba(15, 123, 76, 0.05), transparent 55%),
+      linear-gradient(180deg, #f8fafc 0%, var(--bg) 55%, #eef3f8 100%);
   }
 
   .font-mono-pulse {
@@ -102,15 +98,6 @@
 
   .text-accent {
     color: var(--accent);
-  }
-}
-
-@keyframes pulse-scan {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 0% 100%;
   }
 }
 
@@ -140,11 +127,10 @@
 }
 
 .stream-track {
-  animation: pulse-stream 28s linear infinite;
+  animation: pulse-stream 22s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulse-scan,
   .live-dot,
   .stream-track {
     animation: none !important;

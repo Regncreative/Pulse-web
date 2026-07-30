@@ -34,7 +34,7 @@ export function PulseAppShell({
   return (
     <div
       className={cn(
-        'flex overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d0f12] text-white shadow-[0_28px_80px_rgba(0,0,0,0.55)]',
+        'flex overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d0f12] text-white',
         compact ? 'min-h-[420px]' : 'min-h-[480px]',
         className,
       )}

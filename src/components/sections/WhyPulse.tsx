@@ -49,7 +49,7 @@ function CompareColumn({
         'rounded-3xl p-6 ring-1 sm:p-8',
         good
           ? 'bg-[var(--accent-soft)] ring-[var(--accent-ring)]'
-          : 'bg-[var(--surface)] ring-[var(--border)]',
+          : 'bg-[var(--surface)] ring-[var(--border)] shadow-[var(--shadow-sm)]',
       )}
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ function CompareColumn({
         {items.map((item, index) => (
           <motion.li
             key={item}
-            className="flex items-start gap-3 rounded-2xl bg-white/[0.04] px-4 py-3 ring-1 ring-white/6"
+            className="flex items-start gap-3 rounded-2xl bg-[var(--surface)] px-4 py-3 ring-1 ring-[var(--border)]"
             initial={reduceMotion ? false : { opacity: 0, x: good ? 12 : -12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -70,7 +70,7 @@ function CompareColumn({
             <span
               className={cn(
                 'mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full',
-                good ? 'bg-emerald-500/15 text-emerald-400' : 'bg-rose-500/10 text-rose-400',
+                good ? 'bg-emerald-500/15 text-emerald-700' : 'bg-rose-500/10 text-rose-600',
               )}
             >
               {good ? <Check className="size-3.5" aria-hidden /> : <X className="size-3.5" aria-hidden />}

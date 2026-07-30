@@ -26,7 +26,7 @@ export function Translate() {
             transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
             className="grid items-stretch gap-3 md:grid-cols-[1fr_auto_1fr]"
           >
-            <div className="rounded-2xl border border-white/8 bg-[var(--surface)] p-4 sm:p-5">
+            <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
               <p className="font-mono-pulse text-[10px] tracking-[0.14em] text-[var(--err)] uppercase">
                 {t.translate.badLabel}
               </p>
