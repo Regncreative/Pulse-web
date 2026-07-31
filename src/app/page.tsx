@@ -1,3 +1,4 @@
+import { VideoIntro } from '@/components/VideoIntro'
 import { Navbar } from '@/components/sections/Navbar'
 import { Hero } from '@/components/sections/Hero'
 import { Translate } from '@/components/sections/Translate'
@@ -18,6 +19,7 @@ export default async function Home() {
   return (
     <LanguageProvider>
       <JsonLd version={release.version} />
+      <VideoIntro />
       <Navbar />
       <main className="flex-1">
         <Hero version={release.version} />

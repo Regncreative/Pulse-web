@@ -182,6 +182,16 @@ const en = {
     open: 'Open Pulse demo',
     close: 'Close',
   },
+  intro: {
+    title: 'Pulse intro',
+    subtitle: 'Optional — close anytime to browse the site',
+    hint: 'Watch if you want, or skip straight to the site.',
+    skip: 'Continue to site',
+    close: 'Close video',
+    mute: 'Mute',
+    unmute: 'Unmute',
+    unsupported: 'Your browser does not support this video.',
+  },
 }
 
 export type Dict = typeof en
@@ -362,6 +372,16 @@ const tr: Dict = {
     note: 'Demo önizlemesi — olaylar yalnızca bu sekmede kalır',
     open: 'Pulse demosunu aç',
     close: 'Kapat',
+  },
+  intro: {
+    title: 'Pulse tanıtımı',
+    subtitle: 'İsteğe bağlı — istediğiniz an kapatıp siteye bakabilirsiniz',
+    hint: 'İzlemek isterseniz izleyin, istemezseniz siteye geçin.',
+    skip: 'Siteye geç',
+    close: 'Videoyu kapat',
+    mute: 'Sesi kapat',
+    unmute: 'Sesi aç',
+    unsupported: 'Tarayıcınız bu videoyu desteklemiyor.',
   },
 }
 
