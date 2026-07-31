@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Clock3 } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseLogo } from '@/components/icons/PulseLogo'
 import { FlagEn, FlagTr } from '@/components/demo/flags'
 import { ProductHuntBanner } from '@/components/sections/ProductHuntBanner'
+import { SITE } from '@/lib/constants'
 import { useLang, type Lang } from '@/lib/i18n'
 import { cn } from '@/lib/cn'
 
@@ -91,8 +92,13 @@ export function Navbar() {
               ))}
             </div>
 
-            <Button size="md" disabled aria-label={t.nav.downloadBtn}>
-              <Clock3 className="size-4" aria-hidden />
+            <Button
+              size="md"
+              href={SITE.betaDownload}
+              external
+              aria-label={t.nav.downloadBtn}
+            >
+              <Download className="size-4" aria-hidden />
               {t.nav.downloadBtn}
             </Button>
           </div>

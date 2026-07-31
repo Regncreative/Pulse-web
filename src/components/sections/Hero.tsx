@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { Clock3 } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseShields } from '@/components/ui/Shield'
@@ -56,11 +56,16 @@ export function Hero({ version }: HeroProps) {
           <PulseShields version={version} className="mt-6" />
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" disabled aria-label={t.hero.primaryBtn}>
-              <Clock3 className="size-4" aria-hidden />
+            <Button
+              size="lg"
+              href={SITE.betaDownload}
+              external
+              aria-label={t.hero.primaryBtn}
+            >
+              <Download className="size-4" aria-hidden />
               {t.hero.primaryBtn}
             </Button>
-            <Button variant="secondary" size="lg" disabled>
+            <Button variant="secondary" size="lg" href="#demo">
               {t.hero.secondaryBtn}
             </Button>
           </div>

@@ -20,7 +20,18 @@ export function Footer() {
         </div>
 
         <p className="text-sm text-[var(--fg-dim)]">
-          {t.footer.github} · {t.footer.releases} · {t.footer.license}
+          <span>{t.footer.github}</span>
+          {' · '}
+          <a
+            href={SITE.betaDownload}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-[var(--fg)]"
+          >
+            {t.footer.releases}
+          </a>
+          {' · '}
+          <span>{t.footer.license}</span>
         </p>
       </Container>
     </footer>

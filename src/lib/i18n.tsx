@@ -13,14 +13,14 @@ const en = {
     download: 'Download',
     faq: 'FAQ',
     githubBtn: 'Coming soon',
-    downloadBtn: 'Coming soon',
+    downloadBtn: 'Download beta',
   },
   hero: {
     tagline:
       'Read-only diagnostics for Windows — human-readable events, not Event Viewer XML.',
-    primaryBtn: 'Coming soon',
-    secondaryBtn: 'Notify me later',
-    downloadBtn: 'Coming soon',
+    primaryBtn: 'Download beta',
+    secondaryBtn: 'See the demo',
+    downloadBtn: 'Download beta',
     promise: 'Observation only. No injection. No telemetry. No cloud.',
   },
   translate: {
@@ -131,14 +131,14 @@ const en = {
     eyebrow: 'Download',
     title: 'Get Pulse for Windows',
     description:
-      'Public release is not available yet. Installer and source will open when Pulse ships — no account, no telemetry cloud.',
+      'Beta installer is available now. No account, no telemetry cloud — install and run locally.',
     latestVersion: 'Latest version',
     win10Badge: 'Windows 10 compatible',
-    downloadBtn: 'Coming soon',
+    downloadBtn: 'Download beta',
     githubBtn: 'Coming soon',
-    releasesBtn: 'Coming soon',
+    releasesBtn: 'Open installer',
     sourcePrefix: 'Source and installer',
-    comingSoon: 'Public release coming soon — check back shortly.',
+    comingSoon: 'Public GitHub release coming soon — beta is available via the buttons above.',
   },
   faq: {
     eyebrow: 'FAQ',
@@ -173,7 +173,7 @@ const en = {
   },
   footer: {
     github: 'Coming soon',
-    releases: 'Coming soon',
+    releases: 'Download beta',
     license: 'Coming soon',
   },
   floating: {
@@ -210,14 +210,14 @@ const tr: Dict = {
     download: 'İndir',
     faq: 'SSS',
     githubBtn: 'Yakında',
-    downloadBtn: 'Yakında',
+    downloadBtn: 'Beta indir',
   },
   hero: {
     tagline:
       'Windows için salt okunur tanılama — Event Viewer XML’i değil, okunabilir olaylar.',
-    primaryBtn: 'Yakında',
-    secondaryBtn: 'Daha sonra',
-    downloadBtn: 'Yakında',
+    primaryBtn: 'Beta indir',
+    secondaryBtn: 'Demoyu gör',
+    downloadBtn: 'Beta indir',
     promise: 'Yalnızca gözlem. Enjeksiyon yok. Telemetri yok. Bulut yok.',
   },
   translate: {
@@ -327,14 +327,14 @@ const tr: Dict = {
     eyebrow: 'İndir',
     title: 'Pulse’u Windows için edinin',
     description:
-      'Herkese açık sürüm henüz yok. Kurulum ve kaynak Pulse yayınlandığında açılacak — hesap yok, telemetri bulutu yok.',
+      'Beta kurulum paketi şimdi hazır. Hesap yok, telemetri bulutu yok — yerel kurup çalıştırın.',
     latestVersion: 'En son sürüm',
     win10Badge: 'Windows 10 uyumlu',
-    downloadBtn: 'Yakında',
+    downloadBtn: 'Beta indir',
     githubBtn: 'Yakında',
-    releasesBtn: 'Yakında',
+    releasesBtn: 'Kurulumu aç',
     sourcePrefix: 'Kaynak ve kurulum',
-    comingSoon: 'Herkese açık sürüm yakında — kısa süre sonra tekrar bakın.',
+    comingSoon: 'Herkese açık GitHub sürümü yakında — beta yukarıdaki butonlardan indirilebilir.',
   },
   faq: {
     eyebrow: 'SSS',
@@ -369,7 +369,7 @@ const tr: Dict = {
   },
   footer: {
     github: 'Yakında',
-    releases: 'Yakında',
+    releases: 'Beta indir',
     license: 'Yakında',
   },
   floating: {

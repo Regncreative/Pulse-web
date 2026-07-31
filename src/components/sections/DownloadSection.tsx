@@ -1,9 +1,10 @@
 'use client'
 
-import { Clock3, MonitorSmartphone, Cpu } from 'lucide-react'
+import { Download, MonitorSmartphone, Cpu } from 'lucide-react'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
+import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
 
 type DownloadSectionProps = {
@@ -39,11 +40,21 @@ export function DownloadSection({ version }: DownloadSectionProps) {
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button size="lg" className="min-w-[200px]" disabled>
-            <Clock3 className="size-4" aria-hidden />
+          <Button
+            size="lg"
+            className="min-w-[200px]"
+            href={SITE.betaDownload}
+            external
+          >
+            <Download className="size-4" aria-hidden />
             {t.download.downloadBtn}
           </Button>
-          <Button variant="secondary" size="lg" disabled>
+          <Button
+            variant="secondary"
+            size="lg"
+            href={SITE.betaDownload}
+            external
+          >
             {t.download.releasesBtn}
           </Button>
         </div>

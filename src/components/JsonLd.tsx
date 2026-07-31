@@ -9,7 +9,7 @@ export function JsonLd({ version }: { version: string }) {
     applicationCategory: 'UtilitiesApplication',
     description: SITE.description,
     url: SITE.url,
-    downloadUrl: SITE.latestRelease,
+    downloadUrl: SITE.betaDownload,
     softwareVersion: version,
     author: {
       '@type': 'Organization',
