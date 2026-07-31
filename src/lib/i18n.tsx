@@ -192,6 +192,11 @@ const en = {
     unmute: 'Unmute',
     unsupported: 'Your browser does not support this video.',
   },
+  productHunt: {
+    live: 'Coming soon',
+    title: 'Pulse is launching on Product Hunt',
+    subtitle: 'follow along and be ready to upvote',
+  },
 }
 
 export type Dict = typeof en
@@ -382,6 +387,11 @@ const tr: Dict = {
     mute: 'Sesi kapat',
     unmute: 'Sesi aç',
     unsupported: 'Tarayıcınız bu videoyu desteklemiyor.',
+  },
+  productHunt: {
+    live: 'Yakında',
+    title: 'Pulse yakında Product Hunt’ta',
+    subtitle: 'takipte kal, upvote için hazır ol',
   },
 }
 
