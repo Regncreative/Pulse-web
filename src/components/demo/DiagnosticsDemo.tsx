@@ -36,7 +36,7 @@ export function DiagnosticsDemo() {
                   reduceMotion={!!reduceMotion}
                   rows={[
                     ['Status', 'Connected'],
-                    ['Service version', '0.1.0-bootstrap'],
+                    ['Service version', '0.1.2-beta'],
                     ['IPC protocol', '1'],
                     ['Mode', 'Console'],
                   ]}

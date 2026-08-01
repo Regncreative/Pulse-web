@@ -93,7 +93,7 @@ export function PulseAppShell({
             <p className="mt-2 text-[10px] text-white/40">
               Listening: <span className="text-[#3dd68c]">Yes</span>
             </p>
-            <p className="mt-0.5 font-mono-pulse text-[9px] text-white/30">v0.1.0-bootstrap</p>
+            <p className="mt-0.5 font-mono-pulse text-[9px] text-white/30">v0.1.2-beta</p>
           </div>
         </div>
       </aside>
