@@ -205,7 +205,7 @@ export function AiDemo() {
     <DemoFrame>
       <ScaleToFit width={960} height={560}>
         <div className="h-[560px] w-[960px]">
-          <div className="flex h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d0f12] text-white shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+          <div className="flex h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d0f12] text-white">
             <aside className="flex w-[236px] shrink-0 flex-col border-r border-white/[0.06] bg-[#12151a]">
               <div className="flex items-center gap-2.5 px-4 pt-4 pb-3">
                 <PulseLogo size={32} className="rounded-[8px]" />
