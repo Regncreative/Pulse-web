@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseShields } from '@/components/ui/Shield'
 import { PulseLogo } from '@/components/icons/PulseLogo'
-import { TimelineDemo } from '@/components/demo/TimelineDemo'
+import { AiDemo } from '@/components/demo/AiDemo'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
 
@@ -74,7 +74,7 @@ export function Hero({ version }: HeroProps) {
         </motion.div>
 
         <div className="relative">
-          <TimelineDemo />
+          <AiDemo />
         </div>
       </Container>
     </section>

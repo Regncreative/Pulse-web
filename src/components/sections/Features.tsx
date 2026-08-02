@@ -4,6 +4,7 @@ import type { LucideIcon } from 'lucide-react'
 import {
   Activity,
   Box,
+  Bot,
   FileDown,
   HardDrive,
   LayoutList,
@@ -18,6 +19,7 @@ import { Section } from '@/components/ui/Section'
 import { useLang } from '@/lib/i18n'
 
 const ICONS: LucideIcon[] = [
+  Bot,
   LayoutList,
   Radio,
   Activity,

@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Pulse',
   tagline: 'See what Windows is really doing.',
   description:
-    'A modern, read-only diagnostics platform for Windows — events you can understand, not logs you decode. Local-first, no telemetry, no cloud.',
+    'A modern, read-only diagnostics platform for Windows — human-readable events, local MCP tools for AI assistants, no telemetry, no cloud.',
   url: 'https://pulse.regncreative.com',
   author: 'Regn Creative',
   github: 'https://github.com/Regncreative/Pulse',

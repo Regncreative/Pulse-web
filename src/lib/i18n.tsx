@@ -17,11 +17,11 @@ const en = {
   },
   hero: {
     tagline:
-      'Read-only diagnostics for Windows — human-readable events, not Event Viewer XML.',
+      'Read-only Windows diagnostics — and a local MCP server so AI assistants can ask Pulse safely on your PC.',
     primaryBtn: 'Download beta',
     secondaryBtn: 'See the demo',
     downloadBtn: 'Download beta',
-    promise: 'Observation only. No injection. No telemetry. No cloud.',
+    promise: 'Observation only. Local MCP. No injection. No telemetry. No cloud.',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -48,7 +48,7 @@ const en = {
     eyebrow: 'Inside Pulse',
     title: 'Same chrome as the installed app',
     description:
-      'Timeline, System Health, Inventory, Reports, Diagnostics, and Settings — with live connection status.',
+      'Timeline, System Health, Inventory, Reports, Diagnostics, Settings — plus local MCP for AI assistants.',
     timelineTitle: 'Timeline',
     timelineDesc: 'Live human-readable events with severity filters — detail on demand.',
     healthTitle: 'System Health',
@@ -68,6 +68,11 @@ const en = {
     description:
       'Built as a professional observability tool — not another cleaner, optimizer, or antivirus.',
     items: [
+      {
+        title: 'Local MCP for AI',
+        description:
+          'Expose read-only Pulse tools to AI assistants over MCP — timeline, health, inventory, all on-device.',
+      },
       {
         title: 'Human Timeline',
         description:
@@ -104,7 +109,7 @@ const en = {
       },
       {
         title: 'Local-first',
-        description: 'No account, no sync, no telemetry. Preferences and exports stay on-device.',
+        description: 'No account, no sync, no telemetry. Preferences, exports, and MCP stay on-device.',
       },
       {
         title: 'Native Service',
@@ -116,20 +121,20 @@ const en = {
     eyebrow: 'Why Pulse',
     title: 'Stop decoding Event Viewer',
     description:
-      'Windows already knows everything about itself. Pulse reveals it in language you can read.',
+      'Windows already knows everything about itself. Pulse reveals it — to you and to local AI tools.',
     withoutTitle: 'Without Pulse',
     withoutItems: [
       'Opaque Event IDs and XML',
       'Tool sprawl across Event Viewer, Device Manager, and PerfMon',
-      'No live human-readable stream',
+      'AI assistants guess without real Windows context',
       'Hard to export a clean support package',
     ],
     withTitle: 'With Pulse',
     withItems: [
       'Plain-language timeline + live health',
+      'Local MCP tools for AI assistants',
       'Inventory and reports in one workspace',
-      'Accent themes and motion you control',
-      'Observation only — nothing changes',
+      'Observation only — nothing leaves the PC',
     ],
   },
   screens: {
@@ -180,6 +185,10 @@ const en = {
         q: 'Is this a cleaner or antivirus?',
         a: 'No. Pulse never adds cleaner, optimizer, or antivirus features — only observability.',
       },
+      {
+        q: 'Does Pulse work with AI assistants?',
+        a: 'Yes. Pulse exposes a local MCP server with read-only tools so assistants can query timeline, health, and inventory on your machine — nothing is sent to a Pulse cloud.',
+      },
     ],
   },
   footer: {
@@ -225,11 +234,11 @@ const tr: Dict = {
   },
   hero: {
     tagline:
-      'Windows için salt okunur tanılama — Event Viewer XML’i değil, okunabilir olaylar.',
+      'Windows için salt okunur tanılama — ve yapay zekâ asistanlarının Pulse’a güvenle soru sorabilmesi için yerel bir MCP sunucusu.',
     primaryBtn: 'Beta indir',
     secondaryBtn: 'Demoyu gör',
     downloadBtn: 'Beta indir',
-    promise: 'Yalnızca gözlem. Enjeksiyon yok. Telemetri yok. Bulut yok.',
+    promise: 'Yalnızca gözlem. Yerel MCP. Enjeksiyon yok. Telemetri yok. Bulut yok.',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -256,7 +265,7 @@ const tr: Dict = {
     eyebrow: 'Pulse’un içi',
     title: 'Yüklü uygulamayla aynı arayüz',
     description:
-      'Timeline, Sistem Sağlığı, Envanter, Raporlar, Tanılama ve Ayarlar — canlı bağlantı durumuyla.',
+      'Timeline, Sistem Sağlığı, Envanter, Raporlar, Tanılama, Ayarlar — ve AI asistanlar için yerel MCP.',
     timelineTitle: 'Timeline',
     timelineDesc: 'Canlı, okunabilir olaylar ve şiddet filtreleri — detay isteğe bağlı.',
     healthTitle: 'Sistem Sağlığı',
@@ -276,6 +285,11 @@ const tr: Dict = {
     description:
       'Profesyonel bir gözlemlenebilirlik aracı olarak tasarlandı — başka bir temizleyici veya antivirüs değil.',
     items: [
+      {
+        title: 'Yapay zekâ için yerel MCP',
+        description:
+          'Salt okunur Pulse araçlarını MCP ile AI asistanlara açın — timeline, sağlık, envanter, hepsi cihazda.',
+      },
       {
         title: 'İnsan Timeline’ı',
         description:
@@ -311,7 +325,7 @@ const tr: Dict = {
       },
       {
         title: 'Yerel Öncelikli',
-        description: 'Hesap yok, senkron yok, telemetri yok. Tercihler ve dışa aktarımlar cihazda kalır.',
+        description: 'Hesap yok, senkron yok, telemetri yok. Tercihler, dışa aktarımlar ve MCP cihazda kalır.',
       },
       {
         title: 'Yerel Servis',
@@ -323,20 +337,20 @@ const tr: Dict = {
     eyebrow: 'Neden Pulse',
     title: 'Event Viewer’ı çözmeyi bırakın',
     description:
-      'Windows kendisi hakkında her şeyi zaten biliyor. Pulse bunu okuyabileceğiniz dilde gösterir.',
+      'Windows kendisi hakkında her şeyi zaten biliyor. Pulse bunu size ve yerel AI araçlarına gösterir.',
     withoutTitle: 'Pulse olmadan',
     withoutItems: [
       'Opak Event ID’ler ve XML',
       'Event Viewer, Aygıt Yöneticisi ve PerfMon arasında dağılmış araçlar',
-      'Canlı, okunabilir bir akış yok',
+      'AI asistanlar gerçek Windows bağlamı olmadan tahmin eder',
       'Temiz bir destek paketi dışa aktarmak zor',
     ],
     withTitle: 'Pulse ile',
     withItems: [
       'Düz dilde timeline + canlı sağlık',
+      'AI asistanlar için yerel MCP araçları',
       'Tek çalışma alanında envanter ve raporlar',
-      'Kontrol sizde olan temalar ve hareket',
-      'Yalnızca gözlem — hiçbir şey değişmez',
+      'Yalnızca gözlem — hiçbir şey PC’den çıkmaz',
     ],
   },
   screens: {
@@ -386,6 +400,10 @@ const tr: Dict = {
       {
         q: 'Bu bir temizleyici veya antivirüs mü?',
         a: 'Hayır. Pulse temizleyici, optimizasyon veya antivirüs özellikleri eklemez — yalnızca gözlemlenebilirlik.',
+      },
+      {
+        q: 'Pulse yapay zekâ asistanlarıyla çalışır mı?',
+        a: 'Evet. Pulse, yerel bir MCP sunucusu ile salt okunur araçlar sunar; asistanlar timeline, sağlık ve envanteri sizin makinenizde sorabilir — Pulse bulutuna veri gitmez.',
       },
     ],
   },
