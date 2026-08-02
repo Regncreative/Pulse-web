@@ -12,7 +12,7 @@ export const SITE = {
   repo: 'Regncreative/Pulse',
   versionFallback: '0.3.1-beta',
   betaDownload:
-    'https://drive.google.com/file/d/1Hn-wOsfrjR1tgnVt8tIk1JvDtdJMFVKN/view?usp=drive_link',
+    'https://drive.google.com/file/d/1VaAt3UPdDQYjzbkoZRwvdT8OQbQ_-eqC/view?usp=drive_link',
   productHunt:
     'https://www.producthunt.com/products/pulse-58?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-pulse-f9f15bde-6996-4986-80ce-1f94f4d4d1bb',
 } as const
