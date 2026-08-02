@@ -10,9 +10,9 @@ export const SITE = {
   latestRelease: 'https://github.com/Regncreative/Pulse/releases/latest',
   license: 'https://github.com/Regncreative/Pulse/blob/master/LICENSE',
   repo: 'Regncreative/Pulse',
-  versionFallback: '0.3.1-beta',
+  versionFallback: '0.3.2-beta',
   betaDownload:
-    'https://drive.google.com/file/d/1VaAt3UPdDQYjzbkoZRwvdT8OQbQ_-eqC/view?usp=drive_link',
+    'https://drive.google.com/file/d/1sNfyqJ462MPxAh31_jvwwI3Uv0XHBmM7/view?usp=drive_link',
   productHunt:
     'https://www.producthunt.com/products/pulse-58?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-pulse-f9f15bde-6996-4986-80ce-1f94f4d4d1bb',
 } as const

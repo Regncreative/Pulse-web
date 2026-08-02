@@ -136,7 +136,7 @@ const en = {
     eyebrow: 'Interface',
     title: 'The real Pulse app',
     description:
-      'Timeline, Health, Inventory, Reports, Diagnostics, and Settings — captured from 0.3.1-beta.',
+      'Timeline, Health, Inventory, Reports, Diagnostics, and Settings — captured from 0.3.2-beta.',
   },
   download: {
     eyebrow: 'Download',
@@ -343,7 +343,7 @@ const tr: Dict = {
     eyebrow: 'Arayüz',
     title: 'Gerçek Pulse uygulaması',
     description:
-      'Timeline, Sağlık, Envanter, Raporlar, Tanılama ve Ayarlar — 0.3.1-beta’dan yakalandı.',
+      'Timeline, Sağlık, Envanter, Raporlar, Tanılama ve Ayarlar — 0.3.2-beta’dan yakalandı.',
   },
   download: {
     eyebrow: 'İndir',
