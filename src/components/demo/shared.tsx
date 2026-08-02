@@ -5,7 +5,9 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { PulseLogo } from '@/components/icons/PulseLogo'
 import { cn } from '@/lib/cn'
 
-export const ACCENT = '#60CDFF'
+/** Active / live accent from the current Pulse Windows build. */
+export const ACCENT = '#3DDA7A'
+export const ACCENT_SOFT = '#6EE7A0'
 
 export function ScaleToFit({
   width,
@@ -125,11 +127,13 @@ export function DemoAppChrome({
 }: {
   title?: string
   subtitle?: string
-  activeNav?: 'timeline' | 'health' | 'diagnostics' | 'settings'
+  activeNav?: 'timeline' | 'health' | 'inventory' | 'reports' | 'diagnostics' | 'settings'
 }) {
   const nav = [
     { id: 'timeline', label: 'Timeline' },
     { id: 'health', label: 'Health' },
+    { id: 'inventory', label: 'Inventory' },
+    { id: 'reports', label: 'Reports' },
     { id: 'diagnostics', label: 'Diagnostics' },
     { id: 'settings', label: 'Settings' },
   ] as const

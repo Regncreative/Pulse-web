@@ -3,14 +3,15 @@
 import type { LucideIcon } from 'lucide-react'
 import {
   Activity,
-  FileArchive,
+  Box,
+  FileDown,
   HardDrive,
   LayoutList,
-  PanelRight,
+  Palette,
   Radio,
   Server,
   Shield,
-  Sparkles,
+  Stethoscope,
 } from 'lucide-react'
 import { FeatureCard } from '@/components/ui/FeatureCard'
 import { Section } from '@/components/ui/Section'
@@ -20,11 +21,12 @@ const ICONS: LucideIcon[] = [
   LayoutList,
   Radio,
   Activity,
-  PanelRight,
-  FileArchive,
+  Box,
+  FileDown,
+  Stethoscope,
+  Palette,
   Shield,
   HardDrive,
-  Sparkles,
   Server,
 ]
 
@@ -40,7 +42,7 @@ export function Features() {
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {t.features.items.map((feature, index) => {
-          const Icon = ICONS[index]
+          const Icon = ICONS[index] ?? LayoutList
           return (
             <FeatureCard
               key={feature.title}

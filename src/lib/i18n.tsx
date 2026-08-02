@@ -47,15 +47,20 @@ const en = {
   productDemo: {
     eyebrow: 'Inside Pulse',
     title: 'Same chrome as the installed app',
-    description: 'Sidebar, Live Monitoring, Timeline, Health, Diagnostics, and Settings.',
+    description:
+      'Timeline, System Health, Inventory, Reports, Diagnostics, and Settings — with live connection status.',
     timelineTitle: 'Timeline',
-    timelineDesc: 'Human-readable events first. Technical detail and raw XML on demand.',
+    timelineDesc: 'Live human-readable events with severity filters — detail on demand.',
     healthTitle: 'System Health',
-    healthDesc: 'CPU, memory, GPU, disk, and network — Task Manager–aligned where APIs allow.',
+    healthDesc: 'CPU, memory, GPU, disk, and network with live sparklines and a health score.',
+    inventoryTitle: 'Inventory',
+    inventoryDesc: 'Browse system, devices, and software — services, drivers, and hardware trees.',
+    reportsTitle: 'Reports',
+    reportsDesc: 'Export templates as JSON, CSV, HTML, or PDF — everything stays on this PC.',
     diagnosticsTitle: 'Diagnostics',
-    diagnosticsDesc: 'Service uptime, IPC stats, inject test event, and export report.',
+    diagnosticsDesc: 'IPC latency, throughput, reconnect history, and recovery actions.',
     settingsTitle: 'Settings',
-    settingsDesc: 'Live monitoring, auto-scroll, density, and animations — persisted locally.',
+    settingsDesc: 'Theme modes, accent colors, density, and animation speed — stored locally.',
   },
   features: {
     eyebrow: 'Features',
@@ -66,7 +71,7 @@ const en = {
       {
         title: 'Human Timeline',
         description:
-          'Level 1 plain language first — technical summary and raw XML only when you ask.',
+          'Live event feed with severity filters — plain language first, raw detail when you ask.',
       },
       {
         title: 'Live Monitoring',
@@ -74,15 +79,24 @@ const en = {
       },
       {
         title: 'System Health',
-        description: 'CPU, Memory, GPU, Disk, Network cards with process context and app icons.',
+        description: 'Health score, uptime, and live CPU / memory / GPU / disk / network charts.',
       },
       {
-        title: 'Detail Panel',
-        description: 'Metadata, process context, and expandable raw event payload side by side.',
+        title: 'Hardware Inventory',
+        description:
+          'System, devices, and software trees — services, drivers, USB, PCI, and more.',
       },
       {
-        title: 'Diagnostics Export',
-        description: 'Zip a support report without leaving the machine — nothing uploads itself.',
+        title: 'Local Reports',
+        description: 'Export health, timeline, diagnostics, or inventory as JSON, CSV, HTML, or PDF.',
+      },
+      {
+        title: 'Deep Diagnostics',
+        description: 'IPC health, latency, throughput, collectors, pipeline stages, and ping tools.',
+      },
+      {
+        title: 'Appearance Control',
+        description: 'System / Light / Dark themes, accent colors, compact mode, and motion speed.',
       },
       {
         title: 'Read-only',
@@ -90,15 +104,11 @@ const en = {
       },
       {
         title: 'Local-first',
-        description: 'No account, no sync, no telemetry. Preferences stay in SharedPreferences.',
-      },
-      {
-        title: 'Fluent Dark UI',
-        description: 'Custom title bar, acrylic/mica surfaces, DPI-aware — native Windows feel.',
+        description: 'No account, no sync, no telemetry. Preferences and exports stay on-device.',
       },
       {
         title: 'Native Service',
-        description: 'C++20 PulseService collects and humanizes; Flutter Desktop renders the UI.',
+        description: 'C++ PulseService collects and humanizes; Flutter Desktop renders the UI.',
       },
     ],
   },
@@ -110,22 +120,23 @@ const en = {
     withoutTitle: 'Without Pulse',
     withoutItems: [
       'Opaque Event IDs and XML',
-      'Tool sprawl across Event Viewer and PerfMon',
+      'Tool sprawl across Event Viewer, Device Manager, and PerfMon',
       'No live human-readable stream',
-      'Hard to explain what just happened',
+      'Hard to export a clean support package',
     ],
     withTitle: 'With Pulse',
     withItems: [
-      'Plain-language timeline',
-      'Live system health in one place',
-      'Detail on demand, not by default',
+      'Plain-language timeline + live health',
+      'Inventory and reports in one workspace',
+      'Accent themes and motion you control',
       'Observation only — nothing changes',
     ],
   },
   screens: {
     eyebrow: 'Interface',
     title: 'The real Pulse app',
-    description: 'Timeline, System Health, Diagnostics, and Settings — captured from the Windows build.',
+    description:
+      'Timeline, Health, Inventory, Reports, Diagnostics, and Settings — captured from 0.2.1-beta.',
   },
   download: {
     eyebrow: 'Download',
@@ -151,7 +162,7 @@ const en = {
       },
       {
         q: 'Does it upload data?',
-        a: 'No. There is no cloud, no telemetry, and no analytics. Data never leaves the machine unless you export a diagnostics zip.',
+        a: 'No. There is no cloud, no telemetry, and no analytics. Data never leaves the machine unless you export a local report.',
       },
       {
         q: 'Does it require an account?',
@@ -244,15 +255,20 @@ const tr: Dict = {
   productDemo: {
     eyebrow: 'Pulse’un içi',
     title: 'Yüklü uygulamayla aynı arayüz',
-    description: 'Sidebar, Live Monitoring, Timeline, Sağlık, Tanılama ve Ayarlar.',
+    description:
+      'Timeline, Sistem Sağlığı, Envanter, Raporlar, Tanılama ve Ayarlar — canlı bağlantı durumuyla.',
     timelineTitle: 'Timeline',
-    timelineDesc: 'Önce insan dilinde olaylar. Teknik özet ve ham XML isteğe bağlı.',
+    timelineDesc: 'Canlı, okunabilir olaylar ve şiddet filtreleri — detay isteğe bağlı.',
     healthTitle: 'Sistem Sağlığı',
-    healthDesc: 'CPU, bellek, GPU, disk ve ağ — API’lerin izin verdiği yerde Görev Yöneticisi hizalı.',
+    healthDesc: 'CPU, bellek, GPU, disk ve ağ için canlı sparkline’lar ve sağlık skoru.',
+    inventoryTitle: 'Envanter',
+    inventoryDesc: 'Sistem, cihaz ve yazılım ağaçları — servisler, sürücüler ve donanım.',
+    reportsTitle: 'Raporlar',
+    reportsDesc: 'Şablonları JSON, CSV, HTML veya PDF olarak dışa aktarın — her şey bu PC’de kalır.',
     diagnosticsTitle: 'Tanılama',
-    diagnosticsDesc: 'Servis uptime, IPC istatistikleri, test olayı ve rapor dışa aktarma.',
+    diagnosticsDesc: 'IPC gecikmesi, throughput, yeniden bağlanma geçmişi ve kurtarma aksiyonları.',
     settingsTitle: 'Ayarlar',
-    settingsDesc: 'Canlı izleme, otomatik kaydırma, yoğunluk ve animasyonlar — yerelde saklanır.',
+    settingsDesc: 'Tema modları, accent renkleri, yoğunluk ve animasyon hızı — yerelde saklanır.',
   },
   features: {
     eyebrow: 'Özellikler',
@@ -262,7 +278,8 @@ const tr: Dict = {
     items: [
       {
         title: 'İnsan Timeline’ı',
-        description: 'Önce düz dil — teknik özet ve ham XML yalnızca istediğinizde.',
+        description:
+          'Şiddet filtreli canlı akış — önce düz dil, ham detay yalnızca istediğinizde.',
       },
       {
         title: 'Canlı İzleme',
@@ -270,15 +287,23 @@ const tr: Dict = {
       },
       {
         title: 'Sistem Sağlığı',
-        description: 'CPU, Bellek, GPU, Disk, Ağ kartları; süreç bağlamı ve uygulama simgeleri.',
+        description: 'Sağlık skoru, uptime ve canlı CPU / bellek / GPU / disk / ağ grafikleri.',
       },
       {
-        title: 'Detay Paneli',
-        description: 'Meta veri, süreç bağlamı ve genişletilebilir ham olay yükü yan yana.',
+        title: 'Donanım Envanteri',
+        description: 'Sistem, cihaz ve yazılım ağaçları — servisler, sürücüler, USB, PCI ve daha fazlası.',
       },
       {
-        title: 'Tanılama Dışa Aktarma',
-        description: 'Makineden çıkmadan destek zipi — kendiliğinden hiçbir şey yüklenmez.',
+        title: 'Yerel Raporlar',
+        description: 'Sağlık, timeline, tanılama veya envanteri JSON, CSV, HTML veya PDF olarak aktarın.',
+      },
+      {
+        title: 'Derin Tanılama',
+        description: 'IPC sağlığı, gecikme, throughput, collector’lar, pipeline aşamaları ve ping araçları.',
+      },
+      {
+        title: 'Görünüm Kontrolü',
+        description: 'Sistem / Açık / Koyu temalar, accent renkleri, kompakt mod ve hareket hızı.',
       },
       {
         title: 'Salt Okunur',
@@ -286,15 +311,11 @@ const tr: Dict = {
       },
       {
         title: 'Yerel Öncelikli',
-        description: 'Hesap yok, senkron yok, telemetri yok. Tercihler SharedPreferences’te kalır.',
-      },
-      {
-        title: 'Fluent Koyu Arayüz',
-        description: 'Özel başlık çubuğu, acrylic/mica yüzeyler, DPI farkındalığı — yerel Windows hissi.',
+        description: 'Hesap yok, senkron yok, telemetri yok. Tercihler ve dışa aktarımlar cihazda kalır.',
       },
       {
         title: 'Yerel Servis',
-        description: 'C++20 PulseService toplar ve insanlaştırır; Flutter Desktop arayüzü çizer.',
+        description: 'C++ PulseService toplar ve insanlaştırır; Flutter Desktop arayüzü çizer.',
       },
     ],
   },
@@ -306,22 +327,23 @@ const tr: Dict = {
     withoutTitle: 'Pulse olmadan',
     withoutItems: [
       'Opak Event ID’ler ve XML',
-      'Event Viewer ve PerfMon arasında dağılmış araçlar',
+      'Event Viewer, Aygıt Yöneticisi ve PerfMon arasında dağılmış araçlar',
       'Canlı, okunabilir bir akış yok',
-      'Az önce ne olduğunu anlatmak zor',
+      'Temiz bir destek paketi dışa aktarmak zor',
     ],
     withTitle: 'Pulse ile',
     withItems: [
-      'Düz dilde timeline',
-      'Tek yerde canlı sistem sağlığı',
-      'Detay varsayılan değil, isteğe bağlı',
+      'Düz dilde timeline + canlı sağlık',
+      'Tek çalışma alanında envanter ve raporlar',
+      'Kontrol sizde olan temalar ve hareket',
       'Yalnızca gözlem — hiçbir şey değişmez',
     ],
   },
   screens: {
     eyebrow: 'Arayüz',
     title: 'Gerçek Pulse uygulaması',
-    description: 'Timeline, Sistem Sağlığı, Tanılama ve Ayarlar — Windows derlemesinden.',
+    description:
+      'Timeline, Sağlık, Envanter, Raporlar, Tanılama ve Ayarlar — 0.2.1-beta’dan yakalandı.',
   },
   download: {
     eyebrow: 'İndir',
@@ -347,7 +369,7 @@ const tr: Dict = {
       },
       {
         q: 'Veri yüklüyor mu?',
-        a: 'Hayır. Bulut, telemetri ve analitik yok. Tanılama zipi dışa aktarmadığınız sürece veri makineden çıkmaz.',
+        a: 'Hayır. Bulut, telemetri ve analitik yok. Yerel bir rapor dışa aktarmadığınız sürece veri makineden çıkmaz.',
       },
       {
         q: 'Hesap gerektiriyor mu?',

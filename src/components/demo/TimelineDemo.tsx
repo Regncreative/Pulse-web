@@ -2,34 +2,33 @@
 
 import { ChevronRight, RefreshCw } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { PageHeader, PulseAppShell } from './PulseAppShell'
+import { LiveBadge, PageHeader, PulseAppShell } from './PulseAppShell'
 import { DemoFrame, ScaleToFit } from './shared'
 import { cn } from '@/lib/cn'
 
-const FILTERS = ['All', 'Errors', 'Warnings', 'System', 'Application'] as const
+const FILTERS = [
+  'All severity',
+  'All sources',
+  'All types',
+  'All time',
+  'Advanced',
+] as const
 
 const EVENTS = [
   {
-    tone: 'critical' as const,
+    tone: 'info' as const,
     latest: true,
-    title: 'Unexpected Process Termination',
-    body: 'explorer.exe exited unexpectedly. Windows restarted the shell to restore the desktop.',
-    meta: 'Just now · Application',
-    tag: 'Critical',
-  },
-  {
-    tone: 'warn' as const,
-    title: 'COM Permission Warning',
-    body: 'An application attempted to access a COM component without sufficient permissions. No action required.',
-    meta: '12m ago · System',
-    tag: 'Warning',
+    title: 'Security-SPP Event',
+    body: 'Offline low-level transition completed successfully. No action required.',
+    meta: '8m ago · Application',
+    tag: 'Info',
   },
   {
     tone: 'critical' as const,
-    title: 'Kernel-Power · Unexpected Shutdown',
-    body: 'The system restarted without a clean shutdown. Check power and driver stability.',
-    meta: '38m ago · System',
-    tag: 'Critical',
+    title: 'DistributedCOM Event',
+    body: 'An application attempted to access a COM component without sufficient permissions.',
+    meta: '22m ago · System',
+    tag: 'Error',
   },
   {
     tone: 'info' as const,
@@ -46,10 +45,17 @@ const EVENTS = [
     tag: 'Warning',
   },
   {
-    tone: 'info' as const,
-    title: 'IsolatedUserMode Event',
-    body: 'Secure Trustlet completed initialization successfully.',
+    tone: 'critical' as const,
+    title: 'Kernel-Power · Unexpected Shutdown',
+    body: 'The system restarted without a clean shutdown. Check power and driver stability.',
     meta: '1h ago · System',
+    tag: 'Error',
+  },
+  {
+    tone: 'info' as const,
+    title: 'Service Control Manager',
+    body: 'Windows Update service entered the running state.',
+    meta: '2h ago · System',
     tag: 'Info',
   },
 ]
@@ -66,9 +72,9 @@ const toneStyles = {
     latest: 'text-amber-300',
   },
   info: {
-    rail: 'bg-[#60CDFF]',
-    tag: 'bg-[#60CDFF]/15 text-[#7ad7ff]',
-    latest: 'text-[#7ad7ff]',
+    rail: 'bg-[#3DDA7A]',
+    tag: 'bg-[#3DDA7A]/15 text-[#6EE7A0]',
+    latest: 'text-[#6EE7A0]',
   },
 }
 
@@ -82,25 +88,23 @@ export function TimelineDemo() {
         <div className="h-[560px] w-[960px]">
           <PulseAppShell active="timeline" className="h-full">
             <div className="flex h-full flex-col p-5">
-              <div className="mb-3 flex items-start justify-between gap-3">
-                <PageHeader title="Timeline" />
-              </div>
+              <PageHeader
+                title="Timeline"
+                actions={<LiveBadge />}
+              />
 
               <motion.div
                 initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="mb-3 flex items-center justify-between rounded-xl border border-white/[0.07] bg-white/[0.02] px-3 py-2.5"
+                className="mb-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-3 py-2.5"
               >
-                <span className="text-[12px] text-white/35">
-                  Search becomes available once live events are collected.
-                </span>
-                <span className="rounded-md bg-white/[0.04] px-2 py-0.5 text-[10px] text-white/30">
-                  Unavailable
+                <span className="text-[12px] text-white/40">
+                  Search provider, Event ID, computer, message, process, PID…
                 </span>
               </motion.div>
 
-              <div className="mb-4 flex items-center gap-1.5">
+              <div className="mb-4 flex flex-wrap items-center gap-1.5">
                 {FILTERS.map((filter, i) => (
                   <motion.span
                     key={filter}
@@ -108,9 +112,9 @@ export function TimelineDemo() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, delay: 0.12 + i * 0.04 }}
                     className={cn(
-                      'rounded-full px-3 py-1 text-[11px] font-medium',
+                      'rounded-lg px-2.5 py-1 text-[11px] font-medium',
                       i === 0
-                        ? 'bg-[#60CDFF]/18 text-[#7ad7ff]'
+                        ? 'bg-[#3DDA7A]/18 text-[#6EE7A0]'
                         : 'border border-white/[0.08] text-white/45',
                     )}
                   >

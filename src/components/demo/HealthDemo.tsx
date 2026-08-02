@@ -6,14 +6,19 @@ import { PageHeader, PulseAppShell } from './PulseAppShell'
 import { DemoFrame, ScaleToFit } from './shared'
 
 const METRICS = [
-  { label: 'CPU', value: '14%', spark: 'M0 18 L8 14 L16 16 L24 8 L32 12 L40 6 L48 10' },
-  { label: 'Memory', value: '13.9 GB', spark: 'M0 16 L8 15 L16 14 L24 12 L32 11 L40 10 L48 9' },
-  { label: 'GPU', value: '9%', spark: 'M0 17 L8 16 L16 10 L24 14 L32 8 L40 12 L48 11' },
-  { label: 'Download', value: '14 Kbps', spark: 'M0 14 L8 16 L16 12 L24 15 L32 9 L40 13 L48 11' },
-  { label: 'Upload', value: '22 Kbps', spark: 'M0 15 L8 13 L16 14 L24 10 L32 12 L40 8 L48 11' },
+  { label: 'CPU', value: '43%', spark: 'M0 18 L8 14 L16 16 L24 8 L32 12 L40 6 L48 10' },
+  { label: 'Memory', value: '16.5 GB', spark: 'M0 16 L8 15 L16 14 L24 12 L32 11 L40 10 L48 9' },
+  { label: 'GPU', value: '1%', spark: 'M0 17 L8 16 L16 10 L24 14 L32 8 L40 12 L48 11' },
+  { label: 'Download', value: '67 Kbps', spark: 'M0 14 L8 16 L16 12 L24 15 L32 9 L40 13 L48 11' },
+  { label: 'Upload', value: '28 Kbps', spark: 'M0 15 L8 13 L16 14 L24 10 L32 12 L40 8 L48 11' },
 ]
 
-const CHARTS = ['CPU', 'Memory', 'GPU', 'Disk']
+const CHARTS = [
+  { label: 'CPU', value: '43%' },
+  { label: 'Memory', value: '16.5 GB' },
+  { label: 'GPU', value: '1%' },
+  { label: 'Disk', value: '5.3 MB/s' },
+]
 
 export function HealthDemo() {
   const reduceMotion = useReducedMotion()
@@ -30,14 +35,14 @@ export function HealthDemo() {
                 initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.08 }}
-                className="mb-3 flex flex-wrap items-center gap-4 rounded-xl border border-[#3dd68c]/20 bg-[#3dd68c]/08 px-4 py-3"
+                className="mb-3 flex flex-wrap items-center gap-4 rounded-xl border border-[#3DDA7A]/20 bg-[#3DDA7A]/08 px-4 py-3"
               >
-                <div className="flex items-center gap-2 text-[#3dd68c]">
+                <div className="flex items-center gap-2 text-[#3DDA7A]">
                   <ShieldCheck className="size-4" aria-hidden />
                   <span className="text-[13px] font-semibold">Healthy — Everything looks normal.</span>
                 </div>
                 <div className="ml-auto flex flex-wrap gap-4 font-mono-pulse text-[10px] text-white/40">
-                  <span>Uptime: 4h 37m</span>
+                  <span>Uptime: 3h 8m</span>
                   <span>Health Score: 94</span>
                   <span>Last Updated: Just now</span>
                 </div>
@@ -60,7 +65,7 @@ export function HealthDemo() {
                       <motion.path
                         d={metric.spark}
                         fill="none"
-                        stroke="#60CDFF"
+                        stroke="#3DDA7A"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         initial={reduceMotion ? false : { pathLength: 0 }}
@@ -73,22 +78,25 @@ export function HealthDemo() {
               </div>
 
               <div className="mb-3 rounded-lg border border-white/[0.05] bg-white/[0.02] px-3 py-2 font-mono-pulse text-[9px] text-white/35">
-                Windows 10 Pro · AMD Ryzen 5 7500F · RTX 3060 · 32 GB · Uptime 4h 37m
+                Windows 10 Pro 25H2 · AMD Ryzen 5 7500F · RTX 3060 · 32 GiB · Uptime 3h 8m
               </div>
 
               <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-white/35 uppercase">
                 Performance · Last 60 seconds
               </p>
               <div className="grid grid-cols-4 gap-2">
-                {CHARTS.map((label, i) => (
+                {CHARTS.map((chart, i) => (
                   <motion.div
-                    key={label}
+                    key={chart.label}
                     initial={reduceMotion ? false : { opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.35 + i * 0.06 }}
                     className="rounded-xl border border-white/[0.06] bg-[#15181e] p-2.5"
                   >
-                    <p className="text-[11px] font-medium text-white/70">{label}</p>
+                    <div className="flex items-baseline justify-between gap-2">
+                      <p className="text-[11px] font-medium text-white/70">{chart.label}</p>
+                      <p className="font-mono-pulse text-[10px] text-[#6EE7A0]">{chart.value}</p>
+                    </div>
                     <svg viewBox="0 0 120 48" className="mt-2 h-14 w-full" aria-hidden>
                       <motion.path
                         d={
@@ -100,7 +108,7 @@ export function HealthDemo() {
                           ][i]
                         }
                         fill="none"
-                        stroke="#60CDFF"
+                        stroke="#3DDA7A"
                         strokeWidth="1.6"
                         strokeLinecap="round"
                         initial={reduceMotion ? false : { pathLength: 0 }}
