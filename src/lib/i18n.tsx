@@ -17,11 +17,11 @@ const en = {
   },
   hero: {
     tagline:
-      'Read-only Windows diagnostics — and a local MCP server so AI assistants can ask Pulse safely on your PC.',
+      'Read-only Windows diagnostics — connect Cursor, Claude, or ChatGPT to Pulse over local MCP. No built-in chat.',
     primaryBtn: 'Download beta',
     secondaryBtn: 'See the demo',
     downloadBtn: 'Download beta',
-    promise: 'Observation only. Local MCP. No injection. No telemetry. No cloud.',
+    promise: 'Observation only. Local MCP bridge. No Pulse AI chat. No telemetry cloud.',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -71,7 +71,7 @@ const en = {
       {
         title: 'Local MCP for AI',
         description:
-          'Expose read-only Pulse tools to AI assistants over MCP — timeline, health, inventory, all on-device.',
+          'Bridge Cursor, Claude, or ChatGPT to Pulse over MCP — read-only tools on-device. Pulse is not a chat app.',
       },
       {
         title: 'Human Timeline',
@@ -187,7 +187,7 @@ const en = {
       },
       {
         q: 'Does Pulse work with AI assistants?',
-        a: 'Yes. Pulse exposes a local MCP server with read-only tools so assistants can query timeline, health, and inventory on your machine — nothing is sent to a Pulse cloud.',
+        a: 'Yes — via MCP, not a built-in chat. Connect Cursor, Claude, or ChatGPT to the local Pulse MCP server so they can query timeline, health, and inventory on your machine. Nothing is sent to a Pulse cloud.',
       },
     ],
   },
@@ -234,11 +234,11 @@ const tr: Dict = {
   },
   hero: {
     tagline:
-      'Windows için salt okunur tanılama — ve yapay zekâ asistanlarının Pulse’a güvenle soru sorabilmesi için yerel bir MCP sunucusu.',
+      'Windows için salt okunur tanılama — Cursor, Claude veya ChatGPT’yi yerel MCP ile Pulse’a bağlayın. Yerleşik sohbet yok.',
     primaryBtn: 'Beta indir',
     secondaryBtn: 'Demoyu gör',
     downloadBtn: 'Beta indir',
-    promise: 'Yalnızca gözlem. Yerel MCP. Enjeksiyon yok. Telemetri yok. Bulut yok.',
+    promise: 'Yalnızca gözlem. Yerel MCP köprüsü. Pulse AI sohbeti yok. Telemetri bulutu yok.',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -288,7 +288,7 @@ const tr: Dict = {
       {
         title: 'Yapay zekâ için yerel MCP',
         description:
-          'Salt okunur Pulse araçlarını MCP ile AI asistanlara açın — timeline, sağlık, envanter, hepsi cihazda.',
+          'Cursor, Claude veya ChatGPT’yi MCP ile Pulse’a bağlayın — salt okunur araçlar cihazda. Pulse bir sohbet uygulaması değil.',
       },
       {
         title: 'İnsan Timeline’ı',
@@ -403,7 +403,7 @@ const tr: Dict = {
       },
       {
         q: 'Pulse yapay zekâ asistanlarıyla çalışır mı?',
-        a: 'Evet. Pulse, yerel bir MCP sunucusu ile salt okunur araçlar sunar; asistanlar timeline, sağlık ve envanteri sizin makinenizde sorabilir — Pulse bulutuna veri gitmez.',
+        a: 'Evet — yerleşik sohbetle değil, MCP ile. Cursor, Claude veya ChatGPT’yi yerel Pulse MCP sunucusuna bağlayın; timeline, sağlık ve envanteri makinenizde sorabilirler. Pulse bulutuna veri gitmez.',
       },
     ],
   },
