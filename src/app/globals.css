@@ -136,3 +136,52 @@
     animation: none !important;
   }
 }
+
+/* Scoped dark theme for /privacy — keeps the marketing site light. */
+.privacy-theme {
+  --bg: #070a0e;
+  --bg-elevated: #0d1218;
+  --fg: #e8eef5;
+  --fg-dim: #8b9bb0;
+  --line: rgba(96, 205, 255, 0.1);
+  --line-strong: rgba(0, 120, 212, 0.35);
+  --accent: #3b9eff;
+  --accent-dim: rgba(59, 158, 255, 0.12);
+  --accent-glow: 0 12px 40px rgba(0, 120, 212, 0.2);
+  --ok: #3dd68c;
+  --warn: #f5a524;
+  --err: #f87171;
+  --tile: #151a21;
+  --background: var(--bg);
+  --foreground: var(--fg);
+  --muted: var(--fg-dim);
+  --surface: rgba(18, 24, 32, 0.72);
+  --surface-2: #121820;
+  --border: rgba(255, 255, 255, 0.08);
+  --accent-soft: var(--accent-dim);
+  --accent-ring: var(--line-strong);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 18px 48px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 28px 64px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+.privacy-theme .privacy-grid {
+  background-image:
+    linear-gradient(rgba(59, 158, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 158, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 20%, black, transparent 75%);
+}
+
+.privacy-theme .privacy-wash {
+  background:
+    radial-gradient(ellipse 55% 40% at 15% 10%, rgba(0, 120, 212, 0.18), transparent 60%),
+    radial-gradient(ellipse 45% 35% at 90% 18%, rgba(61, 214, 140, 0.08), transparent 55%),
+    linear-gradient(180deg, #0a1018 0%, var(--bg) 55%, #070a0e 100%);
+}
+
+.privacy-theme ::selection {
+  background: rgba(59, 158, 255, 0.28);
+  color: var(--fg);
+}
