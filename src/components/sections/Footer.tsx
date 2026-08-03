@@ -8,6 +8,12 @@ import { useLang } from '@/lib/i18n'
 export function Footer() {
   const { t } = useLang()
 
+  const links = [
+    { href: SITE.github, label: t.footer.github },
+    { href: SITE.release, label: t.footer.releases },
+    { href: SITE.license, label: t.footer.license },
+  ]
+
   return (
     <footer className="border-t border-[var(--line)] py-10">
       <Container className="flex flex-col items-center justify-between gap-6 sm:flex-row">
@@ -20,18 +26,19 @@ export function Footer() {
         </div>
 
         <p className="text-sm text-[var(--fg-dim)]">
-          <span>{t.footer.github}</span>
-          {' · '}
-          <a
-            href={SITE.betaDownload}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-[var(--fg)]"
-          >
-            {t.footer.releases}
-          </a>
-          {' · '}
-          <span>{t.footer.license}</span>
+          {links.map((link, index) => (
+            <span key={link.href}>
+              {index > 0 ? ' · ' : null}
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-[var(--fg)]"
+              >
+                {link.label}
+              </a>
+            </span>
+          ))}
         </p>
       </Container>
     </footer>

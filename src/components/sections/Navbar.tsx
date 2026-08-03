@@ -94,7 +94,7 @@ export function Navbar() {
 
             <Button
               size="md"
-              href={SITE.betaDownload}
+              href={SITE.download}
               external
               aria-label={t.nav.downloadBtn}
             >

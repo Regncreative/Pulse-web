@@ -49,8 +49,8 @@ export async function fetchLatestRelease(): Promise<LatestRelease> {
 function fallbackRelease(): LatestRelease {
   return {
     version: SITE.versionFallback,
-    url: SITE.latestRelease,
-    downloadUrl: null,
+    url: SITE.release,
+    downloadUrl: SITE.download,
     publishedAt: null,
   }
 }

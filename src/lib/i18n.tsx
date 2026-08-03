@@ -12,15 +12,15 @@ const en = {
     why: 'Why Pulse',
     download: 'Download',
     faq: 'FAQ',
-    githubBtn: 'Coming soon',
-    downloadBtn: 'Download beta',
+    githubBtn: 'GitHub',
+    downloadBtn: 'Download',
   },
   hero: {
     tagline:
       'Read-only Windows diagnostics — connect Cursor, Claude, or ChatGPT to Pulse over local MCP. No built-in chat.',
-    primaryBtn: 'Download beta',
+    primaryBtn: 'Download for Windows',
     secondaryBtn: 'See the demo',
-    downloadBtn: 'Download beta',
+    downloadBtn: 'Download',
     promise: 'Observation only. Local MCP bridge. No Pulse AI chat. No telemetry cloud.',
   },
   translate: {
@@ -141,20 +141,20 @@ const en = {
     eyebrow: 'Interface',
     title: 'The real Pulse app',
     description:
-      'Timeline, Health, Inventory, Reports, Diagnostics, and Settings — captured from 0.3.2-beta.',
+      'Timeline, Health, Inventory, Reports, Diagnostics, and Settings — captured from the v1.0.0 Windows build.',
   },
   download: {
     eyebrow: 'Download',
     title: 'Get Pulse for Windows',
     description:
-      'Beta installer is available now. No account, no telemetry cloud — install and run locally.',
+      'Stable v1.0.0 is on GitHub Releases. No account, no telemetry cloud — install and run locally.',
     latestVersion: 'Latest version',
     win10Badge: 'Windows 10 compatible',
-    downloadBtn: 'Download beta',
-    githubBtn: 'Coming soon',
-    releasesBtn: 'Open installer',
+    downloadBtn: 'Download Setup.exe',
+    githubBtn: 'View source',
+    releasesBtn: 'Release notes',
     sourcePrefix: 'Source and installer',
-    comingSoon: 'Public GitHub release coming soon — beta is available via the buttons above.',
+    comingSoon: 'Free and open source on GitHub — Setup.exe is the recommended install path.',
   },
   faq: {
     eyebrow: 'FAQ',
@@ -192,9 +192,9 @@ const en = {
     ],
   },
   footer: {
-    github: 'Coming soon',
-    releases: 'Download beta',
-    license: 'Coming soon',
+    github: 'GitHub',
+    releases: 'Releases',
+    license: 'License',
   },
   floating: {
     hint: 'Live timeline peek',
@@ -229,15 +229,15 @@ const tr: Dict = {
     why: 'Neden Pulse',
     download: 'İndir',
     faq: 'SSS',
-    githubBtn: 'Yakında',
-    downloadBtn: 'Beta indir',
+    githubBtn: 'GitHub',
+    downloadBtn: 'İndir',
   },
   hero: {
     tagline:
       'Windows için salt okunur tanılama — Cursor, Claude veya ChatGPT’yi yerel MCP ile Pulse’a bağlayın. Yerleşik sohbet yok.',
-    primaryBtn: 'Beta indir',
+    primaryBtn: 'Windows için indir',
     secondaryBtn: 'Demoyu gör',
-    downloadBtn: 'Beta indir',
+    downloadBtn: 'İndir',
     promise: 'Yalnızca gözlem. Yerel MCP köprüsü. Pulse AI sohbeti yok. Telemetri bulutu yok.',
   },
   translate: {
@@ -357,20 +357,20 @@ const tr: Dict = {
     eyebrow: 'Arayüz',
     title: 'Gerçek Pulse uygulaması',
     description:
-      'Timeline, Sağlık, Envanter, Raporlar, Tanılama ve Ayarlar — 0.3.2-beta’dan yakalandı.',
+      'Timeline, Sağlık, Envanter, Raporlar, Tanılama ve Ayarlar — v1.0.0 Windows derlemesinden.',
   },
   download: {
     eyebrow: 'İndir',
     title: 'Pulse’u Windows için edinin',
     description:
-      'Beta kurulum paketi şimdi hazır. Hesap yok, telemetri bulutu yok — yerel kurup çalıştırın.',
+      'Kararlı v1.0.0 GitHub Releases’te. Hesap yok, telemetri bulutu yok — yerel kurup çalıştırın.',
     latestVersion: 'En son sürüm',
     win10Badge: 'Windows 10 uyumlu',
-    downloadBtn: 'Beta indir',
-    githubBtn: 'Yakında',
-    releasesBtn: 'Kurulumu aç',
+    downloadBtn: 'Setup.exe indir',
+    githubBtn: 'Kaynağı gör',
+    releasesBtn: 'Sürüm notları',
     sourcePrefix: 'Kaynak ve kurulum',
-    comingSoon: 'Herkese açık GitHub sürümü yakında — beta yukarıdaki butonlardan indirilebilir.',
+    comingSoon: 'Ücretsiz ve açık kaynak GitHub’da — önerilen kurulum yolu Setup.exe.',
   },
   faq: {
     eyebrow: 'SSS',
@@ -408,9 +408,9 @@ const tr: Dict = {
     ],
   },
   footer: {
-    github: 'Yakında',
-    releases: 'Beta indir',
-    license: 'Yakında',
+    github: 'GitHub',
+    releases: 'Sürümler',
+    license: 'Lisans',
   },
   floating: {
     hint: 'Canlı timeline önizleme',

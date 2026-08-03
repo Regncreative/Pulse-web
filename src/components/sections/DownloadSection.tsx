@@ -43,19 +43,17 @@ export function DownloadSection({ version }: DownloadSectionProps) {
           <Button
             size="lg"
             className="min-w-[200px]"
-            href={SITE.betaDownload}
+            href={SITE.download}
             external
           >
             <Download className="size-4" aria-hidden />
             {t.download.downloadBtn}
           </Button>
-          <Button
-            variant="secondary"
-            size="lg"
-            href={SITE.betaDownload}
-            external
-          >
+          <Button variant="secondary" size="lg" href={SITE.release} external>
             {t.download.releasesBtn}
+          </Button>
+          <Button variant="ghost" size="lg" href={SITE.github} external>
+            {t.download.githubBtn}
           </Button>
         </div>
 

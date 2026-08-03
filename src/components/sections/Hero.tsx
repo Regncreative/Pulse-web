@@ -58,7 +58,7 @@ export function Hero({ version }: HeroProps) {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Button
               size="lg"
-              href={SITE.betaDownload}
+              href={SITE.download}
               external
               aria-label={t.hero.primaryBtn}
             >
