@@ -195,6 +195,7 @@ const en = {
     github: 'GitHub',
     releases: 'Releases',
     license: 'License',
+    privacy: 'Privacy',
   },
   floating: {
     hint: 'Live timeline peek',
@@ -411,6 +412,7 @@ const tr: Dict = {
     github: 'GitHub',
     releases: 'Sürümler',
     license: 'Lisans',
+    privacy: 'Gizlilik',
   },
   floating: {
     hint: 'Canlı timeline önizleme',
