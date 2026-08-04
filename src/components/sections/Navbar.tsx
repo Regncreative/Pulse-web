@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseLogo } from '@/components/icons/PulseLogo'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { FlagEn, FlagTr } from '@/components/demo/flags'
 import { ProductHuntBanner } from '@/components/sections/ProductHuntBanner'
 import { SITE } from '@/lib/constants'
@@ -94,11 +94,11 @@ export function Navbar() {
 
             <Button
               size="md"
-              href={SITE.download}
+              href={SITE.github}
               external
               aria-label={t.nav.downloadBtn}
             >
-              <Download className="size-4" aria-hidden />
+              <GitHubIcon className="size-4" aria-hidden />
               {t.nav.downloadBtn}
             </Button>
           </div>

@@ -134,7 +134,7 @@ const ALL_TOOLS = [
   'pulse_diagnostics',
 ]
 
-export function AiDemo() {
+export function AiDemo({ version = SITE.versionFallback }: { version?: string }) {
   const reduceMotion = useReducedMotion()
   const [sceneIndex, setSceneIndex] = useState(0)
   const [phase, setPhase] = useState(0)
@@ -224,7 +224,7 @@ export function AiDemo() {
                   Connect Cursor, Claude, or ChatGPT. Pulse only exposes read-only tools.
                 </p>
                 <p className="mt-2 font-mono-pulse text-[9px] text-white/30">
-                  v{SITE.versionFallback}
+                  v{version}
                 </p>
               </div>
 

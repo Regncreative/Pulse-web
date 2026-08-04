@@ -1,6 +1,12 @@
 import { SITE } from '@/lib/constants'
 
-export function JsonLd({ version }: { version: string }) {
+export function JsonLd({
+  version,
+  downloadUrl,
+}: {
+  version: string
+  downloadUrl: string
+}) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -9,7 +15,7 @@ export function JsonLd({ version }: { version: string }) {
     applicationCategory: 'UtilitiesApplication',
     description: SITE.description,
     url: SITE.url,
-    downloadUrl: SITE.download,
+    downloadUrl,
     softwareVersion: version,
     author: {
       '@type': 'Organization',

@@ -18,20 +18,24 @@ export default async function Home() {
 
   return (
     <LanguageProvider>
-      <JsonLd version={release.version} />
+      <JsonLd version={release.version} downloadUrl={release.downloadUrl} />
       <VideoIntro />
       <Navbar />
       <main className="flex-1">
-        <Hero version={release.version} />
+        <Hero version={release.version} releaseUrl={release.url} />
         <Translate />
         <ProductDemo />
         <Features />
         <WhyPulse />
         <Screens />
-        <DownloadSection version={release.version} />
+        <DownloadSection
+          version={release.version}
+          releaseUrl={release.url}
+          installerUrl={release.downloadUrl}
+        />
         <FAQ />
       </main>
-      <Footer />
+      <Footer releaseUrl={release.url} />
     </LanguageProvider>
   )
 }

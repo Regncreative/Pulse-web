@@ -6,12 +6,16 @@ import { Container } from '@/components/ui/Container'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
 
-export function Footer() {
+type FooterProps = {
+  releaseUrl?: string
+}
+
+export function Footer({ releaseUrl = SITE.latestRelease }: FooterProps) {
   const { t } = useLang()
 
   const links = [
     { href: SITE.github, label: t.footer.github, external: true },
-    { href: SITE.release, label: t.footer.releases, external: true },
+    { href: releaseUrl, label: t.footer.releases, external: true },
     { href: SITE.license, label: t.footer.license, external: true },
     { href: '/privacy', label: t.footer.privacy, external: false },
   ]
@@ -29,7 +33,7 @@ export function Footer() {
 
         <p className="text-sm text-[var(--fg-dim)]">
           {links.map((link, index) => (
-            <span key={link.href}>
+            <span key={`${link.label}-${link.href}`}>
               {index > 0 ? ' · ' : null}
               {link.external ? (
                 <a

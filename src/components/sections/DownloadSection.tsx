@@ -4,14 +4,17 @@ import { Download, MonitorSmartphone, Cpu } from 'lucide-react'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
 
 type DownloadSectionProps = {
   version: string
+  releaseUrl: string
+  installerUrl: string
 }
 
-export function DownloadSection({ version }: DownloadSectionProps) {
+export function DownloadSection({ version, releaseUrl, installerUrl }: DownloadSectionProps) {
   const { t } = useLang()
 
   return (
@@ -40,20 +43,16 @@ export function DownloadSection({ version }: DownloadSectionProps) {
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button
-            size="lg"
-            className="min-w-[200px]"
-            href={SITE.download}
-            external
-          >
-            <Download className="size-4" aria-hidden />
-            {t.download.downloadBtn}
+          <Button size="lg" className="min-w-[200px]" href={SITE.github} external>
+            <GitHubIcon className="size-4" aria-hidden />
+            {t.download.githubBtn}
           </Button>
-          <Button variant="secondary" size="lg" href={SITE.release} external>
+          <Button variant="secondary" size="lg" href={releaseUrl} external>
+            <Download className="size-4" aria-hidden />
             {t.download.releasesBtn}
           </Button>
-          <Button variant="ghost" size="lg" href={SITE.github} external>
-            {t.download.githubBtn}
+          <Button variant="ghost" size="lg" href={installerUrl} external>
+            {t.download.downloadBtn}
           </Button>
         </div>
 

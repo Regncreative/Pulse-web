@@ -6,15 +6,17 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseShields } from '@/components/ui/Shield'
 import { PulseLogo } from '@/components/icons/PulseLogo'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { AiDemo } from '@/components/demo/AiDemo'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
 
 type HeroProps = {
   version: string
+  releaseUrl: string
 }
 
-export function Hero({ version }: HeroProps) {
+export function Hero({ version, releaseUrl }: HeroProps) {
   const reduceMotion = useReducedMotion()
   const { t } = useLang()
 
@@ -58,14 +60,21 @@ export function Hero({ version }: HeroProps) {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Button
               size="lg"
-              href={SITE.download}
+              href={SITE.github}
               external
               aria-label={t.hero.primaryBtn}
             >
-              <Download className="size-4" aria-hidden />
+              <GitHubIcon className="size-4" aria-hidden />
               {t.hero.primaryBtn}
             </Button>
-            <Button variant="secondary" size="lg" href="#demo">
+            <Button
+              variant="secondary"
+              size="lg"
+              href={releaseUrl}
+              external
+              aria-label={t.hero.secondaryBtn}
+            >
+              <Download className="size-4" aria-hidden />
               {t.hero.secondaryBtn}
             </Button>
           </div>
@@ -74,7 +83,7 @@ export function Hero({ version }: HeroProps) {
         </motion.div>
 
         <div className="relative">
-          <AiDemo />
+          <AiDemo version={version} />
         </div>
       </Container>
     </section>
