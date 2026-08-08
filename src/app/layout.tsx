@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { JetBrains_Mono, Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -83,6 +84,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${manrope.variable} ${jetbrains.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         {children}
+        <Script
+          src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"
+          type="module"
+          strategy="afterInteractive"
+        />
         <Analytics />
         <SpeedInsights />
       </body>

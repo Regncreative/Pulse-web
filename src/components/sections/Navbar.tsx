@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseLogo } from '@/components/icons/PulseLogo'
-import { MicrosoftStoreIcon } from '@/components/icons/MicrosoftStoreIcon'
 import { FlagEn, FlagTr } from '@/components/demo/flags'
+import { MicrosoftStoreBadge } from '@/components/MicrosoftStoreBadge'
 import { ProductHuntBanner } from '@/components/sections/ProductHuntBanner'
-import { SITE } from '@/lib/constants'
 import { useLang, type Lang } from '@/lib/i18n'
 import { cn } from '@/lib/cn'
 
@@ -92,15 +90,7 @@ export function Navbar() {
               ))}
             </div>
 
-            <Button
-              size="md"
-              href={SITE.microsoftStore}
-              external
-              aria-label={t.nav.downloadBtn}
-            >
-              <MicrosoftStoreIcon className="size-4" aria-hidden />
-              {t.nav.downloadBtn}
-            </Button>
+            <MicrosoftStoreBadge size="small" className="hidden sm:inline-flex" />
           </div>
         </Container>
       </header>

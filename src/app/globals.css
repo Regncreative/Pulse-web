@@ -185,3 +185,12 @@
   background: rgba(59, 158, 255, 0.28);
   color: var(--fg);
 }
+
+.ms-store-badge-host ms-store-badge::part(img) {
+  max-height: 56px;
+  width: auto;
+}
+
+.ms-store-badge-host--small ms-store-badge::part(img) {
+  max-height: 40px;
+}

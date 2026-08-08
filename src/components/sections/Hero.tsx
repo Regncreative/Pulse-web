@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/Container'
 import { PulseShields } from '@/components/ui/Shield'
 import { PulseLogo } from '@/components/icons/PulseLogo'
 import { GitHubIcon } from '@/components/icons/GitHubIcon'
-import { MicrosoftStoreIcon } from '@/components/icons/MicrosoftStoreIcon'
+import { MicrosoftStoreBadge } from '@/components/MicrosoftStoreBadge'
 import { AiDemo } from '@/components/demo/AiDemo'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
@@ -66,16 +66,7 @@ export function Hero({ version }: HeroProps) {
               <GitHubIcon className="size-4" aria-hidden />
               {t.hero.primaryBtn}
             </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href={SITE.microsoftStore}
-              external
-              aria-label={t.hero.secondaryBtn}
-            >
-              <MicrosoftStoreIcon className="size-4" aria-hidden />
-              {t.hero.secondaryBtn}
-            </Button>
+            <MicrosoftStoreBadge size="large" />
           </div>
 
           <p className="mt-5 text-sm text-[var(--fg-dim)]">{t.hero.promise}</p>
