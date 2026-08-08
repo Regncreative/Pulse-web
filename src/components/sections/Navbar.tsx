@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseLogo } from '@/components/icons/PulseLogo'
-import { GitHubIcon } from '@/components/icons/GitHubIcon'
+import { MicrosoftStoreIcon } from '@/components/icons/MicrosoftStoreIcon'
 import { FlagEn, FlagTr } from '@/components/demo/flags'
 import { ProductHuntBanner } from '@/components/sections/ProductHuntBanner'
 import { SITE } from '@/lib/constants'
@@ -94,11 +94,11 @@ export function Navbar() {
 
             <Button
               size="md"
-              href={SITE.github}
+              href={SITE.microsoftStore}
               external
               aria-label={t.nav.downloadBtn}
             >
-              <GitHubIcon className="size-4" aria-hidden />
+              <MicrosoftStoreIcon className="size-4" aria-hidden />
               {t.nav.downloadBtn}
             </Button>
           </div>

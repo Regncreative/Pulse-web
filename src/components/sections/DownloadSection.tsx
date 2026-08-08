@@ -1,20 +1,20 @@
 'use client'
 
-import { Download, MonitorSmartphone, Cpu } from 'lucide-react'
+import { MonitorSmartphone, Cpu } from 'lucide-react'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { GitHubIcon } from '@/components/icons/GitHubIcon'
+import { MicrosoftStoreIcon } from '@/components/icons/MicrosoftStoreIcon'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
 
 type DownloadSectionProps = {
   version: string
   releaseUrl: string
-  installerUrl: string
 }
 
-export function DownloadSection({ version, releaseUrl, installerUrl }: DownloadSectionProps) {
+export function DownloadSection({ version, releaseUrl }: DownloadSectionProps) {
   const { t } = useLang()
 
   return (
@@ -47,12 +47,17 @@ export function DownloadSection({ version, releaseUrl, installerUrl }: DownloadS
             <GitHubIcon className="size-4" aria-hidden />
             {t.download.githubBtn}
           </Button>
-          <Button variant="secondary" size="lg" href={releaseUrl} external>
-            <Download className="size-4" aria-hidden />
-            {t.download.releasesBtn}
-          </Button>
-          <Button variant="ghost" size="lg" href={installerUrl} external>
+          <Button
+            variant="secondary"
+            size="lg"
+            href={SITE.microsoftStore}
+            external
+          >
+            <MicrosoftStoreIcon className="size-4" aria-hidden />
             {t.download.downloadBtn}
+          </Button>
+          <Button variant="ghost" size="lg" href={releaseUrl} external>
+            {t.download.releasesBtn}
           </Button>
         </div>
 

@@ -15,6 +15,8 @@ export const SITE = {
   versionFallback: '1.0.0',
   download:
     'https://github.com/Regncreative/Pulse/releases/download/v1.0.0/Pulse-Setup-1.0.0-windows-x64.exe',
+  microsoftStore:
+    'https://apps.microsoft.com/detail/9PNDTLNTJ82T?hl=neutral&gl=TR&ocid=pdpshare',
   productHunt:
     'https://www.producthunt.com/products/pulse-58?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-pulse-f9f15bde-6996-4986-80ce-1f94f4d4d1bb',
 } as const

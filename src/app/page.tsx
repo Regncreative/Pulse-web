@@ -10,6 +10,7 @@ import { DownloadSection } from '@/components/sections/DownloadSection'
 import { FAQ } from '@/components/sections/FAQ'
 import { Footer } from '@/components/sections/Footer'
 import { JsonLd } from '@/components/JsonLd'
+import { SITE } from '@/lib/constants'
 import { fetchLatestRelease } from '@/lib/github'
 import { LanguageProvider } from '@/lib/i18n'
 
@@ -18,21 +19,17 @@ export default async function Home() {
 
   return (
     <LanguageProvider>
-      <JsonLd version={release.version} downloadUrl={release.downloadUrl} />
+      <JsonLd version={release.version} downloadUrl={SITE.microsoftStore} />
       <VideoIntro />
       <Navbar />
       <main className="flex-1">
-        <Hero version={release.version} releaseUrl={release.url} />
+        <Hero version={release.version} />
         <Translate />
         <ProductDemo />
         <Features />
         <WhyPulse />
         <Screens />
-        <DownloadSection
-          version={release.version}
-          releaseUrl={release.url}
-          installerUrl={release.downloadUrl}
-        />
+        <DownloadSection version={release.version} releaseUrl={release.url} />
         <FAQ />
       </main>
       <Footer releaseUrl={release.url} />

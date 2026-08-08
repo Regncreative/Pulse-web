@@ -13,14 +13,14 @@ const en = {
     download: 'Download',
     faq: 'FAQ',
     githubBtn: 'See on GitHub',
-    downloadBtn: 'See on GitHub',
+    downloadBtn: 'Get it from Microsoft Store',
   },
   hero: {
     tagline:
       'Read-only Windows diagnostics — connect Cursor, Claude, or ChatGPT to Pulse over local MCP. No built-in chat.',
     primaryBtn: 'See on GitHub',
-    secondaryBtn: 'Download',
-    downloadBtn: 'Download',
+    secondaryBtn: 'Get it from Microsoft Store',
+    downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local MCP bridge. No Pulse AI chat. No telemetry cloud.',
   },
   translate: {
@@ -147,14 +147,14 @@ const en = {
     eyebrow: 'Download',
     title: 'Get Pulse for Windows',
     description:
-      'The latest stable release is on GitHub. No account, no telemetry cloud — install and run locally.',
+      'Install from the Microsoft Store. No account for Pulse itself, no telemetry cloud — local-first on your PC.',
     latestVersion: 'Latest version',
     win10Badge: 'Windows 10 compatible',
-    downloadBtn: 'Download Setup.exe',
+    downloadBtn: 'Get it from Microsoft Store',
     githubBtn: 'See on GitHub',
-    releasesBtn: 'Download',
+    releasesBtn: 'Release notes',
     sourcePrefix: 'Source and installer',
-    comingSoon: 'Free and open source on GitHub — version and download links update with each release.',
+    comingSoon: 'Preferred install path is Microsoft Store — source and release notes stay on GitHub.',
   },
   faq: {
     eyebrow: 'FAQ',
@@ -231,14 +231,14 @@ const tr: Dict = {
     download: 'İndir',
     faq: 'SSS',
     githubBtn: 'GitHub’da gör',
-    downloadBtn: 'GitHub’da gör',
+    downloadBtn: 'Microsoft Store’dan edinin',
   },
   hero: {
     tagline:
       'Windows için salt okunur tanılama — Cursor, Claude veya ChatGPT’yi yerel MCP ile Pulse’a bağlayın. Yerleşik sohbet yok.',
     primaryBtn: 'GitHub’da gör',
-    secondaryBtn: 'İndir',
-    downloadBtn: 'İndir',
+    secondaryBtn: 'Microsoft Store’dan edinin',
+    downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel MCP köprüsü. Pulse AI sohbeti yok. Telemetri bulutu yok.',
   },
   translate: {
@@ -364,14 +364,14 @@ const tr: Dict = {
     eyebrow: 'İndir',
     title: 'Pulse’u Windows için edinin',
     description:
-      'En son kararlı sürüm GitHub’da. Hesap yok, telemetri bulutu yok — yerel kurup çalıştırın.',
+      'Microsoft Store’dan kurun. Pulse için hesap yok, telemetri bulutu yok — bilgisayarınızda yerel kalır.',
     latestVersion: 'En son sürüm',
     win10Badge: 'Windows 10 uyumlu',
-    downloadBtn: 'Setup.exe indir',
+    downloadBtn: 'Microsoft Store’dan edinin',
     githubBtn: 'GitHub’da gör',
-    releasesBtn: 'İndir',
+    releasesBtn: 'Sürüm notları',
     sourcePrefix: 'Kaynak ve kurulum',
-    comingSoon: 'Ücretsiz ve açık kaynak GitHub’da — sürüm ve indirme linkleri her release ile güncellenir.',
+    comingSoon: 'Önerilen kurulum Microsoft Store — kaynak ve sürüm notları GitHub’da.',
   },
   faq: {
     eyebrow: 'SSS',

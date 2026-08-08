@@ -1,22 +1,21 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseShields } from '@/components/ui/Shield'
 import { PulseLogo } from '@/components/icons/PulseLogo'
 import { GitHubIcon } from '@/components/icons/GitHubIcon'
+import { MicrosoftStoreIcon } from '@/components/icons/MicrosoftStoreIcon'
 import { AiDemo } from '@/components/demo/AiDemo'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
 
 type HeroProps = {
   version: string
-  releaseUrl: string
 }
 
-export function Hero({ version, releaseUrl }: HeroProps) {
+export function Hero({ version }: HeroProps) {
   const reduceMotion = useReducedMotion()
   const { t } = useLang()
 
@@ -70,11 +69,11 @@ export function Hero({ version, releaseUrl }: HeroProps) {
             <Button
               variant="secondary"
               size="lg"
-              href={releaseUrl}
+              href={SITE.microsoftStore}
               external
               aria-label={t.hero.secondaryBtn}
             >
-              <Download className="size-4" aria-hidden />
+              <MicrosoftStoreIcon className="size-4" aria-hidden />
               {t.hero.secondaryBtn}
             </Button>
           </div>
