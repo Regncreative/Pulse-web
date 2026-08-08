@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { useLang } from '@/lib/i18n'
 import { SITE } from '@/lib/constants'
 import { cn } from '@/lib/cn'
@@ -14,7 +15,23 @@ export function MicrosoftStoreBadge({
   className,
 }: MicrosoftStoreBadgeProps) {
   const { lang } = useLang()
-  const language = lang === 'tr' ? 'tr-tr' : 'en-us'
+  // Badge supports "tr", not "tr-tr". React also assigns .language as a property
+  // (skipping attributeChangedCallback), so we must setAttribute explicitly.
+  const language = lang === 'tr' ? 'tr' : 'en-us'
+  const badgeRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = badgeRef.current
+    if (!el) return
+
+    el.setAttribute('productid', SITE.microsoftStoreId)
+    el.setAttribute('productname', 'Pulse Diagnostics')
+    el.setAttribute('window-mode', 'direct')
+    el.setAttribute('theme', 'auto')
+    el.setAttribute('size', size)
+    el.setAttribute('language', language)
+    el.setAttribute('animation', 'on')
+  }, [language, size])
 
   return (
     <div
@@ -24,16 +41,7 @@ export function MicrosoftStoreBadge({
         className,
       )}
     >
-      <ms-store-badge
-        key={`${language}-${size}`}
-        productid={SITE.microsoftStoreId}
-        productname="Pulse Diagnostics"
-        window-mode="direct"
-        theme="auto"
-        size={size}
-        language={language}
-        animation="on"
-      />
+      <ms-store-badge ref={badgeRef} key={`${language}-${size}`} />
     </div>
   )
 }
