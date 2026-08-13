@@ -17,11 +17,11 @@ const en = {
   },
   hero: {
     tagline:
-      'Read-only Windows diagnostics — connect Cursor, Claude, or ChatGPT to Pulse over local MCP. No built-in chat.',
+      'Read-only Windows diagnostics with a local AI Assistant — Ollama or LM Studio on this PC. No cloud AI required.',
     primaryBtn: 'See on GitHub',
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
-    promise: 'Observation only. Local MCP bridge. No Pulse AI chat. No telemetry cloud.',
+    promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -48,11 +48,12 @@ const en = {
     eyebrow: 'Inside Pulse',
     title: 'Same chrome as the installed app',
     description:
-      'Timeline, System Health, Inventory, Reports, Diagnostics, Settings — plus local MCP for AI assistants.',
+      'Timeline, System Health, Inventory, Reports, Diagnostics, Settings — plus the built-in local AI Assistant.',
     timelineTitle: 'Timeline',
     timelineDesc: 'Live human-readable events with severity filters — detail on demand.',
     healthTitle: 'System Health',
-    healthDesc: 'CPU, memory, GPU, disk, and network with live sparklines and a health score.',
+    healthDesc:
+      'CPU, memory, GPU, disk, and network with semantic utilization colors and a health score.',
     inventoryTitle: 'Inventory',
     inventoryDesc: 'Browse system, devices, and software — services, drivers, and hardware trees.',
     reportsTitle: 'Reports',
@@ -60,7 +61,8 @@ const en = {
     diagnosticsTitle: 'Diagnostics',
     diagnosticsDesc: 'IPC latency, throughput, reconnect history, and recovery actions.',
     settingsTitle: 'Settings',
-    settingsDesc: 'Theme modes, accent colors, density, and animation speed — stored locally.',
+    settingsDesc:
+      'Theme, accents, tray background monitoring, and local notifications — stored on this PC.',
   },
   features: {
     eyebrow: 'Features',
@@ -69,9 +71,9 @@ const en = {
       'Built as a professional observability tool — not another cleaner, optimizer, or antivirus.',
     items: [
       {
-        title: 'Local MCP for AI',
+        title: 'Local AI Assistant',
         description:
-          'Bridge Cursor, Claude, or ChatGPT to Pulse over MCP — read-only tools on-device. Pulse is not a chat app.',
+          'Ask about this PC in-app via Ollama or LM Studio — read-only diagnostics, streaming replies, no cloud AI required.',
       },
       {
         title: 'Human Timeline',
@@ -84,7 +86,8 @@ const en = {
       },
       {
         title: 'System Health',
-        description: 'Health score, uptime, and live CPU / memory / GPU / disk / network charts.',
+        description:
+          'Live charts with semantic colors — green 0–49%, yellow 50–69%, orange 70–89%, red 90–100%.',
       },
       {
         title: 'Hardware Inventory',
@@ -96,6 +99,11 @@ const en = {
         description: 'Export health, timeline, diagnostics, or inventory as JSON, CSV, HTML, or PDF.',
       },
       {
+        title: 'Background & tray',
+        description:
+          'Keep Pulse in the system tray with background monitoring and local Windows alerts for critical conditions.',
+      },
+      {
         title: 'Deep Diagnostics',
         description: 'IPC health, latency, throughput, collectors, pipeline stages, and ping tools.',
       },
@@ -105,11 +113,13 @@ const en = {
       },
       {
         title: 'Read-only',
-        description: 'Never modifies OS behavior. No hooks, no patches, no process injection.',
+        description:
+          'Never modifies OS behavior. Assistant cannot run commands or change the system.',
       },
       {
         title: 'Local-first',
-        description: 'No account, no sync, no telemetry. Preferences, exports, and MCP stay on-device.',
+        description:
+          'No account, no sync, no telemetry. Preferences, exports, and local AI stay on-device.',
       },
       {
         title: 'Native Service',
@@ -121,19 +131,19 @@ const en = {
     eyebrow: 'Why Pulse',
     title: 'Stop decoding Event Viewer',
     description:
-      'Windows already knows everything about itself. Pulse reveals it — to you and to local AI tools.',
+      'Windows already knows everything about itself. Pulse reveals it — to you and to a local AI on this PC.',
     withoutTitle: 'Without Pulse',
     withoutItems: [
       'Opaque Event IDs and XML',
       'Tool sprawl across Event Viewer, Device Manager, and PerfMon',
-      'AI assistants guess without real Windows context',
+      'Cloud AI guesses without real Windows context',
       'Hard to export a clean support package',
     ],
     withTitle: 'With Pulse',
     withItems: [
       'Plain-language timeline + live health',
-      'Local MCP tools for AI assistants',
-      'Inventory and reports in one workspace',
+      'Built-in local AI Assistant (Ollama / LM Studio)',
+      'Inventory, reports, and tray monitoring in one workspace',
       'Observation only — nothing leaves the PC',
     ],
   },
@@ -141,7 +151,7 @@ const en = {
     eyebrow: 'Interface',
     title: 'The real Pulse app',
     description:
-      'Timeline, Health, Inventory, Reports, Diagnostics, and Settings — captured from the latest Windows build.',
+      'Timeline, Health, Inventory, Reports, Diagnostics, Settings, and Assistant — from the latest Windows build.',
   },
   download: {
     eyebrow: 'Download',
@@ -186,8 +196,8 @@ const en = {
         a: 'No. Pulse never adds cleaner, optimizer, or antivirus features — only observability.',
       },
       {
-        q: 'Does Pulse work with AI assistants?',
-        a: 'Yes — via MCP, not a built-in chat. Connect Cursor, Claude, or ChatGPT to the local Pulse MCP server so they can query timeline, health, and inventory on your machine. Nothing is sent to a Pulse cloud.',
+        q: 'Does Pulse include AI?',
+        a: 'Yes — Pulse Assistant runs locally through Ollama or LM Studio. It can analyze CPU, memory, GPU, storage, network, processes, and events with read-only tools. No cloud AI is required, and it cannot execute commands or modify the system. Optional MCP for external clients remains available.',
       },
     ],
   },
@@ -235,11 +245,11 @@ const tr: Dict = {
   },
   hero: {
     tagline:
-      'Windows için salt okunur tanılama — Cursor, Claude veya ChatGPT’yi yerel MCP ile Pulse’a bağlayın. Yerleşik sohbet yok.',
+      'Yerel AI Assistant ile salt okunur Windows tanılama — Ollama veya LM Studio bu PC’de. Bulut AI gerekmez.',
     primaryBtn: 'GitHub’da gör',
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
-    promise: 'Yalnızca gözlem. Yerel MCP köprüsü. Pulse AI sohbeti yok. Telemetri bulutu yok.',
+    promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -266,11 +276,12 @@ const tr: Dict = {
     eyebrow: 'Pulse’un içi',
     title: 'Yüklü uygulamayla aynı arayüz',
     description:
-      'Timeline, Sistem Sağlığı, Envanter, Raporlar, Tanılama, Ayarlar — ve AI asistanlar için yerel MCP.',
+      'Timeline, Sistem Sağlığı, Envanter, Raporlar, Tanılama, Ayarlar — ve yerleşik yerel AI Assistant.',
     timelineTitle: 'Timeline',
     timelineDesc: 'Canlı, okunabilir olaylar ve şiddet filtreleri — detay isteğe bağlı.',
     healthTitle: 'Sistem Sağlığı',
-    healthDesc: 'CPU, bellek, GPU, disk ve ağ için canlı sparkline’lar ve sağlık skoru.',
+    healthDesc:
+      'CPU, bellek, GPU, disk ve ağ için anlamsal kullanım renkleri ve sağlık skoru.',
     inventoryTitle: 'Envanter',
     inventoryDesc: 'Sistem, cihaz ve yazılım ağaçları — servisler, sürücüler ve donanım.',
     reportsTitle: 'Raporlar',
@@ -278,7 +289,8 @@ const tr: Dict = {
     diagnosticsTitle: 'Tanılama',
     diagnosticsDesc: 'IPC gecikmesi, throughput, yeniden bağlanma geçmişi ve kurtarma aksiyonları.',
     settingsTitle: 'Ayarlar',
-    settingsDesc: 'Tema modları, accent renkleri, yoğunluk ve animasyon hızı — yerelde saklanır.',
+    settingsDesc:
+      'Tema, accent, tepsi arka plan izleme ve yerel bildirimler — bu PC’de saklanır.',
   },
   features: {
     eyebrow: 'Özellikler',
@@ -287,9 +299,9 @@ const tr: Dict = {
       'Profesyonel bir gözlemlenebilirlik aracı olarak tasarlandı — başka bir temizleyici veya antivirüs değil.',
     items: [
       {
-        title: 'Yapay zekâ için yerel MCP',
+        title: 'Yerel AI Assistant',
         description:
-          'Cursor, Claude veya ChatGPT’yi MCP ile Pulse’a bağlayın — salt okunur araçlar cihazda. Pulse bir sohbet uygulaması değil.',
+          'Uygulama içinde bu PC hakkında sorun — Ollama veya LM Studio ile salt okunur tanılama, akan yanıtlar, bulut AI gerekmez.',
       },
       {
         title: 'İnsan Timeline’ı',
@@ -302,7 +314,8 @@ const tr: Dict = {
       },
       {
         title: 'Sistem Sağlığı',
-        description: 'Sağlık skoru, uptime ve canlı CPU / bellek / GPU / disk / ağ grafikleri.',
+        description:
+          'Anlamsal renkli canlı grafikler — yeşil 0–49%, sarı 50–69%, turuncu 70–89%, kırmızı 90–100%.',
       },
       {
         title: 'Donanım Envanteri',
@@ -311,6 +324,11 @@ const tr: Dict = {
       {
         title: 'Yerel Raporlar',
         description: 'Sağlık, timeline, tanılama veya envanteri JSON, CSV, HTML veya PDF olarak aktarın.',
+      },
+      {
+        title: 'Arka plan ve tepsi',
+        description:
+          'Pulse’u sistem tepsisinde tutun; arka plan izleme ve kritik durumlar için yerel Windows bildirimleri.',
       },
       {
         title: 'Derin Tanılama',
@@ -322,11 +340,13 @@ const tr: Dict = {
       },
       {
         title: 'Salt Okunur',
-        description: 'İşletim sistemi davranışını asla değiştirmez. Hook, yama veya enjeksiyon yok.',
+        description:
+          'İşletim sistemi davranışını asla değiştirmez. Assistant komut çalıştıramaz veya sistemi değiştiremez.',
       },
       {
         title: 'Yerel Öncelikli',
-        description: 'Hesap yok, senkron yok, telemetri yok. Tercihler, dışa aktarımlar ve MCP cihazda kalır.',
+        description:
+          'Hesap yok, senkron yok, telemetri yok. Tercihler, dışa aktarımlar ve yerel AI cihazda kalır.',
       },
       {
         title: 'Yerel Servis',
@@ -338,19 +358,19 @@ const tr: Dict = {
     eyebrow: 'Neden Pulse',
     title: 'Event Viewer’ı çözmeyi bırakın',
     description:
-      'Windows kendisi hakkında her şeyi zaten biliyor. Pulse bunu size ve yerel AI araçlarına gösterir.',
+      'Windows kendisi hakkında her şeyi zaten biliyor. Pulse bunu size ve bu PC’deki yerel AI’ya gösterir.',
     withoutTitle: 'Pulse olmadan',
     withoutItems: [
       'Opak Event ID’ler ve XML',
       'Event Viewer, Aygıt Yöneticisi ve PerfMon arasında dağılmış araçlar',
-      'AI asistanlar gerçek Windows bağlamı olmadan tahmin eder',
+      'Bulut AI gerçek Windows bağlamı olmadan tahmin eder',
       'Temiz bir destek paketi dışa aktarmak zor',
     ],
     withTitle: 'Pulse ile',
     withItems: [
       'Düz dilde timeline + canlı sağlık',
-      'AI asistanlar için yerel MCP araçları',
-      'Tek çalışma alanında envanter ve raporlar',
+      'Yerleşik yerel AI Assistant (Ollama / LM Studio)',
+      'Tek alanda envanter, raporlar ve tepsi izleme',
       'Yalnızca gözlem — hiçbir şey PC’den çıkmaz',
     ],
   },
@@ -358,7 +378,7 @@ const tr: Dict = {
     eyebrow: 'Arayüz',
     title: 'Gerçek Pulse uygulaması',
     description:
-      'Timeline, Sağlık, Envanter, Raporlar, Tanılama ve Ayarlar — en son Windows derlemesinden.',
+      'Timeline, Sağlık, Envanter, Raporlar, Tanılama, Ayarlar ve Assistant — en son Windows derlemesinden.',
   },
   download: {
     eyebrow: 'İndir',
@@ -403,8 +423,8 @@ const tr: Dict = {
         a: 'Hayır. Pulse temizleyici, optimizasyon veya antivirüs özellikleri eklemez — yalnızca gözlemlenebilirlik.',
       },
       {
-        q: 'Pulse yapay zekâ asistanlarıyla çalışır mı?',
-        a: 'Evet — yerleşik sohbetle değil, MCP ile. Cursor, Claude veya ChatGPT’yi yerel Pulse MCP sunucusuna bağlayın; timeline, sağlık ve envanteri makinenizde sorabilirler. Pulse bulutuna veri gitmez.',
+        q: 'Pulse yapay zekâ içeriyor mu?',
+        a: 'Evet — Pulse Assistant yerelde Ollama veya LM Studio ile çalışır. CPU, bellek, GPU, depolama, ağ, süreç ve olayları salt okunur araçlarla analiz eder. Bulut AI gerekmez; komut çalıştıramaz veya sistemi değiştiremez. İsteğe bağlı MCP dış istemciler için hâlâ mevcuttur.',
       },
     ],
   },

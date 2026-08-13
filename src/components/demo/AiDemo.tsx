@@ -1,182 +1,139 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Cable, Check, Sparkles, Terminal, Wrench } from 'lucide-react'
+import { Bot, ChevronDown, Send, ShieldCheck } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { PulseLogo } from '@/components/icons/PulseLogo'
 import { SITE } from '@/lib/constants'
 import { cn } from '@/lib/cn'
+import { PageHeader, PulseAppShell } from './PulseAppShell'
 import { DemoFrame, ScaleToFit } from './shared'
 
-type Client = 'Cursor' | 'Claude' | 'ChatGPT'
-
 type Scene = {
-  client: Client
   question: string
-  tools: Array<{ name: string; label: string; result: string }>
-  answer: string
-}
-
-const CLIENT_STYLE: Record<
-  Client,
-  { badge: string; ring: string; label: string }
-> = {
-  Cursor: {
-    badge: 'bg-[#f54e00]/15 text-[#ff8a5c]',
-    ring: 'ring-[#f54e00]/40',
-    label: 'Cursor',
-  },
-  Claude: {
-    badge: 'bg-[#d4a27f]/15 text-[#e6c2a0]',
-    ring: 'ring-[#d4a27f]/40',
-    label: 'Claude',
-  },
-  ChatGPT: {
-    badge: 'bg-[#10a37f]/15 text-[#5eead4]',
-    ring: 'ring-[#10a37f]/40',
-    label: 'ChatGPT',
-  },
+  bullets: string[]
+  summary: string
+  provider: string
+  model: string
 }
 
 const SCENES: Scene[] = [
   {
-    client: 'Cursor',
-    question: 'Why did my PC restart earlier — anything in the event log?',
-    tools: [
-      {
-        name: 'pulse_timeline',
-        label: 'Recent events',
-        result: 'Kernel-Power 41 · unexpected shutdown · 1h ago',
-      },
-      {
-        name: 'pulse_health',
-        label: 'System health',
-        result: 'Score 94 · Healthy · uptime 3h 8m',
-      },
+    question: 'Are there any critical issues?',
+    provider: 'LM Studio',
+    model: 'google/gemma-4-12b-qat',
+    bullets: [
+      'GPU Usage: High at 84.7% — primarily llama-server.exe.',
+      'Memory: 75.6% used (25.7 GB of 34 GB).',
+      'CPU: Relatively low at 16.5%.',
+      'Pulse Service: Healthy and running normally.',
     ],
-    answer:
-      'Pulse shows Kernel-Power 41 about an hour ago — unclean restart. Health is fine now (94).',
+    summary:
+      'No critical errors. The PC is busy with local AI work, otherwise within normal parameters.',
   },
   {
-    client: 'Claude',
-    question: 'Is BITS healthy, and what else looks off in services?',
-    tools: [
-      {
-        name: 'pulse_inventory',
-        label: 'Service lookup',
-        result: 'BITS · running · automatic',
-      },
-      {
-        name: 'pulse_timeline',
-        label: 'Service events',
-        result: 'No recent service crashes · 0 critical',
-      },
+    question: 'Why did my PC restart earlier?',
+    provider: 'Ollama',
+    model: 'llama3.2:latest',
+    bullets: [
+      'Timeline: Kernel-Power 41 about 1h ago — unclean restart.',
+      'No follow-up crash dumps in the last hour.',
+      'Health score recovered to 94 after reboot.',
+      'Uptime now 3h 8m — stable since boot.',
     ],
-    answer:
-      'BITS is running (automatic). Timeline has no recent service crashes — looks stable.',
+    summary:
+      'Unexpected shutdown earlier (Kernel-Power 41). System looks healthy now after the restart.',
   },
   {
-    client: 'ChatGPT',
-    question: 'Summarize CPU / memory pressure for the last minute.',
-    tools: [
-      {
-        name: 'pulse_health',
-        label: 'Live metrics',
-        result: 'CPU 43% · Memory 16.5 / 32 GB · GPU 1%',
-      },
+    question: 'What is using the most memory?',
+    provider: 'LM Studio',
+    model: 'google/gemma-4-12b-qat',
+    bullets: [
+      'Top process: llama-server.exe · ~6.2 GB working set.',
+      'chrome.exe · ~1.8 GB across tabs.',
+      'PulseService.exe · ~180 MB · normal.',
+      'Available RAM: ~8.3 GB free.',
     ],
-    answer:
-      'From Pulse health: CPU ~43%, memory about half full, GPU idle. No pressure spike right now.',
+    summary:
+      'Local AI runtime leads memory use. Nothing looks like a leak — headroom remains for normal work.',
   },
   {
-    client: 'Cursor',
-    question: 'Any USB or driver noise I should care about?',
-    tools: [
-      {
-        name: 'pulse_inventory',
-        label: 'Devices',
-        result: 'USB hub OK · 0 failed drivers',
-      },
-      {
-        name: 'pulse_timeline',
-        label: 'Device events',
-        result: '2 info · 0 errors in last hour',
-      },
+    question: 'Is disk or thermal pressure a concern?',
+    provider: 'Ollama',
+    model: 'qwen2.5:14b',
+    bullets: [
+      'Disk C: 42% used · write ~5 MB/s · no SMART warnings.',
+      'CPU package temp: 58°C under light load.',
+      'GPU temp: 71°C while llama-server is active.',
+      'No thermal throttling events in Timeline.',
     ],
-    answer:
-      'Inventory looks clean — no failed drivers. Timeline only has info-level device events.',
+    summary:
+      'Storage and thermals look fine. GPU warmth matches local inference — not an overheating alert.',
   },
-  {
-    client: 'Claude',
-    question: 'Give me a one-line status I can paste into a support note.',
-    tools: [
-      {
-        name: 'pulse_health',
-        label: 'Health score',
-        result: '94 · Healthy',
-      },
-      {
-        name: 'pulse_timeline',
-        label: 'Latest critical',
-        result: 'Last critical: Kernel-Power 41 · 1h ago',
-      },
-    ],
-    answer:
-      'Pulse status: Healthy (94). Last critical was Kernel-Power 41 (~1h). MCP tools local-only.',
-  },
-]
-
-const ALL_TOOLS = [
-  'pulse_timeline',
-  'pulse_health',
-  'pulse_inventory',
-  'pulse_reports',
-  'pulse_diagnostics',
 ]
 
 export function AiDemo({ version = SITE.versionFallback }: { version?: string }) {
   const reduceMotion = useReducedMotion()
   const [sceneIndex, setSceneIndex] = useState(0)
   const [phase, setPhase] = useState(0)
-  const [toolCount, setToolCount] = useState(0)
-  const [typed, setTyped] = useState('')
+  const [bulletCount, setBulletCount] = useState(0)
+  const [typedSummary, setTypedSummary] = useState('')
+  const [inputTyped, setInputTyped] = useState('')
 
   const scene = SCENES[sceneIndex]
-  const clientStyle = CLIENT_STYLE[scene.client]
-  const activeToolNames = new Set(scene.tools.slice(0, toolCount).map((t) => t.name))
 
   useEffect(() => {
     if (reduceMotion) {
-      setPhase(3)
-      setToolCount(scene.tools.length)
-      setTyped(scene.answer)
+      setPhase(4)
+      setBulletCount(scene.bullets.length)
+      setTypedSummary(scene.summary)
+      setInputTyped(scene.question)
       return
     }
 
     setPhase(0)
-    setToolCount(0)
-    setTyped('')
+    setBulletCount(0)
+    setTypedSummary('')
+    setInputTyped('')
 
     const timers: number[] = []
-    let t = 280
+    let t = 200
     const current = SCENES[sceneIndex]
 
+    // Type question into input
     timers.push(window.setTimeout(() => setPhase(1), t))
-    t += 900
-
-    current.tools.forEach((_, i) => {
-      const at = t
+    t += 80
+    current.question.split('').forEach((_, i) => {
       timers.push(
         window.setTimeout(() => {
-          setPhase(2)
-          setToolCount(i + 1)
-        }, at),
+          setInputTyped(current.question.slice(0, i + 1))
+        }, t + i * 22),
       )
-      t += 700
     })
+    t += current.question.length * 22 + 350
 
+    // Send → show user bubble
+    timers.push(
+      window.setTimeout(() => {
+        setPhase(2)
+        setInputTyped('')
+      }, t),
+    )
+    t += 550
+
+    // Stream bullets
     timers.push(window.setTimeout(() => setPhase(3), t))
-    t += 2400 + current.answer.length * 14
+    current.bullets.forEach((_, i) => {
+      timers.push(
+        window.setTimeout(() => {
+          setBulletCount(i + 1)
+        }, t + 280 + i * 520),
+      )
+    })
+    t += 280 + current.bullets.length * 520 + 200
+
+    // Summary + analyzed
+    timers.push(window.setTimeout(() => setPhase(4), t))
+    t += 1800 + current.summary.length * 12
 
     timers.push(
       window.setTimeout(() => {
@@ -185,193 +142,76 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
     )
 
     return () => timers.forEach(clearTimeout)
-  }, [sceneIndex, reduceMotion, scene.answer, scene.tools.length])
+  }, [sceneIndex, reduceMotion, scene.bullets.length, scene.question, scene.summary])
 
   useEffect(() => {
-    if (phase < 3 || reduceMotion) return
+    if (phase < 4 || reduceMotion) return
 
-    setTyped('')
+    setTypedSummary('')
     let i = 0
     const id = window.setInterval(() => {
       i += 1
-      setTyped(scene.answer.slice(0, i))
-      if (i >= scene.answer.length) window.clearInterval(id)
-    }, 14)
+      setTypedSummary(scene.summary.slice(0, i))
+      if (i >= scene.summary.length) window.clearInterval(id)
+    }, 12)
 
     return () => window.clearInterval(id)
-  }, [phase, scene.answer, sceneIndex, reduceMotion])
+  }, [phase, scene.summary, sceneIndex, reduceMotion])
 
   return (
     <DemoFrame>
       <ScaleToFit width={960} height={560}>
         <div className="h-[560px] w-[960px]">
-          <div className="flex h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d0f12] text-white">
-            <aside className="flex w-[236px] shrink-0 flex-col border-r border-white/[0.06] bg-[#12151a]">
-              <div className="flex items-center gap-2.5 px-4 pt-4 pb-3">
-                <PulseLogo size={32} className="rounded-[8px]" />
-                <div className="min-w-0">
-                  <p className="text-[14px] font-semibold leading-none">Pulse MCP</p>
-                  <p className="mt-1 text-[10px] text-white/40">Tool server · not a chat app</p>
-                </div>
-              </div>
+          <PulseAppShell active="assistant" version={version} className="h-full">
+            <div className="flex h-full flex-col overflow-hidden p-5">
+              <PageHeader title="Assistant" />
 
-              <div className="mx-3 mb-3 rounded-xl border border-[#3DDA7A]/25 bg-[#3DDA7A]/08 p-3">
-                <div className="flex items-center gap-2">
-                  <span className="live-dot size-1.5 rounded-full bg-[#3DDA7A]" aria-hidden />
-                  <span className="text-[11px] font-semibold text-[#6EE7A0]">MCP online</span>
+              <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-white/[0.06] bg-[#15181e] px-3.5 py-3">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#60CDFF]/12 text-[#9ADCFB]">
+                  <Bot className="size-4" aria-hidden />
                 </div>
-                <p className="mt-2 text-[10px] leading-relaxed text-white/45">
-                  Connect Cursor, Claude, or ChatGPT. Pulse only exposes read-only tools.
-                </p>
-                <p className="mt-2 font-mono-pulse text-[9px] text-white/30">
-                  v{version}
-                </p>
-              </div>
-
-              <p className="px-4 pb-2 text-[10px] font-semibold tracking-[0.14em] text-white/30 uppercase">
-                Tools for clients
-              </p>
-              <ul className="space-y-1 px-3">
-                {ALL_TOOLS.map((name) => (
-                  <li
-                    key={name}
-                    className={cn(
-                      'flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[11px]',
-                      activeToolNames.has(name)
-                        ? 'bg-[#3DDA7A]/12 text-[#6EE7A0]'
-                        : 'text-white/45',
-                    )}
-                  >
-                    <Wrench className="size-3 shrink-0 opacity-70" aria-hidden />
-                    <span className="truncate font-mono-pulse text-[10px]">{name}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-auto space-y-2 border-t border-white/[0.06] p-3">
-                <p className="text-[10px] font-semibold tracking-wide text-white/30 uppercase">
-                  Active client
-                </p>
-                <div
-                  className={cn(
-                    'flex items-center gap-2 rounded-lg px-2.5 py-2 text-[12px] font-semibold ring-1',
-                    clientStyle.badge,
-                    clientStyle.ring,
-                  )}
-                >
-                  <span className="live-dot size-1.5 rounded-full bg-current" aria-hidden />
-                  {clientStyle.label}
-                </div>
-                <div className="flex items-center gap-2 text-[10px] text-white/40">
-                  <Cable className="size-3.5 text-[#3DDA7A]" aria-hidden />
-                  <span>stdio · localhost only</span>
-                </div>
-              </div>
-            </aside>
-
-            <div className="flex min-w-0 flex-1 flex-col">
-              <header className="flex items-center justify-between gap-3 border-b border-white/[0.06] px-5 py-3.5">
-                <div className="min-w-0">
-                  <p className="text-[13px] font-semibold">External AI client</p>
-                  <p className="text-[10px] text-white/40">
-                    Chat lives in {scene.client} — Pulse is only the MCP backend
+                <div className="min-w-0 flex-1">
+                  <p className="text-[13px] font-semibold text-white">Local AI diagnostics chat</p>
+                  <p className="mt-0.5 flex items-center gap-1.5 text-[11px] text-[#6EE7A0]">
+                    <span className="live-dot size-1.5 rounded-full bg-[#3DDA7A]" aria-hidden />
+                    Local AI connected
                   </p>
                 </div>
-                <div className="flex shrink-0 items-center gap-2">
-                  {(['Cursor', 'Claude', 'ChatGPT'] as const).map((name) => (
-                    <span
-                      key={name}
-                      className={cn(
-                        'rounded-full px-2.5 py-1 text-[10px] font-semibold transition-colors',
-                        scene.client === name
-                          ? CLIENT_STYLE[name].badge
-                          : 'bg-white/[0.04] text-white/30',
-                      )}
-                    >
-                      {name}
-                    </span>
-                  ))}
+                <div className="flex items-center gap-1.5 text-[11px] text-[#6EE7A0]">
+                  <ShieldCheck className="size-3.5 shrink-0" aria-hidden />
+                  <span>Local AI · data stays on this PC</span>
                 </div>
-              </header>
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  className="ml-auto rounded-lg bg-[#60CDFF]/15 px-2.5 py-1.5 text-[11px] font-semibold text-[#9ADCFB]"
+                >
+                  Clear chat
+                </button>
+              </div>
 
-              <div className="relative flex flex-1 flex-col gap-3 overflow-hidden p-5">
+              <div className="mb-3 grid grid-cols-2 gap-2">
+                <SelectRow label="Provider" value={scene.provider} />
+                <SelectRow label="Model" value={scene.model} />
+              </div>
+
+              <div className="relative min-h-0 flex-1 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={sceneIndex}
-                    initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                    initial={reduceMotion ? false : { opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
-                    transition={{ duration: 0.35 }}
-                    className="flex flex-1 flex-col gap-3"
+                    exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex h-full flex-col gap-3 overflow-hidden"
                   >
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={cn(
-                          'rounded-full px-2.5 py-1 text-[10px] font-semibold',
-                          clientStyle.badge,
-                        )}
-                      >
-                        {scene.client}
-                      </span>
-                      <span className="text-[10px] text-white/35">via Pulse MCP</span>
-                      <span className="ml-auto inline-flex items-center gap-1 text-[10px] text-white/30">
-                        <Sparkles className="size-3" aria-hidden />
-                        Scene {sceneIndex + 1}/{SCENES.length}
-                      </span>
-                    </div>
-
-                    {phase >= 1 ? (
-                      <motion.div
-                        initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="ml-auto max-w-[82%] rounded-2xl rounded-br-md bg-[#1c2430] px-4 py-3 text-[13px] leading-relaxed text-white/90"
-                      >
-                        <p className="mb-1 text-[10px] font-semibold tracking-wide text-white/35 uppercase">
-                          You · in {scene.client}
-                        </p>
-                        {scene.question}
-                      </motion.div>
-                    ) : null}
-
                     {phase >= 2 ? (
                       <motion.div
                         initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="max-w-[90%] space-y-2"
+                        className="ml-auto max-w-[78%] rounded-2xl rounded-br-md bg-[#1c2430] px-4 py-3 text-[13px] leading-relaxed text-white/90"
                       >
-                        <div className="mb-1 flex items-center gap-2 text-[11px] text-white/40">
-                          <Terminal className="size-3.5" aria-hidden />
-                          {scene.client} called Pulse MCP…
-                        </div>
-                        {scene.tools.slice(0, toolCount).map((tool, i) => {
-                          const done = i < toolCount - 1 || phase >= 3
-                          return (
-                            <motion.div
-                              key={`${sceneIndex}-${tool.name}`}
-                              initial={reduceMotion ? false : { opacity: 0, x: -8 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              className="rounded-xl border border-[#3DDA7A]/35 bg-[#3DDA7A]/08 px-3 py-2.5"
-                            >
-                              <div className="flex items-center gap-2">
-                                {done ? (
-                                  <Check className="size-3.5 text-[#3DDA7A]" aria-hidden />
-                                ) : (
-                                  <span
-                                    className="live-dot size-2 rounded-full bg-[#3DDA7A]"
-                                    aria-hidden
-                                  />
-                                )}
-                                <span className="font-mono-pulse text-[11px] text-[#6EE7A0]">
-                                  {tool.name}
-                                </span>
-                                <span className="text-[10px] text-white/35">{tool.label}</span>
-                              </div>
-                              {done ? (
-                                <p className="mt-1.5 text-[11px] text-white/70">{tool.result}</p>
-                              ) : null}
-                            </motion.div>
-                          )
-                        })}
+                        {scene.question}
                       </motion.div>
                     ) : null}
 
@@ -379,30 +219,92 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
                       <motion.div
                         initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="max-w-[90%] rounded-2xl rounded-bl-md border border-white/[0.06] bg-[#15181e] px-4 py-3"
+                        className="max-w-[92%] rounded-2xl rounded-bl-md border border-white/[0.06] bg-[#15181e] px-4 py-3"
                       >
-                        <p className="mb-1.5 text-[10px] font-semibold tracking-wide text-white/35 uppercase">
-                          {scene.client} · using Pulse tools
-                        </p>
                         <p className="text-[13px] leading-relaxed text-white/85">
-                          {typed}
-                          {!reduceMotion && typed.length < scene.answer.length ? (
-                            <span className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse bg-[#3DDA7A]" />
-                          ) : null}
+                          Based on current system health:
                         </p>
+                        <ul className="mt-2 space-y-1.5">
+                          {scene.bullets.slice(0, bulletCount).map((bullet) => (
+                            <motion.li
+                              key={bullet}
+                              initial={reduceMotion ? false : { opacity: 0, x: -6 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              className="flex gap-2 text-[12px] leading-relaxed text-white/75"
+                            >
+                              <span className="mt-1.5 size-1 shrink-0 rounded-full bg-[#3DDA7A]" />
+                              <span>{bullet}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+
+                        {phase >= 4 ? (
+                          <>
+                            <p className="mt-3 text-[13px] leading-relaxed text-white/90">
+                              <span className="font-semibold text-white">Summary: </span>
+                              {typedSummary}
+                              {!reduceMotion && typedSummary.length < scene.summary.length ? (
+                                <span className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse bg-[#3DDA7A]" />
+                              ) : null}
+                            </p>
+                            <button
+                              type="button"
+                              tabIndex={-1}
+                              className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-medium text-white/40"
+                            >
+                              Analyzed
+                              <ChevronDown className="size-3" aria-hidden />
+                            </button>
+                          </>
+                        ) : bulletCount < scene.bullets.length ? (
+                          <p className="mt-2 text-[11px] text-white/35">Reading local diagnostics…</p>
+                        ) : null}
                       </motion.div>
                     ) : null}
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              <footer className="border-t border-white/[0.06] px-5 py-3 text-[11px] text-white/35">
-                No built-in Pulse chat · MCP bridge to Cursor / Claude / ChatGPT · data stays local
-              </footer>
+              <div className="mt-3 flex items-center gap-2 rounded-xl border border-white/[0.08] bg-[#12151a] px-3 py-2">
+                <p
+                  className={cn(
+                    'min-w-0 flex-1 truncate text-[13px]',
+                    inputTyped ? 'text-white/90' : 'text-white/35',
+                  )}
+                >
+                  {inputTyped || 'Ask about this PC...'}
+                  {phase === 1 && !reduceMotion ? (
+                    <span className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse bg-[#60CDFF]" />
+                  ) : null}
+                </p>
+                <span
+                  className={cn(
+                    'flex size-9 shrink-0 items-center justify-center rounded-full transition-colors',
+                    phase === 1 && inputTyped.length === scene.question.length
+                      ? 'bg-[#60CDFF] text-[#0b1220]'
+                      : 'bg-[#60CDFF]/80 text-white',
+                  )}
+                  aria-hidden
+                >
+                  <Send className="size-4" />
+                </span>
+              </div>
             </div>
-          </div>
+          </PulseAppShell>
         </div>
       </ScaleToFit>
     </DemoFrame>
+  )
+}
+
+function SelectRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-white/[0.06] bg-[#15181e] px-3 py-2">
+      <p className="text-[10px] text-white/35">{label}</p>
+      <div className="mt-0.5 flex items-center justify-between gap-2">
+        <p className="truncate text-[12px] font-medium text-white/85">{value}</p>
+        <ChevronDown className="size-3.5 shrink-0 text-white/35" aria-hidden />
+      </div>
+    </div>
   )
 }

@@ -8,6 +8,7 @@ import { cn } from '@/lib/cn'
 const SUBNAV = [
   'General',
   'Appearance',
+  'Background',
   'System Health',
   'Timeline',
   'Diagnostics',
@@ -122,13 +123,36 @@ export function SettingsDemo() {
                   initial={reduceMotion ? false : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.26 }}
-                  className="rounded-xl border border-white/[0.06] bg-[#15181e] p-4"
+                  className="mb-3 rounded-xl border border-white/[0.06] bg-[#15181e] p-4"
                 >
                   <p className="mb-3 text-[12px] font-semibold text-white/80">Density & motion</p>
                   <Toggle label="Compact mode" desc="Slightly denser typography" />
                   <Slider label="Text size" value="1.00x" fill={50} />
                   <Toggle label="Animations" desc="Motion for panels and transitions" on />
                   <Slider label="Animation speed" value="1.00x" fill={50} />
+                </motion.div>
+
+                <motion.div
+                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.32 }}
+                  className="rounded-xl border border-[#60CDFF]/20 bg-[#15181e] p-4"
+                >
+                  <p className="mb-1 text-[12px] font-semibold text-white/80">Background & tray</p>
+                  <p className="mb-3 text-[10px] text-white/35">
+                    Keep Pulse listening in the tray with local critical alerts.
+                  </p>
+                  <Toggle label="Run in system tray" desc="Stay connected after closing the window" on />
+                  <Toggle
+                    label="Background monitoring"
+                    desc="Continue collecting events while minimized"
+                    on
+                  />
+                  <Toggle
+                    label="Local notifications"
+                    desc="Windows toasts for critical conditions"
+                    on
+                  />
                 </motion.div>
               </div>
             </div>

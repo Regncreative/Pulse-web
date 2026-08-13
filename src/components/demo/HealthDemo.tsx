@@ -4,20 +4,66 @@ import { ShieldCheck } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { PageHeader, PulseAppShell } from './PulseAppShell'
 import { DemoFrame, ScaleToFit } from './shared'
+import { cn } from '@/lib/cn'
 
-const METRICS = [
-  { label: 'CPU', value: '43%', spark: 'M0 18 L8 14 L16 16 L24 8 L32 12 L40 6 L48 10' },
-  { label: 'Memory', value: '16.5 GB', spark: 'M0 16 L8 15 L16 14 L24 12 L32 11 L40 10 L48 9' },
-  { label: 'GPU', value: '1%', spark: 'M0 17 L8 16 L16 10 L24 14 L32 8 L40 12 L48 11' },
-  { label: 'Download', value: '67 Kbps', spark: 'M0 14 L8 16 L16 12 L24 15 L32 9 L40 13 L48 11' },
-  { label: 'Upload', value: '28 Kbps', spark: 'M0 15 L8 13 L16 14 L24 10 L32 12 L40 8 L48 11' },
+type Tone = 'green' | 'yellow' | 'orange' | 'red'
+
+const TONE: Record<Tone, { bar: string; text: string; ring: string }> = {
+  green: { bar: '#3DDA7A', text: 'text-[#6EE7A0]', ring: 'border-[#3DDA7A]/25' },
+  yellow: { bar: '#E8C547', text: 'text-[#E8C547]', ring: 'border-[#E8C547]/25' },
+  orange: { bar: '#FB923C', text: 'text-[#FB923C]', ring: 'border-[#FB923C]/25' },
+  red: { bar: '#F87171', text: 'text-[#F87171]', ring: 'border-[#F87171]/25' },
+}
+
+const METRICS: Array<{
+  label: string
+  value: string
+  pct: number
+  tone: Tone
+  spark: string
+}> = [
+  {
+    label: 'CPU',
+    value: '16%',
+    pct: 16,
+    tone: 'green',
+    spark: 'M0 18 L8 14 L16 16 L24 8 L32 12 L40 6 L48 10',
+  },
+  {
+    label: 'Memory',
+    value: '76%',
+    pct: 76,
+    tone: 'orange',
+    spark: 'M0 16 L8 15 L16 14 L24 12 L32 11 L40 10 L48 9',
+  },
+  {
+    label: 'GPU',
+    value: '85%',
+    pct: 85,
+    tone: 'orange',
+    spark: 'M0 17 L8 16 L16 10 L24 14 L32 8 L40 12 L48 11',
+  },
+  {
+    label: 'Download',
+    value: '67 Kbps',
+    pct: 22,
+    tone: 'green',
+    spark: 'M0 14 L8 16 L16 12 L24 15 L32 9 L40 13 L48 11',
+  },
+  {
+    label: 'Upload',
+    value: '28 Kbps',
+    pct: 12,
+    tone: 'green',
+    spark: 'M0 15 L8 13 L16 14 L24 10 L32 12 L40 8 L48 11',
+  },
 ]
 
-const CHARTS = [
-  { label: 'CPU', value: '43%' },
-  { label: 'Memory', value: '16.5 GB' },
-  { label: 'GPU', value: '1%' },
-  { label: 'Disk', value: '5.3 MB/s' },
+const CHARTS: Array<{ label: string; value: string; tone: Tone }> = [
+  { label: 'CPU', value: '16%', tone: 'green' },
+  { label: 'Memory', value: '25.7 GB', tone: 'orange' },
+  { label: 'GPU', value: '85%', tone: 'orange' },
+  { label: 'Disk', value: '5.3 MB/s', tone: 'green' },
 ]
 
 export function HealthDemo() {
@@ -48,81 +94,115 @@ export function HealthDemo() {
                 </div>
               </motion.div>
 
+              <div className="mb-2 flex flex-wrap gap-2 text-[9px] text-white/40">
+                <Legend swatch="#3DDA7A" label="0–49%" />
+                <Legend swatch="#E8C547" label="50–69%" />
+                <Legend swatch="#FB923C" label="70–89%" />
+                <Legend swatch="#F87171" label="90–100%" />
+              </div>
+
               <div className="mb-3 grid grid-cols-5 gap-2">
-                {METRICS.map((metric, index) => (
-                  <motion.div
-                    key={metric.label}
-                    initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.12 + index * 0.05 }}
-                    className="rounded-xl border border-white/[0.06] bg-[#15181e] p-2.5"
-                  >
-                    <p className="text-[10px] text-white/40">{metric.label}</p>
-                    <p className="mt-1 text-[16px] font-semibold tracking-tight text-white">
-                      {metric.value}
-                    </p>
-                    <svg viewBox="0 0 48 22" className="mt-2 h-6 w-full" aria-hidden>
-                      <motion.path
-                        d={metric.spark}
-                        fill="none"
-                        stroke="#3DDA7A"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        initial={reduceMotion ? false : { pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.1, delay: 0.2 + index * 0.05, ease: 'easeOut' }}
-                      />
-                    </svg>
-                  </motion.div>
-                ))}
+                {METRICS.map((metric, index) => {
+                  const tone = TONE[metric.tone]
+                  return (
+                    <motion.div
+                      key={metric.label}
+                      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.12 + index * 0.05 }}
+                      className={cn(
+                        'rounded-xl border bg-[#15181e] p-2.5',
+                        tone.ring,
+                      )}
+                    >
+                      <p className="text-[10px] text-white/40">{metric.label}</p>
+                      <p className={cn('mt-1 text-[16px] font-semibold tracking-tight', tone.text)}>
+                        {metric.value}
+                      </p>
+                      <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
+                        <motion.div
+                          className="h-full rounded-full"
+                          style={{ background: tone.bar }}
+                          initial={reduceMotion ? false : { width: 0 }}
+                          animate={{ width: `${metric.pct}%` }}
+                          transition={{ duration: 0.9, delay: 0.2 + index * 0.05 }}
+                        />
+                      </div>
+                      <svg viewBox="0 0 48 22" className="mt-2 h-5 w-full" aria-hidden>
+                        <motion.path
+                          d={metric.spark}
+                          fill="none"
+                          stroke={tone.bar}
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          initial={reduceMotion ? false : { pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1.1, delay: 0.2 + index * 0.05, ease: 'easeOut' }}
+                        />
+                      </svg>
+                    </motion.div>
+                  )
+                })}
               </div>
 
               <div className="mb-3 rounded-lg border border-white/[0.05] bg-white/[0.02] px-3 py-2 font-mono-pulse text-[9px] text-white/35">
-                Windows 10 Pro 25H2 · AMD Ryzen 5 7500F · RTX 3060 · 32 GiB · Uptime 3h 8m
+                Windows 10 Pro 25H2 · AMD Ryzen 5 7500F · RTX 3060 · 34 GiB · Uptime 3h 8m
               </div>
 
               <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-white/35 uppercase">
                 Performance · Last 60 seconds
               </p>
               <div className="grid grid-cols-4 gap-2">
-                {CHARTS.map((chart, i) => (
-                  <motion.div
-                    key={chart.label}
-                    initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.35 + i * 0.06 }}
-                    className="rounded-xl border border-white/[0.06] bg-[#15181e] p-2.5"
-                  >
-                    <div className="flex items-baseline justify-between gap-2">
-                      <p className="text-[11px] font-medium text-white/70">{chart.label}</p>
-                      <p className="font-mono-pulse text-[10px] text-[#6EE7A0]">{chart.value}</p>
-                    </div>
-                    <svg viewBox="0 0 120 48" className="mt-2 h-14 w-full" aria-hidden>
-                      <motion.path
-                        d={
-                          [
-                            'M0 30 L15 28 L30 22 L45 26 L60 12 L75 18 L90 10 L105 16 L120 14',
-                            'M0 24 L15 22 L30 20 L45 18 L60 16 L75 15 L90 14 L105 13 L120 12',
-                            'M0 28 L15 26 L30 18 L45 24 L60 14 L75 20 L90 16 L105 18 L120 17',
-                            'M0 32 L15 30 L30 28 L45 20 L60 24 L75 18 L90 22 L105 16 L120 18',
-                          ][i]
-                        }
-                        fill="none"
-                        stroke="#3DDA7A"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        initial={reduceMotion ? false : { pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.2, delay: 0.4 + i * 0.08, ease: 'easeOut' }}
-                      />
-                    </svg>
-                  </motion.div>
-                ))}
+                {CHARTS.map((chart, i) => {
+                  const tone = TONE[chart.tone]
+                  return (
+                    <motion.div
+                      key={chart.label}
+                      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.35 + i * 0.06 }}
+                      className="rounded-xl border border-white/[0.06] bg-[#15181e] p-2.5"
+                    >
+                      <div className="flex items-baseline justify-between gap-2">
+                        <p className="text-[11px] font-medium text-white/70">{chart.label}</p>
+                        <p className={cn('font-mono-pulse text-[10px]', tone.text)}>{chart.value}</p>
+                      </div>
+                      <svg viewBox="0 0 120 48" className="mt-2 h-14 w-full" aria-hidden>
+                        <motion.path
+                          d={
+                            [
+                              'M0 30 L15 28 L30 22 L45 26 L60 12 L75 18 L90 10 L105 16 L120 14',
+                              'M0 24 L15 22 L30 20 L45 18 L60 16 L75 15 L90 14 L105 13 L120 12',
+                              'M0 28 L15 26 L30 18 L45 24 L60 14 L75 20 L90 16 L105 18 L120 17',
+                              'M0 32 L15 30 L30 28 L45 20 L60 24 L75 18 L90 22 L105 16 L120 18',
+                            ][i]
+                          }
+                          fill="none"
+                          stroke={tone.bar}
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          initial={reduceMotion ? false : { pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1.2, delay: 0.4 + i * 0.08, ease: 'easeOut' }}
+                        />
+                      </svg>
+                    </motion.div>
+                  )
+                })}
               </div>
             </div>
           </PulseAppShell>
         </div>
       </ScaleToFit>
     </DemoFrame>
+  )
+}
+
+function Legend({ swatch, label }: { swatch: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.03] px-2 py-0.5">
+      <span className="size-1.5 rounded-full" style={{ background: swatch }} aria-hidden />
+      {label}
+    </span>
   )
 }

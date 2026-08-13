@@ -3,6 +3,7 @@
 import type { LucideIcon } from 'lucide-react'
 import {
   Activity,
+  Bell,
   Box,
   Bot,
   FileDown,
@@ -25,6 +26,7 @@ const ICONS: LucideIcon[] = [
   Activity,
   Box,
   FileDown,
+  Bell,
   Stethoscope,
   Palette,
   Shield,

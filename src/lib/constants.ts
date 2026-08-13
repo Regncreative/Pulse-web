@@ -2,19 +2,19 @@ export const SITE = {
   name: 'Pulse',
   tagline: 'See what Windows is really doing.',
   description:
-    'A modern, read-only diagnostics platform for Windows — human-readable events, local MCP tools for AI assistants, no telemetry, no cloud.',
+    'A modern, read-only diagnostics platform for Windows — human-readable events, local AI Assistant via Ollama or LM Studio, no telemetry, no cloud.',
   url: 'https://pulse.regncreative.com',
   author: 'Regn Creative',
   github: 'https://github.com/Regncreative/Pulse',
   releases: 'https://github.com/Regncreative/Pulse/releases',
   latestRelease: 'https://github.com/Regncreative/Pulse/releases/latest',
   release:
-    'https://github.com/Regncreative/Pulse/releases/tag/v1.0.0',
+    'https://github.com/Regncreative/Pulse/releases/tag/v1.1.0',
   license: 'https://github.com/Regncreative/Pulse/blob/master/LICENSE',
   repo: 'Regncreative/Pulse',
-  versionFallback: '1.0.0',
+  versionFallback: '1.1.0',
   download:
-    'https://github.com/Regncreative/Pulse/releases/download/v1.0.0/Pulse-Setup-1.0.0-windows-x64.exe',
+    'https://github.com/Regncreative/Pulse/releases/download/v1.1.0/Pulse-Setup-1.1.0-windows-x64.exe',
   microsoftStoreId: '9PNDTLNTJ82T',
   microsoftStore:
     'https://apps.microsoft.com/detail/9PNDTLNTJ82T?hl=neutral&gl=TR&ocid=pdpshare',

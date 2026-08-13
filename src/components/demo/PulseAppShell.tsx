@@ -3,6 +3,7 @@
 import {
   Activity,
   Box,
+  Bot,
   FileText,
   Heart,
   LayoutList,
@@ -21,8 +22,9 @@ export type PulseNav =
   | 'reports'
   | 'diagnostics'
   | 'settings'
+  | 'assistant'
 
-const NAV: Array<{ id: PulseNav; label: string; icon: typeof LayoutList }> = [
+const NAV: Array<{ id: Exclude<PulseNav, 'assistant'>; label: string; icon: typeof LayoutList }> = [
   { id: 'timeline', label: 'Timeline', icon: LayoutList },
   { id: 'health', label: 'System Health', icon: Heart },
   { id: 'inventory', label: 'Inventory', icon: Box },
@@ -37,12 +39,16 @@ export function PulseAppShell({
   children,
   className,
   compact,
+  version = SITE.versionFallback,
 }: {
   active: PulseNav
   children: React.ReactNode
   className?: string
   compact?: boolean
+  version?: string
 }) {
+  const assistantActive = active === 'assistant'
+
   return (
     <div
       className={cn(
@@ -94,7 +100,24 @@ export function PulseAppShell({
           })}
         </nav>
 
-        <div className="mt-auto p-2.5">
+        <div className="mt-auto space-y-2 p-2.5">
+          <div
+            className={cn(
+              'relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12px]',
+              assistantActive
+                ? 'bg-[#60CDFF]/12 text-[#9ADCFB]'
+                : 'text-white/55 hover:bg-white/[0.03]',
+            )}
+          >
+            <Bot className="size-3.5 shrink-0" strokeWidth={1.85} aria-hidden />
+            <span className="truncate font-medium">Assistant</span>
+            {!assistantActive ? (
+              <span className="absolute top-2 right-2 size-1.5 rounded-full bg-[#60CDFF]" aria-hidden />
+            ) : (
+              <span className="absolute top-1/2 right-1.5 size-1.5 -translate-y-1/2 rounded-full bg-[#60CDFF]" />
+            )}
+          </div>
+
           <div className="rounded-xl border border-white/[0.06] bg-[#0d0f12] p-2.5">
             <div className="flex items-center gap-2">
               <span className="live-dot size-1.5 rounded-full bg-[#3DDA7A]" aria-hidden />
@@ -106,9 +129,7 @@ export function PulseAppShell({
             <p className="mt-2 text-[10px] text-white/40">
               Listening: <span className="text-[#3DDA7A]">Yes</span>
             </p>
-            <p className="mt-0.5 font-mono-pulse text-[9px] text-white/30">
-              v{SITE.versionFallback}
-            </p>
+            <p className="mt-0.5 font-mono-pulse text-[9px] text-white/30">v{version}</p>
           </div>
         </div>
       </aside>
