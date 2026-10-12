@@ -22,6 +22,7 @@ const en = {
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
+    whatsNew: 'New: the Midnight redesign',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -50,10 +51,11 @@ const en = {
     description:
       'Timeline, System Health, Inventory, Reports, Diagnostics, Settings — plus the built-in local AI Assistant.',
     timelineTitle: 'Timeline',
-    timelineDesc: 'Live human-readable events with severity filters — detail on demand.',
+    timelineDesc:
+      'A plain-language summary of the last hour, a 24-hour activity strip, and a story feed — detail on demand.',
     healthTitle: 'System Health',
     healthDesc:
-      'CPU, memory, GPU, disk, and network with semantic utilization colors and a health score.',
+      'An overview bento with health score, memory ring, CPU, GPU, and network — plus 60-second charts.',
     inventoryTitle: 'Inventory',
     inventoryDesc: 'Browse system, devices, and software — services, drivers, and hardware trees.',
     reportsTitle: 'Reports',
@@ -61,6 +63,7 @@ const en = {
     diagnosticsTitle: 'Diagnostics',
     diagnosticsDesc: 'IPC latency, throughput, reconnect history, and recovery actions.',
     settingsTitle: 'Settings',
+    assistantTitle: 'Assistant',
     settingsDesc:
       'Theme, accents, tray background monitoring, and local notifications — stored on this PC.',
   },
@@ -91,12 +94,12 @@ const en = {
       },
       {
         title: 'Hardware Inventory',
-        description:
-          'System, devices, and software trees — services, drivers, USB, PCI, and more.',
+        description: 'System, devices, and software trees — services, drivers, USB, PCI, and more.',
       },
       {
         title: 'Local Reports',
-        description: 'Export health, timeline, diagnostics, or inventory as JSON, CSV, HTML, or PDF.',
+        description:
+          'Export health, timeline, diagnostics, or inventory as JSON, CSV, HTML, or PDF.',
       },
       {
         title: 'Background & tray',
@@ -105,7 +108,8 @@ const en = {
       },
       {
         title: 'Deep Diagnostics',
-        description: 'IPC health, latency, throughput, collectors, pipeline stages, and ping tools.',
+        description:
+          'IPC health, latency, throughput, collectors, pipeline stages, and ping tools.',
       },
       {
         title: 'Appearance Control',
@@ -164,7 +168,8 @@ const en = {
     githubBtn: 'See on GitHub',
     releasesBtn: 'Release notes',
     sourcePrefix: 'Source and installer',
-    comingSoon: 'Preferred install path is Microsoft Store — source and release notes stay on GitHub.',
+    comingSoon:
+      'Preferred install path is Microsoft Store — source and release notes stay on GitHub.',
   },
   faq: {
     eyebrow: 'FAQ',
@@ -189,7 +194,7 @@ const en = {
       },
       {
         q: 'Does it support Windows 10?',
-        a: 'Yes. Pulse targets Windows 10/11 with a Fluent dark-first UI.',
+        a: 'Yes. Pulse targets Windows 10/11 with the dark-first Midnight interface.',
       },
       {
         q: 'Is this a cleaner or antivirus?',
@@ -250,6 +255,7 @@ const tr: Dict = {
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
+    whatsNew: 'Yeni: Midnight tasarımı',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -278,19 +284,21 @@ const tr: Dict = {
     description:
       'Timeline, Sistem Sağlığı, Envanter, Raporlar, Tanılama, Ayarlar — ve yerleşik yerel AI Assistant.',
     timelineTitle: 'Timeline',
-    timelineDesc: 'Canlı, okunabilir olaylar ve şiddet filtreleri — detay isteğe bağlı.',
+    timelineDesc:
+      'Son bir saatin sade bir özeti, 24 saatlik etkinlik şeridi ve olay akışı — detay isteğe bağlı.',
     healthTitle: 'Sistem Sağlığı',
     healthDesc:
-      'CPU, bellek, GPU, disk ve ağ için anlamsal kullanım renkleri ve sağlık skoru.',
+      'Sağlık skoru, bellek halkası, CPU, GPU ve ağ ile genel bakış panosu — ve 60 saniyelik grafikler.',
     inventoryTitle: 'Envanter',
     inventoryDesc: 'Sistem, cihaz ve yazılım ağaçları — servisler, sürücüler ve donanım.',
     reportsTitle: 'Raporlar',
-    reportsDesc: 'Şablonları JSON, CSV, HTML veya PDF olarak dışa aktarın — her şey bu PC’de kalır.',
+    reportsDesc:
+      'Şablonları JSON, CSV, HTML veya PDF olarak dışa aktarın — her şey bu PC’de kalır.',
     diagnosticsTitle: 'Tanılama',
     diagnosticsDesc: 'IPC gecikmesi, throughput, yeniden bağlanma geçmişi ve kurtarma aksiyonları.',
     settingsTitle: 'Ayarlar',
-    settingsDesc:
-      'Tema, accent, tepsi arka plan izleme ve yerel bildirimler — bu PC’de saklanır.',
+    assistantTitle: 'Asistan',
+    settingsDesc: 'Tema, accent, tepsi arka plan izleme ve yerel bildirimler — bu PC’de saklanır.',
   },
   features: {
     eyebrow: 'Özellikler',
@@ -305,12 +313,12 @@ const tr: Dict = {
       },
       {
         title: 'İnsan Timeline’ı',
-        description:
-          'Şiddet filtreli canlı akış — önce düz dil, ham detay yalnızca istediğinizde.',
+        description: 'Şiddet filtreli canlı akış — önce düz dil, ham detay yalnızca istediğinizde.',
       },
       {
         title: 'Canlı İzleme',
-        description: 'EvtSubscribe ile Windows Olay Günlüğü; named-pipe IPC üzerinden gerçek zamanlı.',
+        description:
+          'EvtSubscribe ile Windows Olay Günlüğü; named-pipe IPC üzerinden gerçek zamanlı.',
       },
       {
         title: 'Sistem Sağlığı',
@@ -319,11 +327,13 @@ const tr: Dict = {
       },
       {
         title: 'Donanım Envanteri',
-        description: 'Sistem, cihaz ve yazılım ağaçları — servisler, sürücüler, USB, PCI ve daha fazlası.',
+        description:
+          'Sistem, cihaz ve yazılım ağaçları — servisler, sürücüler, USB, PCI ve daha fazlası.',
       },
       {
         title: 'Yerel Raporlar',
-        description: 'Sağlık, timeline, tanılama veya envanteri JSON, CSV, HTML veya PDF olarak aktarın.',
+        description:
+          'Sağlık, timeline, tanılama veya envanteri JSON, CSV, HTML veya PDF olarak aktarın.',
       },
       {
         title: 'Arka plan ve tepsi',
@@ -332,7 +342,8 @@ const tr: Dict = {
       },
       {
         title: 'Derin Tanılama',
-        description: 'IPC sağlığı, gecikme, throughput, collector’lar, pipeline aşamaları ve ping araçları.',
+        description:
+          'IPC sağlığı, gecikme, throughput, collector’lar, pipeline aşamaları ve ping araçları.',
       },
       {
         title: 'Görünüm Kontrolü',
@@ -416,7 +427,7 @@ const tr: Dict = {
       },
       {
         q: 'Windows 10’u destekliyor mu?',
-        a: 'Evet. Pulse, Fluent koyu öncelikli arayüzle Windows 10/11’i hedefler.',
+        a: 'Evet. Pulse, koyu öncelikli Midnight arayüzüyle Windows 10/11’i hedefler.',
       },
       {
         q: 'Bu bir temizleyici veya antivirüs mü?',
