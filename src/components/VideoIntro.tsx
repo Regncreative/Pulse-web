@@ -8,10 +8,14 @@ import { useLang } from '@/lib/i18n'
 import { cn } from '@/lib/cn'
 
 const STORAGE_KEY = 'pulse-intro-dismissed'
-const VIDEO_SRC = '/media/pulse-intro.mp4'
+const VIDEO = {
+  en: { src: '/media/pulse-intro-en.mp4', poster: '/media/pulse-intro-en.jpg' },
+  tr: { src: '/media/pulse-intro-tr.mp4', poster: '/media/pulse-intro-tr.jpg' },
+} as const
 
 export function VideoIntro() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
+  const intro = VIDEO[lang]
   const reduceMotion = useReducedMotion()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [open, setOpen] = useState(false)
@@ -39,20 +43,24 @@ export function VideoIntro() {
     }
     window.addEventListener('keydown', onKey)
 
-    const video = videoRef.current
-    if (video) {
-      video.muted = true
-      void video.play().catch(() => {
-        // Autoplay may be blocked — user can press play on controls
-      })
-    }
-
     return () => {
       document.body.style.overflow = previous
       window.removeEventListener('keydown', onKey)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
+
+  // (Re)start playback when the dialog opens and when the language swaps the video.
+  useEffect(() => {
+    if (!open) return
+    const video = videoRef.current
+    if (!video) return
+    video.muted = muted
+    void video.play().catch(() => {
+      // Autoplay may be blocked — user can press play on controls
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, intro.src])
 
   function dismiss() {
     try {
@@ -105,7 +113,7 @@ export function VideoIntro() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0d0f12] shadow-[0_40px_100px_rgba(0,0,0,0.65)]"
+            className="relative z-10 flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#111114] shadow-[0_40px_100px_rgba(0,0,0,0.65)]"
           >
             <div className="flex items-center justify-between gap-3 border-b border-white/[0.06] px-4 py-3 sm:px-5">
               <div className="flex min-w-0 items-center gap-2.5">
@@ -127,9 +135,12 @@ export function VideoIntro() {
 
             <div className="relative aspect-video bg-black">
               <video
+                key={intro.src}
                 ref={videoRef}
                 className="h-full w-full object-contain"
-                src={VIDEO_SRC}
+                src={intro.src}
+                poster={intro.poster}
+                autoPlay
                 playsInline
                 muted={muted}
                 controls
@@ -150,13 +161,17 @@ export function VideoIntro() {
                     'inline-flex items-center gap-1.5 rounded-xl border border-white/10 px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/5',
                   )}
                 >
-                  {muted ? <VolumeX className="size-4" aria-hidden /> : <Volume2 className="size-4" aria-hidden />}
+                  {muted ? (
+                    <VolumeX className="size-4" aria-hidden />
+                  ) : (
+                    <Volume2 className="size-4" aria-hidden />
+                  )}
                   {muted ? t.intro.unmute : t.intro.mute}
                 </button>
                 <button
                   type="button"
                   onClick={dismiss}
-                  className="inline-flex items-center rounded-xl bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-[#070a0e] shadow-[var(--accent-glow)] transition hover:brightness-110"
+                  className="inline-flex items-center rounded-xl bg-[#C8F04A] px-4 py-2 text-sm font-semibold text-[#08080A] transition hover:brightness-110"
                 >
                   {t.intro.skip}
                 </button>

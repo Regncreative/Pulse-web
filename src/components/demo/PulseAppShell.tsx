@@ -1,140 +1,121 @@
 'use client'
 
 import {
-  Activity,
-  Box,
-  Bot,
   FileText,
-  Heart,
-  LayoutList,
+  HeartPulse,
+  ListTree,
+  Minus,
+  PackageSearch,
+  Radio,
+  Search,
   Settings,
-  Zap,
+  Sparkles,
+  Square,
+  Stethoscope,
+  X,
 } from 'lucide-react'
-import { PulseLogo } from '@/components/icons/PulseLogo'
-import { SITE } from '@/lib/constants'
+import { PulseMark } from '@/components/icons/PulseLogo'
 import { cn } from '@/lib/cn'
-import { ACCENT } from './shared'
+import { MIDNIGHT } from './shared'
 
 export type PulseNav =
-  | 'timeline'
-  | 'health'
-  | 'inventory'
-  | 'reports'
-  | 'diagnostics'
-  | 'settings'
-  | 'assistant'
+  'timeline' | 'health' | 'inventory' | 'reports' | 'diagnostics' | 'settings' | 'assistant'
 
-const NAV: Array<{ id: Exclude<PulseNav, 'assistant'>; label: string; icon: typeof LayoutList }> = [
-  { id: 'timeline', label: 'Timeline', icon: LayoutList },
-  { id: 'health', label: 'System Health', icon: Heart },
-  { id: 'inventory', label: 'Inventory', icon: Box },
+type NavItem = { id: PulseNav; label: string; icon: typeof ListTree }
+
+const NAV_TOP: NavItem[] = [
+  { id: 'timeline', label: 'Timeline', icon: ListTree },
+  { id: 'health', label: 'Health', icon: HeartPulse },
+  { id: 'inventory', label: 'Inventory', icon: PackageSearch },
   { id: 'reports', label: 'Reports', icon: FileText },
-  { id: 'diagnostics', label: 'Diagnostics', icon: Zap },
+  { id: 'diagnostics', label: 'Diagnose', icon: Stethoscope },
+]
+
+const NAV_BOTTOM: NavItem[] = [
+  { id: 'assistant', label: 'Assistant', icon: Sparkles },
   { id: 'settings', label: 'Settings', icon: Settings },
 ]
 
-/** Shared chrome matching the real Pulse Windows app. */
+/** Midnight chrome matching the Pulse 1.2 Windows app: title bar, icon rail, canvas. */
 export function PulseAppShell({
   active,
   children,
   className,
-  compact,
-  version = SITE.versionFallback,
 }: {
   active: PulseNav
   children: React.ReactNode
   className?: string
-  compact?: boolean
-  version?: string
 }) {
-  const assistantActive = active === 'assistant'
-
   return (
     <div
       className={cn(
-        'flex overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d0f12] text-white',
-        compact ? 'min-h-[420px]' : 'min-h-[480px]',
+        'midnight-shell flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#08080A] text-[#F4F4F5]',
         className,
       )}
     >
-      <aside
-        className={cn(
-          'flex shrink-0 flex-col border-r border-white/[0.06] bg-[#12151a]',
-          compact ? 'w-[168px]' : 'w-[200px]',
-        )}
-      >
-        <div className="flex items-center gap-2.5 px-3.5 pt-4 pb-5">
-          <PulseLogo size={compact ? 28 : 32} className="rounded-[8px]" />
-          <div className="min-w-0">
-            <p className="truncate text-[14px] font-semibold leading-none tracking-tight">Pulse</p>
-            <p className="mt-1 truncate text-[10px] leading-none text-white/40">
-              Windows diagnostics
-            </p>
-          </div>
-        </div>
-
-        <p className="px-3.5 pb-2 text-[10px] font-semibold tracking-[0.14em] text-white/30 uppercase">
-          Workspace
-        </p>
-        <nav className="flex flex-col gap-0.5 px-2">
-          {NAV.map(({ id, label, icon: Icon }) => {
-            const isActive = id === active
-            return (
-              <div
-                key={id}
-                className={cn(
-                  'relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12px]',
-                  isActive ? 'bg-[#3DDA7A]/12 text-[#6EE7A0]' : 'text-white/55',
-                )}
-              >
-                <Icon className="size-3.5 shrink-0" strokeWidth={1.85} aria-hidden />
-                <span className="truncate font-medium">{label}</span>
-                {isActive ? (
-                  <span
-                    className="absolute top-1/2 right-1.5 size-1.5 -translate-y-1/2 rounded-full"
-                    style={{ background: ACCENT }}
-                  />
-                ) : null}
-              </div>
-            )
-          })}
-        </nav>
-
-        <div className="mt-auto space-y-2 p-2.5">
-          <div
-            className={cn(
-              'relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12px]',
-              assistantActive
-                ? 'bg-[#60CDFF]/12 text-[#9ADCFB]'
-                : 'text-white/55 hover:bg-white/[0.03]',
-            )}
+      <TitleBar />
+      <div className="flex min-h-0 flex-1 gap-3 px-3 pb-3">
+        <aside className="flex w-[60px] shrink-0 flex-col items-center rounded-[16px] border border-white/[0.08] bg-[#0D0D10] py-2.5">
+          <span
+            className="mb-3 flex size-10 items-center justify-center rounded-[11px]"
+            style={{ background: MIDNIGHT.lime }}
           >
-            <Bot className="size-3.5 shrink-0" strokeWidth={1.85} aria-hidden />
-            <span className="truncate font-medium">Assistant</span>
-            {!assistantActive ? (
-              <span className="absolute top-2 right-2 size-1.5 rounded-full bg-[#60CDFF]" aria-hidden />
-            ) : (
-              <span className="absolute top-1/2 right-1.5 size-1.5 -translate-y-1/2 rounded-full bg-[#60CDFF]" />
-            )}
-          </div>
+            <PulseMark size={20} color={MIDNIGHT.canvas} />
+          </span>
+          <nav className="flex w-full flex-col gap-1 px-1.5">
+            {NAV_TOP.map((item) => (
+              <RailItem key={item.id} item={item} active={item.id === active} />
+            ))}
+          </nav>
+          <nav className="mt-auto flex w-full flex-col gap-1 px-1.5">
+            {NAV_BOTTOM.map((item) => (
+              <RailItem key={item.id} item={item} active={item.id === active} />
+            ))}
+          </nav>
+          <span className="live-dot mt-3 size-1.5 rounded-full bg-[#34D399]" aria-hidden />
+        </aside>
+        <div className="min-w-0 flex-1">{children}</div>
+      </div>
+    </div>
+  )
+}
 
-          <div className="rounded-xl border border-white/[0.06] bg-[#0d0f12] p-2.5">
-            <div className="flex items-center gap-2">
-              <span className="live-dot size-1.5 rounded-full bg-[#3DDA7A]" aria-hidden />
-              <span className="text-[11px] font-semibold text-white/85">Connected</span>
-              <span className="ml-auto rounded-full bg-[#3DDA7A]/15 px-1.5 py-0.5 text-[9px] font-semibold text-[#3DDA7A]">
-                Live
-              </span>
-            </div>
-            <p className="mt-2 text-[10px] text-white/40">
-              Listening: <span className="text-[#3DDA7A]">Yes</span>
-            </p>
-            <p className="mt-0.5 font-mono-pulse text-[9px] text-white/30">v{version}</p>
-          </div>
-        </div>
-      </aside>
+function TitleBar() {
+  return (
+    <div className="flex h-9 shrink-0 items-center px-4">
+      <span className="w-24 text-[11px] font-medium text-white/70">Pulse</span>
+      <div className="mx-auto flex h-6 w-[300px] items-center gap-2 rounded-full border border-white/[0.08] bg-[#111114] px-3">
+        <Search className="size-3 text-white/40" aria-hidden />
+        <span className="text-[10px] text-white/40">Search or jump to…</span>
+        <span className="font-mono-pulse ml-auto rounded-[5px] border border-white/[0.1] px-1.5 text-[8px] text-white/50">
+          Ctrl K
+        </span>
+      </div>
+      <div className="flex w-24 justify-end gap-4 text-white/60">
+        <Minus className="size-3" aria-hidden />
+        <Square className="size-2.5" aria-hidden />
+        <X className="size-3" aria-hidden />
+      </div>
+    </div>
+  )
+}
 
-      <div className="min-w-0 flex-1 bg-[#0d0f12]">{children}</div>
+function RailItem({ item, active }: { item: NavItem; active: boolean }) {
+  const Icon = item.icon
+  return (
+    <div
+      className={cn(
+        'flex flex-col items-center gap-0.5 rounded-[9px] py-1.5',
+        active ? 'bg-[#1E1E23] text-white' : 'text-white/55',
+      )}
+    >
+      <Icon
+        className="size-4"
+        strokeWidth={1.8}
+        style={active ? { color: MIDNIGHT.lime } : undefined}
+        aria-hidden
+      />
+      <span className="text-[8.5px] font-medium">{item.label}</span>
     </div>
   )
 }
@@ -143,11 +124,11 @@ export function ConnectedBadge({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full bg-[#3DDA7A]/12 px-2.5 py-1 text-[11px] font-medium text-[#3DDA7A]',
+        'inline-flex items-center gap-1.5 rounded-full border border-[#34D399]/35 bg-[#34D399]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#34D399]',
         className,
       )}
     >
-      <span className="live-dot size-1.5 rounded-full bg-[#3DDA7A]" aria-hidden />
+      <Radio className="size-3" aria-hidden />
       Connected
     </span>
   )
@@ -157,11 +138,11 @@ export function LiveBadge({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full bg-[#3DDA7A]/12 px-2.5 py-1 text-[11px] font-medium text-[#3DDA7A]',
+        'inline-flex items-center gap-1 rounded-full border border-[#34D399]/35 bg-[#34D399]/10 px-2 py-0.5 text-[10px] font-semibold text-[#34D399]',
         className,
       )}
     >
-      <Activity className="size-3" aria-hidden />
+      <Radio className="size-3" aria-hidden />
       Live
     </span>
   )
@@ -179,13 +160,11 @@ export function PageHeader({
   return (
     <div className="mb-4">
       <div className="flex flex-wrap items-center gap-3">
-        <h3 className="text-[22px] font-semibold tracking-tight text-white">{title}</h3>
+        <h3 className="text-[22px] font-semibold tracking-[-0.02em] text-white">{title}</h3>
         <ConnectedBadge />
         {actions ? <div className="ml-auto flex items-center gap-2">{actions}</div> : null}
       </div>
-      {subtitle ? <p className="mt-1.5 text-[12px] text-white/45">{subtitle}</p> : null}
+      {subtitle ? <p className="mt-1.5 text-[12px] text-white/50">{subtitle}</p> : null}
     </div>
   )
 }
-
-export { ACCENT }

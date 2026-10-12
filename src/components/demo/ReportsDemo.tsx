@@ -70,7 +70,7 @@ export function ReportsDemo() {
       <ScaleToFit width={960} height={560}>
         <div className="h-[560px] w-[960px]">
           <PulseAppShell active="reports" className="h-full">
-            <div className="flex h-full overflow-hidden p-5">
+            <div className="flex h-full overflow-hidden pt-3 pr-3">
               <div className="min-w-0 flex-1 overflow-hidden pr-3">
                 <PageHeader title="Reports" />
                 <p className="mb-3 text-[12px] font-semibold text-white/70">Choose a template</p>
@@ -84,17 +84,17 @@ export function ReportsDemo() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35, delay: 0.08 + i * 0.03 }}
                         className={cn(
-                          'rounded-xl border p-3',
+                          'rounded-[16px] border p-3',
                           template.selected
-                            ? 'border-[#3DDA7A]/45 bg-[#3DDA7A]/08'
-                            : 'border-white/[0.06] bg-[#15181e]',
+                            ? 'border-[#C8F04A]/45 bg-[#C8F04A]/[0.07]'
+                            : 'border-white/[0.08] bg-[#111114]',
                         )}
                       >
                         <div className="mb-1.5 flex items-center gap-2">
                           <Icon
                             className={cn(
                               'size-3.5',
-                              template.selected ? 'text-[#3DDA7A]' : 'text-white/45',
+                              template.selected ? 'text-[#C8F04A]' : 'text-white/45',
                             )}
                             aria-hidden
                           />
@@ -109,7 +109,7 @@ export function ReportsDemo() {
                 </div>
 
                 <p className="mt-4 mb-2 text-[12px] font-semibold text-white/70">Format</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="inline-flex gap-1 rounded-full border border-white/[0.08] bg-[#111114] p-1">
                   {FORMATS.map((format, i) => (
                     <motion.span
                       key={format}
@@ -117,10 +117,8 @@ export function ReportsDemo() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: 0.35 + i * 0.04 }}
                       className={cn(
-                        'rounded-lg px-3.5 py-1.5 text-[11px] font-semibold',
-                        format === 'JSON'
-                          ? 'bg-[#3DDA7A] text-[#0b1220]'
-                          : 'border border-white/10 text-white/55',
+                        'rounded-full px-3.5 py-1.5 text-[11px] font-semibold',
+                        format === 'JSON' ? 'bg-[#F4F4F5] text-[#08080A]' : 'text-white/70',
                       )}
                     >
                       {format}
@@ -133,7 +131,7 @@ export function ReportsDemo() {
                 initial={reduceMotion ? false : { opacity: 0, x: 12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.45, delay: 0.2 }}
-                className="flex w-[220px] shrink-0 flex-col rounded-xl border border-white/[0.06] bg-[#15181e] p-4"
+                className="flex w-[220px] shrink-0 flex-col rounded-[16px] border border-white/[0.08] bg-[#111114] p-4"
               >
                 <p className="mb-3 text-[13px] font-semibold">Export summary</p>
                 <dl className="space-y-3 text-[11px]">
@@ -143,16 +141,16 @@ export function ReportsDemo() {
                   </div>
                   <div>
                     <dt className="text-white/35">Format</dt>
-                    <dd className="mt-0.5 font-medium text-[#6EE7A0]">JSON</dd>
+                    <dd className="mt-0.5 font-medium text-[#C8F04A]">JSON</dd>
                   </div>
                   <div>
                     <dt className="text-white/35">Destination</dt>
-                    <dd className="mt-0.5 font-mono-pulse text-[10px] leading-relaxed text-white/55">
+                    <dd className="font-mono-pulse mt-0.5 text-[10px] leading-relaxed text-white/55">
                       Documents / Pulse / exports
                     </dd>
                   </div>
                 </dl>
-                <span className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#3DDA7A] px-3 py-2.5 text-[12px] font-semibold text-[#0b1220]">
+                <span className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#C8F04A] px-3 py-2.5 text-[12px] font-semibold text-[#08080A]">
                   <Download className="size-3.5" aria-hidden />
                   Export Report
                 </span>

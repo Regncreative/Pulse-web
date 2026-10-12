@@ -1,82 +1,82 @@
 'use client'
 
-import { ChevronRight, RefreshCw } from 'lucide-react'
+import { ChevronDown, Download, RefreshCw, Search } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { LiveBadge, PageHeader, PulseAppShell } from './PulseAppShell'
-import { DemoFrame, ScaleToFit } from './shared'
+import { DemoFrame, MIDNIGHT, ScaleToFit } from './shared'
 import { cn } from '@/lib/cn'
 
-const FILTERS = [
-  'All severity',
-  'All sources',
-  'All types',
-  'All time',
-  'Advanced',
-] as const
+const FILTERS = ['All severity', 'All sources', 'All types', 'All time'] as const
 
-const EVENTS = [
+type Severity = 'info' | 'warn' | 'error'
+
+const SEVERITY_COLOR: Record<Severity, string> = {
+  info: MIDNIGHT.info,
+  warn: MIDNIGHT.warn,
+  error: MIDNIGHT.err,
+}
+
+/** 30-minute slices over the last 24 hours: 0 = idle, otherwise the worst severity. */
+const ACTIVITY: Array<{ height: number; severity: Severity | null }> = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 1, 4,
+].map((height, index) => ({
+  height,
+  severity:
+    height === 0
+      ? null
+      : index === 24 || index === 47
+        ? 'error'
+        : index === 25 || index === 45
+          ? 'warn'
+          : 'info',
+}))
+
+const EVENTS: Array<{
+  time: string
+  severity: Severity
+  title: string
+  body: string
+  meta: string
+  latest?: boolean
+}> = [
   {
-    tone: 'info' as const,
+    time: '23:15',
+    severity: 'info',
+    title: 'Windows Update installed an update',
+    body: 'Windows Update finished installing 1 update successfully.',
+    meta: '3m ago · System · WindowsUpdateClient · ID 19 · Info',
     latest: true,
-    title: 'Security-SPP Event',
-    body: 'Offline low-level transition completed successfully. No action required.',
-    meta: '8m ago · Application',
-    tag: 'Info',
   },
   {
-    tone: 'critical' as const,
-    title: 'DistributedCOM Event',
-    body: 'An application attempted to access a COM component without sufficient permissions.',
-    meta: '22m ago · System',
-    tag: 'Error',
+    time: '23:02',
+    severity: 'error',
+    title: 'Explorer unexpectedly closed',
+    body: 'Windows restarted Explorer automatically.',
+    meta: '16m ago · Application · Application Error · ID 1000 · Error',
   },
   {
-    tone: 'info' as const,
-    title: 'IsolatedUserMode Event',
-    body: 'Secure Trustlet IsolatedUserMode started with status STATUS_SUCCESS.',
-    meta: '45m ago · System',
-    tag: 'Info',
+    time: '22:47',
+    severity: 'warn',
+    title: 'A driver took longer than expected',
+    body: 'The display driver responded slowly during startup.',
+    meta: '31m ago · System · Display · ID 4101 · Warning',
   },
   {
-    tone: 'warn' as const,
-    title: 'Windows Service Configuration Changed',
-    body: 'A service configuration change was recorded in the System channel.',
-    meta: '1h ago · System',
-    tag: 'Warning',
+    time: '22:30',
+    severity: 'error',
+    title: 'The PC restarted without shutting down cleanly',
+    body: 'Check power, drivers and recent crashes around this time.',
+    meta: '48m ago · System · Kernel-Power · ID 41 · Critical',
   },
   {
-    tone: 'critical' as const,
-    title: 'Kernel-Power · Unexpected Shutdown',
-    body: 'The system restarted without a clean shutdown. Check power and driver stability.',
-    meta: '1h ago · System',
-    tag: 'Error',
-  },
-  {
-    tone: 'info' as const,
-    title: 'Service Control Manager',
-    body: 'Windows Update service entered the running state.',
-    meta: '2h ago · System',
-    tag: 'Info',
+    time: '22:12',
+    severity: 'info',
+    title: 'Windows Update service started',
+    body: 'The Windows Update service entered the running state.',
+    meta: '1h ago · System · Service Control Manager · ID 7036 · Info',
   },
 ]
-
-const toneStyles = {
-  critical: {
-    rail: 'bg-[#f87171]',
-    tag: 'bg-[#f87171]/15 text-[#fca5a5]',
-    latest: 'text-[#fca5a5]',
-  },
-  warn: {
-    rail: 'bg-amber-400',
-    tag: 'bg-amber-400/15 text-amber-300',
-    latest: 'text-amber-300',
-  },
-  info: {
-    rail: 'bg-[#3DDA7A]',
-    tag: 'bg-[#3DDA7A]/15 text-[#6EE7A0]',
-    latest: 'text-[#6EE7A0]',
-  },
-}
 
 export function TimelineDemo() {
   const reduceMotion = useReducedMotion()
@@ -87,112 +87,150 @@ export function TimelineDemo() {
       <ScaleToFit width={960} height={560}>
         <div className="h-[560px] w-[960px]">
           <PulseAppShell active="timeline" className="h-full">
-            <div className="flex h-full flex-col p-5">
-              <PageHeader
-                title="Timeline"
-                actions={<LiveBadge />}
-              />
+            <div className="flex h-full flex-col pt-3 pr-3">
+              <PageHeader title="Timeline" actions={<LiveBadge />} />
+
+              <div className="mb-3 flex items-center gap-2 rounded-full border border-white/[0.08] bg-[#111114] px-3.5 py-2">
+                <Search className="size-3.5 text-white/40" aria-hidden />
+                <span className="text-[11px] text-white/40">
+                  Search provider, Event ID, computer, message, process, PID…
+                </span>
+              </div>
 
               <motion.div
                 initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="mb-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-3 py-2.5"
+                transition={{ duration: 0.4, delay: 0.08 }}
+                className="mb-3 rounded-[18px] border border-white/[0.08] bg-[#111114] px-5 pt-4 pb-3"
               >
-                <span className="text-[12px] text-white/40">
-                  Search provider, Event ID, computer, message, process, PID…
-                </span>
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <p className="font-mono-pulse text-[9px] tracking-[0.14em] text-white/50 uppercase">
+                      Monday 12 October · 23:18
+                    </p>
+                    <p className="mt-1.5 text-[22px] leading-tight font-semibold tracking-[-0.02em] text-white">
+                      Windows reported 2 problems in the last hour.
+                    </p>
+                    <p className="mt-1 text-[12px] text-white/55">
+                      14 events · 2 errors in the last hour.
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 gap-6 text-right">
+                    <Count label="Events · 1 h" value="14" />
+                    <Count label="Errors" value="2" color={MIDNIGHT.err} />
+                    <Count label="Warnings" value="1" color={MIDNIGHT.warn} />
+                  </div>
+                </div>
+                <div className="mt-3 flex h-9 items-end gap-[3px]" aria-hidden>
+                  {ACTIVITY.map((slice, index) => (
+                    <motion.span
+                      key={index}
+                      className="flex-1 rounded-[2px]"
+                      style={{
+                        // Like the app: only problem slices are colored; quiet activity stays neutral.
+                        background:
+                          slice.severity === 'error' || slice.severity === 'warn'
+                            ? SEVERITY_COLOR[slice.severity]
+                            : slice.severity === 'info'
+                              ? 'rgba(255,255,255,0.22)'
+                              : 'rgba(255,255,255,0.12)',
+                      }}
+                      initial={reduceMotion ? false : { height: 2 }}
+                      animate={{ height: slice.height === 0 ? 2 : 6 + slice.height * 7 }}
+                      transition={{ duration: 0.5, delay: 0.2 + index * 0.01 }}
+                    />
+                  ))}
+                </div>
+                <div className="font-mono-pulse mt-1.5 flex justify-between text-[8px] text-white/40">
+                  <span>24 h ago</span>
+                  <span>18 h</span>
+                  <span>12 h</span>
+                  <span>6 h</span>
+                  <span>Now</span>
+                </div>
               </motion.div>
 
-              <div className="mb-4 flex flex-wrap items-center gap-1.5">
-                {FILTERS.map((filter, i) => (
-                  <motion.span
+              <div className="mb-3 flex items-center gap-1.5">
+                {FILTERS.map((filter) => (
+                  <span
                     key={filter}
-                    initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: 0.12 + i * 0.04 }}
-                    className={cn(
-                      'rounded-lg px-2.5 py-1 text-[11px] font-medium',
-                      i === 0
-                        ? 'bg-[#3DDA7A]/18 text-[#6EE7A0]'
-                        : 'border border-white/[0.08] text-white/45',
-                    )}
+                    className="inline-flex items-center gap-1 rounded-full border border-white/[0.12] px-2.5 py-1 text-[10px] font-medium text-white/80"
                   >
                     {filter}
-                  </motion.span>
+                    <ChevronDown className="size-3 text-white/50" aria-hidden />
+                  </span>
                 ))}
-                <span className="ml-auto inline-flex size-8 items-center justify-center rounded-full border border-white/[0.08] text-white/40">
+                <span className="rounded-full border border-white/[0.12] px-2.5 py-1 text-[10px] font-medium text-white/80">
+                  Advanced
+                </span>
+                <span className="ml-auto flex gap-3 text-white/60">
+                  <Download className="size-3.5" aria-hidden />
                   <RefreshCw className="size-3.5" aria-hidden />
                 </span>
               </div>
 
-              <div className="relative min-h-0 flex-1 overflow-hidden">
-                <div className="absolute top-3 bottom-3 left-[7px] w-px bg-white/10" aria-hidden />
-                <ul className={cn('space-y-2.5', !reduceMotion && 'stream-track')}>
-                  {stream.map((event, index) => {
-                    const styles = toneStyles[event.tone]
-                    return (
-                      <motion.li
-                        key={`${event.title}-${event.meta}-${index}`}
-                        initial={reduceMotion ? false : { opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: Math.min(index, 4) * 0.08 }}
-                        className="relative pl-6"
-                      >
+              <div className="relative min-h-0 flex-1 overflow-hidden rounded-t-[18px] border border-b-0 border-white/[0.08] bg-[#111114] px-4">
+                <ul className={cn('pt-3', !reduceMotion && 'stream-track')}>
+                  {stream.map((event, index) => (
+                    <li
+                      key={`${event.time}-${index}`}
+                      className="grid grid-cols-[44px_14px_1fr] pb-3"
+                    >
+                      <span className="font-mono-pulse pt-0.5 text-[10px] text-white/50">
+                        {event.time}
+                      </span>
+                      <span className="relative flex justify-center">
                         <span
-                          className={cn(
-                            'absolute top-4 left-0 size-3.5 rounded-full border-2 border-[#0d0f12]',
-                            styles.rail,
-                          )}
+                          className="mt-1.5 size-1.5 rounded-full"
+                          style={{ background: SEVERITY_COLOR[event.severity] }}
                           aria-hidden
                         />
-                        <div className="rounded-xl border border-white/[0.06] bg-[#15181e] p-3.5">
-                          <div className="flex items-start gap-3">
-                            <div
-                              className={cn('mt-0.5 w-0.5 self-stretch rounded-full', styles.rail)}
-                            />
-                            <div className="min-w-0 flex-1">
-                              {event.latest && index % EVENTS.length === 0 ? (
-                                <p
-                                  className={cn(
-                                    'mb-1 text-[10px] font-semibold tracking-wide uppercase',
-                                    styles.latest,
-                                  )}
-                                >
-                                  Latest
-                                </p>
-                              ) : null}
-                              <p className="text-[14px] font-semibold text-white">{event.title}</p>
-                              <p className="mt-1 text-[12px] leading-relaxed text-white/45">
-                                {event.body}
-                              </p>
-                              <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                                <span className="text-[11px] text-white/35">{event.meta}</span>
-                                <span
-                                  className={cn(
-                                    'rounded-full px-2 py-0.5 text-[10px] font-medium',
-                                    styles.tag,
-                                  )}
-                                >
-                                  {event.tag}
-                                </span>
-                              </div>
-                            </div>
-                            <ChevronRight
-                              className="mt-1 size-4 shrink-0 text-white/25"
-                              aria-hidden
-                            />
-                          </div>
-                        </div>
-                      </motion.li>
-                    )
-                  })}
+                        <span
+                          className="absolute top-4 bottom-[-12px] w-px bg-white/[0.08]"
+                          aria-hidden
+                        />
+                      </span>
+                      <div className="min-w-0 pl-1.5">
+                        <p className="flex items-center gap-2 text-[13px] font-semibold text-white">
+                          {event.title}
+                          {event.latest && index === 0 ? (
+                            <span
+                              className="rounded-full px-1.5 py-px text-[9px] font-semibold text-[#08080A]"
+                              style={{ background: MIDNIGHT.lime }}
+                            >
+                              Latest
+                            </span>
+                          ) : null}
+                        </p>
+                        <p className="mt-0.5 text-[12px] text-white/75">{event.body}</p>
+                        <p className="mt-1 truncate text-[10px] text-white/45">{event.meta}</p>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
+                <div
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#111114] to-transparent"
+                  aria-hidden
+                />
               </div>
             </div>
           </PulseAppShell>
         </div>
       </ScaleToFit>
     </DemoFrame>
+  )
+}
+
+function Count({ label, value, color }: { label: string; value: string; color?: string }) {
+  return (
+    <div>
+      <p className="text-[10px] text-white/55">{label}</p>
+      <p
+        className="font-mono-pulse mt-1 text-[26px] leading-none font-medium"
+        style={{ color: color ?? '#F4F4F5' }}
+      >
+        {value}
+      </p>
+    </div>
   )
 }

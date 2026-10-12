@@ -8,16 +8,14 @@ export const SITE = {
   github: 'https://github.com/Regncreative/Pulse',
   releases: 'https://github.com/Regncreative/Pulse/releases',
   latestRelease: 'https://github.com/Regncreative/Pulse/releases/latest',
-  release:
-    'https://github.com/Regncreative/Pulse/releases/tag/v1.1.0',
+  release: 'https://github.com/Regncreative/Pulse/releases/tag/v1.2.0',
   license: 'https://github.com/Regncreative/Pulse/blob/master/LICENSE',
   repo: 'Regncreative/Pulse',
-  versionFallback: '1.1.0',
+  versionFallback: '1.2.0',
   download:
-    'https://github.com/Regncreative/Pulse/releases/download/v1.1.0/Pulse-Setup-1.1.0-windows-x64.exe',
+    'https://github.com/Regncreative/Pulse/releases/download/v1.2.0/Pulse-Setup-1.2.0-windows-x64.exe',
   microsoftStoreId: '9PNDTLNTJ82T',
-  microsoftStore:
-    'https://apps.microsoft.com/detail/9PNDTLNTJ82T?hl=neutral&gl=TR&ocid=pdpshare',
+  microsoftStore: 'https://apps.microsoft.com/detail/9PNDTLNTJ82T?hl=neutral&gl=TR&ocid=pdpshare',
   productHunt:
     'https://www.producthunt.com/products/pulse-58?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-pulse-f9f15bde-6996-4986-80ce-1f94f4d4d1bb',
 } as const

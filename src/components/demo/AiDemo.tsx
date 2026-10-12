@@ -1,12 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Bot, ChevronDown, Send, ShieldCheck } from 'lucide-react'
+import { Bot, ChevronDown, Send, ShieldCheck, Sparkles } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { SITE } from '@/lib/constants'
 import { cn } from '@/lib/cn'
 import { PageHeader, PulseAppShell } from './PulseAppShell'
-import { DemoFrame, ScaleToFit } from './shared'
+import { DemoFrame, MIDNIGHT, ScaleToFit } from './shared'
 
 type Scene = {
   question: string
@@ -71,7 +70,7 @@ const SCENES: Scene[] = [
   },
 ]
 
-export function AiDemo({ version = SITE.versionFallback }: { version?: string }) {
+export function AiDemo() {
   const reduceMotion = useReducedMotion()
   const [sceneIndex, setSceneIndex] = useState(0)
   const [phase, setPhase] = useState(0)
@@ -104,9 +103,12 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
     t += 80
     current.question.split('').forEach((_, i) => {
       timers.push(
-        window.setTimeout(() => {
-          setInputTyped(current.question.slice(0, i + 1))
-        }, t + i * 22),
+        window.setTimeout(
+          () => {
+            setInputTyped(current.question.slice(0, i + 1))
+          },
+          t + i * 22,
+        ),
       )
     })
     t += current.question.length * 22 + 350
@@ -124,9 +126,12 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
     timers.push(window.setTimeout(() => setPhase(3), t))
     current.bullets.forEach((_, i) => {
       timers.push(
-        window.setTimeout(() => {
-          setBulletCount(i + 1)
-        }, t + 280 + i * 520),
+        window.setTimeout(
+          () => {
+            setBulletCount(i + 1)
+          },
+          t + 280 + i * 520,
+        ),
       )
     })
     t += 280 + current.bullets.length * 520 + 200
@@ -162,35 +167,37 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
     <DemoFrame>
       <ScaleToFit width={960} height={560}>
         <div className="h-[560px] w-[960px]">
-          <PulseAppShell active="assistant" version={version} className="h-full">
-            <div className="flex h-full flex-col overflow-hidden p-5">
+          <PulseAppShell active="assistant" className="h-full">
+            <div className="flex h-full flex-col overflow-hidden pt-3 pr-3">
               <PageHeader title="Assistant" />
 
-              <div className="mb-3 flex flex-wrap items-center gap-3 rounded-xl border border-white/[0.06] bg-[#15181e] px-3.5 py-3">
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#60CDFF]/12 text-[#9ADCFB]">
+              <div className="mb-2 flex items-center gap-3">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-white/[0.08] bg-[#111114] text-white/80">
                   <Bot className="size-4" aria-hidden />
-                </div>
+                </span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[13px] font-semibold text-white">Local AI diagnostics chat</p>
-                  <p className="mt-0.5 flex items-center gap-1.5 text-[11px] text-[#6EE7A0]">
-                    <span className="live-dot size-1.5 rounded-full bg-[#3DDA7A]" aria-hidden />
+                  <p className="text-[12px] font-semibold text-white/90">
+                    Local AI diagnostics chat
+                  </p>
+                  <p className="mt-0.5 flex items-center gap-1.5 text-[11px] text-white/65">
+                    <span className="live-dot size-1.5 rounded-full bg-[#34D399]" aria-hidden />
                     Local AI connected
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px] text-[#6EE7A0]">
-                  <ShieldCheck className="size-3.5 shrink-0" aria-hidden />
-                  <span>Local AI · data stays on this PC</span>
-                </div>
-                <button
-                  type="button"
-                  tabIndex={-1}
-                  className="ml-auto rounded-lg bg-[#60CDFF]/15 px-2.5 py-1.5 text-[11px] font-semibold text-[#9ADCFB]"
-                >
-                  Clear chat
-                </button>
               </div>
-
-              <div className="mb-3 grid grid-cols-2 gap-2">
+              <p className="mb-2 flex items-center gap-1.5 text-[11px] text-white/65">
+                <ShieldCheck className="size-3.5 shrink-0 text-[#34D399]" aria-hidden />
+                Local AI · Your diagnostic data stays on this PC
+              </p>
+              <div className="mb-1.5 flex items-center justify-between">
+                <p className="font-mono-pulse text-[10px] text-white/55">
+                  {scene.provider} · {scene.model}
+                </p>
+                <span className="text-[11px] font-semibold" style={{ color: MIDNIGHT.lime }}>
+                  Clear chat
+                </span>
+              </div>
+              <div className="mb-3 grid grid-cols-2 gap-2.5">
                 <SelectRow label="Provider" value={scene.provider} />
                 <SelectRow label="Model" value={scene.model} />
               </div>
@@ -205,11 +212,45 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
                     transition={{ duration: 0.3 }}
                     className="flex h-full flex-col gap-3 overflow-hidden"
                   >
+                    {phase < 2 ? (
+                      <div className="flex flex-1 flex-col items-center justify-center text-center">
+                        <span className="mb-3 flex size-11 items-center justify-center rounded-[12px] bg-[#C8F04A]/15">
+                          <Sparkles
+                            className="size-5"
+                            style={{ color: MIDNIGHT.lime }}
+                            aria-hidden
+                          />
+                        </span>
+                        <p className="text-[20px] font-semibold tracking-[-0.02em]">
+                          Ask about this Windows PC
+                        </p>
+                        <p className="mt-1 text-[12px] text-white/60">
+                          Pulse Assistant can inspect read-only diagnostics through your local
+                          model.
+                        </p>
+                        <div className="mt-4 flex flex-wrap justify-center gap-2">
+                          {SCENES.map((item) => (
+                            <span
+                              key={item.question}
+                              className={cn(
+                                'rounded-full border px-3 py-1.5 text-[11px] font-medium',
+                                item.question === scene.question
+                                  ? 'border-[#C8F04A]/50 text-white'
+                                  : 'border-white/[0.12] text-white/80',
+                              )}
+                            >
+                              {item.question}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+
                     {phase >= 2 ? (
                       <motion.div
                         initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="ml-auto max-w-[78%] rounded-2xl rounded-br-md bg-[#1c2430] px-4 py-3 text-[13px] leading-relaxed text-white/90"
+                        className="ml-auto max-w-[78%] rounded-[18px] rounded-br-[6px] bg-[#F4F4F5] px-4 py-2.5 text-[13px] leading-relaxed font-medium text-[#08080A]"
                       >
                         {scene.question}
                       </motion.div>
@@ -219,7 +260,7 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
                       <motion.div
                         initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="max-w-[92%] rounded-2xl rounded-bl-md border border-white/[0.06] bg-[#15181e] px-4 py-3"
+                        className="max-w-[88%] rounded-[18px] rounded-bl-[6px] border border-white/[0.08] bg-[#111114] px-4 py-3"
                       >
                         <p className="text-[13px] leading-relaxed text-white/85">
                           Based on current system health:
@@ -232,7 +273,10 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
                               animate={{ opacity: 1, x: 0 }}
                               className="flex gap-2 text-[12px] leading-relaxed text-white/75"
                             >
-                              <span className="mt-1.5 size-1 shrink-0 rounded-full bg-[#3DDA7A]" />
+                              <span
+                                className="mt-1.5 size-1 shrink-0 rounded-full"
+                                style={{ background: MIDNIGHT.lime }}
+                              />
                               <span>{bullet}</span>
                             </motion.li>
                           ))}
@@ -244,20 +288,21 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
                               <span className="font-semibold text-white">Summary: </span>
                               {typedSummary}
                               {!reduceMotion && typedSummary.length < scene.summary.length ? (
-                                <span className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse bg-[#3DDA7A]" />
+                                <span
+                                  className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse"
+                                  style={{ background: MIDNIGHT.lime }}
+                                />
                               ) : null}
                             </p>
-                            <button
-                              type="button"
-                              tabIndex={-1}
-                              className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-medium text-white/40"
-                            >
+                            <span className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-medium text-white/45">
                               Analyzed
                               <ChevronDown className="size-3" aria-hidden />
-                            </button>
+                            </span>
                           </>
                         ) : bulletCount < scene.bullets.length ? (
-                          <p className="mt-2 text-[11px] text-white/35">Reading local diagnostics…</p>
+                          <p className="mt-2 text-[11px] text-white/45">
+                            Reading local diagnostics…
+                          </p>
                         ) : null}
                       </motion.div>
                     ) : null}
@@ -265,25 +310,29 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
                 </AnimatePresence>
               </div>
 
-              <div className="mt-3 flex items-center gap-2 rounded-xl border border-white/[0.08] bg-[#12151a] px-3 py-2">
+              <div className="mt-3 -ml-3 flex items-center gap-2.5 border-t border-white/[0.08] pt-3 pl-3">
                 <p
                   className={cn(
-                    'min-w-0 flex-1 truncate text-[13px]',
-                    inputTyped ? 'text-white/90' : 'text-white/35',
+                    'min-w-0 flex-1 truncate rounded-full border border-white/[0.12] bg-[#111114] px-4 py-2 text-[12px]',
+                    inputTyped ? 'text-white/90' : 'text-white/45',
                   )}
                 >
-                  {inputTyped || 'Ask about this PC...'}
+                  {inputTyped || 'Ask about this PC…'}
                   {phase === 1 && !reduceMotion ? (
-                    <span className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse bg-[#60CDFF]" />
+                    <span
+                      className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse align-middle"
+                      style={{ background: MIDNIGHT.lime }}
+                    />
                   ) : null}
                 </p>
                 <span
                   className={cn(
-                    'flex size-9 shrink-0 items-center justify-center rounded-full transition-colors',
+                    'flex size-9 shrink-0 items-center justify-center rounded-[12px] text-[#08080A] transition-opacity',
                     phase === 1 && inputTyped.length === scene.question.length
-                      ? 'bg-[#60CDFF] text-[#0b1220]'
-                      : 'bg-[#60CDFF]/80 text-white',
+                      ? 'opacity-100'
+                      : 'opacity-45',
                   )}
+                  style={{ background: MIDNIGHT.lime }}
                   aria-hidden
                 >
                   <Send className="size-4" />
@@ -299,11 +348,11 @@ export function AiDemo({ version = SITE.versionFallback }: { version?: string })
 
 function SelectRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-white/[0.06] bg-[#15181e] px-3 py-2">
-      <p className="text-[10px] text-white/35">{label}</p>
-      <div className="mt-0.5 flex items-center justify-between gap-2">
-        <p className="truncate text-[12px] font-medium text-white/85">{value}</p>
-        <ChevronDown className="size-3.5 shrink-0 text-white/35" aria-hidden />
+    <div>
+      <p className="mb-1 text-[10px] text-white/60">{label}</p>
+      <div className="flex items-center justify-between gap-2 rounded-full border border-white/[0.1] bg-[#111114] px-3.5 py-1.5">
+        <p className="truncate text-[12px] font-semibold text-white/90">{value}</p>
+        <ChevronDown className="size-3.5 shrink-0 text-white/60" aria-hidden />
       </div>
     </div>
   )

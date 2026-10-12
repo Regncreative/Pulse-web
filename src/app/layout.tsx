@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
-import { JetBrains_Mono, Manrope } from 'next/font/google'
+import { Geist, Geist_Mono, JetBrains_Mono, Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { SITE } from '@/lib/constants'
@@ -14,6 +14,19 @@ const manrope = Manrope({
 
 const jetbrains = JetBrains_Mono({
   variable: '--font-jetbrains',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+/** Geist / Geist Mono: the typefaces of the Pulse app, used inside the product demos. */
+const geist = Geist({
+  variable: '--font-geist',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
   subsets: ['latin'],
   display: 'swap',
 })
@@ -35,7 +48,7 @@ export const metadata: Metadata = {
     'diagnostics',
     'observability',
     'system health',
-    'Fluent Design',
+    'dark mode',
     'local-first',
   ],
   openGraph: {
@@ -81,7 +94,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${jetbrains.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${jetbrains.variable} ${geist.variable} ${geistMono.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
         {children}
         <Script

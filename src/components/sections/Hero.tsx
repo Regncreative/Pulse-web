@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { PulseShields } from '@/components/ui/Shield'
@@ -31,6 +32,19 @@ export function Hero({ version }: HeroProps) {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mb-12 max-w-3xl text-center"
         >
+          <a
+            href={SITE.release}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[#08080A] py-1 pr-3 pl-1 text-[13px] font-medium text-white shadow-[var(--shadow-sm)] transition hover:brightness-125"
+          >
+            <span className="rounded-full bg-[#C8F04A] px-2 py-0.5 text-[11px] font-semibold text-[#08080A]">
+              v{version}
+            </span>
+            {t.hero.whatsNew}
+            <ArrowRight className="size-3.5 text-white/60" aria-hidden />
+          </a>
+
           <div className="mb-7 flex items-center justify-center gap-3">
             <PulseLogo
               size={52}
@@ -50,19 +64,14 @@ export function Hero({ version }: HeroProps) {
           <p className="mt-3 text-xl font-medium tracking-tight text-[var(--accent)] sm:text-2xl">
             {SITE.tagline}
           </p>
-          <p className="mx-auto mt-4 max-w-xl text-pretty text-base leading-relaxed text-[var(--fg-dim)] sm:text-lg">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-pretty text-[var(--fg-dim)] sm:text-lg">
             {t.hero.tagline}
           </p>
 
           <PulseShields version={version} className="mt-6" />
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button
-              size="lg"
-              href={SITE.github}
-              external
-              aria-label={t.hero.primaryBtn}
-            >
+            <Button size="lg" href={SITE.github} external aria-label={t.hero.primaryBtn}>
               <GitHubIcon className="size-4" aria-hidden />
               {t.hero.primaryBtn}
             </Button>
@@ -73,7 +82,7 @@ export function Hero({ version }: HeroProps) {
         </motion.div>
 
         <div className="relative">
-          <AiDemo version={version} />
+          <AiDemo />
         </div>
       </Container>
     </section>

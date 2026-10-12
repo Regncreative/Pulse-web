@@ -1,194 +1,260 @@
 'use client'
 
-import { ShieldCheck } from 'lucide-react'
+import { Clock, Cpu, Gpu, LayoutGrid, MemoryStick, Monitor } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { PageHeader, PulseAppShell } from './PulseAppShell'
-import { DemoFrame, ScaleToFit } from './shared'
-import { cn } from '@/lib/cn'
+import { DemoFrame, MIDNIGHT, ScaleToFit, utilizationColor } from './shared'
 
-type Tone = 'green' | 'yellow' | 'orange' | 'red'
+const MEMORY_PERCENT = 63
+const RING_RADIUS = 38
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS
 
-const TONE: Record<Tone, { bar: string; text: string; ring: string }> = {
-  green: { bar: '#3DDA7A', text: 'text-[#6EE7A0]', ring: 'border-[#3DDA7A]/25' },
-  yellow: { bar: '#E8C547', text: 'text-[#E8C547]', ring: 'border-[#E8C547]/25' },
-  orange: { bar: '#FB923C', text: 'text-[#FB923C]', ring: 'border-[#FB923C]/25' },
-  red: { bar: '#F87171', text: 'text-[#F87171]', ring: 'border-[#F87171]/25' },
-}
-
-const METRICS: Array<{
-  label: string
-  value: string
-  pct: number
-  tone: Tone
-  spark: string
-}> = [
+const CHARTS: Array<{ label: string; value: string; percent: number; path: string }> = [
   {
     label: 'CPU',
-    value: '16%',
-    pct: 16,
-    tone: 'green',
-    spark: 'M0 18 L8 14 L16 16 L24 8 L32 12 L40 6 L48 10',
+    value: '7 %',
+    percent: 7,
+    path: 'M0 14 L18 36 L34 30 L50 40 L66 34 L82 46 L98 22 L114 36 L130 38 L150 44',
   },
   {
     label: 'Memory',
-    value: '76%',
-    pct: 76,
-    tone: 'orange',
-    spark: 'M0 16 L8 15 L16 14 L24 12 L32 11 L40 10 L48 9',
+    value: '20.0 GB',
+    percent: 63,
+    path: 'M0 10 L18 12 L34 12 L50 22 L66 18 L82 28 L98 34 L114 8 L130 44 L150 50',
   },
   {
     label: 'GPU',
-    value: '85%',
-    pct: 85,
-    tone: 'orange',
-    spark: 'M0 17 L8 16 L16 10 L24 14 L32 8 L40 12 L48 11',
+    value: '1 %',
+    percent: 1,
+    path: 'M0 44 L18 42 L30 6 L44 48 L60 40 L80 26 L96 18 L112 18 L130 22 L150 22',
   },
   {
-    label: 'Download',
-    value: '67 Kbps',
-    pct: 22,
-    tone: 'green',
-    spark: 'M0 14 L8 16 L16 12 L24 15 L32 9 L40 13 L48 11',
-  },
-  {
-    label: 'Upload',
-    value: '28 Kbps',
-    pct: 12,
-    tone: 'green',
-    spark: 'M0 15 L8 13 L16 14 L24 10 L32 12 L40 8 L48 11',
+    label: 'Disk',
+    value: '8.5 MB/s',
+    percent: 12,
+    path: 'M0 48 L30 48 L60 49 L90 48 L110 49 L126 12 L140 12 L150 16',
   },
 ]
 
-const CHARTS: Array<{ label: string; value: string; tone: Tone }> = [
-  { label: 'CPU', value: '16%', tone: 'green' },
-  { label: 'Memory', value: '25.7 GB', tone: 'orange' },
-  { label: 'GPU', value: '85%', tone: 'orange' },
-  { label: 'Disk', value: '5.3 MB/s', tone: 'green' },
+const IDENTITY = [
+  { icon: Monitor, label: 'Windows', value: 'Windows 11 Pro 25H2' },
+  { icon: Cpu, label: 'CPU', value: 'AMD Ryzen 5 7500F' },
+  { icon: Gpu, label: 'GPU', value: 'NVIDIA GeForce RTX 3060' },
+  { icon: MemoryStick, label: 'Memory', value: '32 GiB' },
+  { icon: Clock, label: 'Uptime', value: '15h 56m' },
 ]
+
+const TILE = 'rounded-[18px] border border-white/[0.08] bg-[#111114]'
 
 export function HealthDemo() {
   const reduceMotion = useReducedMotion()
+  const appear = (delay: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 10 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.4, delay },
+        }
 
   return (
     <DemoFrame>
       <ScaleToFit width={960} height={560}>
         <div className="h-[560px] w-[960px]">
           <PulseAppShell active="health" className="h-full">
-            <div className="h-full overflow-hidden p-5">
-              <PageHeader title="System Health" />
+            <div className="flex h-full flex-col pt-3 pr-3">
+              <PageHeader
+                title="System Health"
+                actions={<LayoutGrid className="size-4 text-white/60" aria-hidden />}
+              />
 
-              <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.08 }}
-                className="mb-3 flex flex-wrap items-center gap-4 rounded-xl border border-[#3DDA7A]/20 bg-[#3DDA7A]/08 px-4 py-3"
-              >
-                <div className="flex items-center gap-2 text-[#3DDA7A]">
-                  <ShieldCheck className="size-4" aria-hidden />
-                  <span className="text-[13px] font-semibold">Healthy — Everything looks normal.</span>
-                </div>
-                <div className="ml-auto flex flex-wrap gap-4 font-mono-pulse text-[10px] text-white/40">
-                  <span>Uptime: 3h 8m</span>
-                  <span>Health Score: 94</span>
-                  <span>Last Updated: Just now</span>
-                </div>
-              </motion.div>
-
-              <div className="mb-2 flex flex-wrap gap-2 text-[9px] text-white/40">
-                <Legend swatch="#3DDA7A" label="0–49%" />
-                <Legend swatch="#E8C547" label="50–69%" />
-                <Legend swatch="#FB923C" label="70–89%" />
-                <Legend swatch="#F87171" label="90–100%" />
-              </div>
-
-              <div className="mb-3 grid grid-cols-5 gap-2">
-                {METRICS.map((metric, index) => {
-                  const tone = TONE[metric.tone]
-                  return (
-                    <motion.div
-                      key={metric.label}
-                      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.12 + index * 0.05 }}
-                      className={cn(
-                        'rounded-xl border bg-[#15181e] p-2.5',
-                        tone.ring,
-                      )}
-                    >
-                      <p className="text-[10px] text-white/40">{metric.label}</p>
-                      <p className={cn('mt-1 text-[16px] font-semibold tracking-tight', tone.text)}>
-                        {metric.value}
+              <div className="grid grid-cols-[1.25fr_1fr_1fr] grid-rows-[118px_118px] gap-2.5">
+                <motion.div {...appear(0.05)} className={`${TILE} row-span-2 flex flex-col p-3.5`}>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="font-mono-pulse text-[9px] tracking-[0.14em] text-white/55 uppercase">
+                        System pulse
                       </p>
-                      <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
-                        <motion.div
-                          className="h-full rounded-full"
-                          style={{ background: tone.bar }}
-                          initial={reduceMotion ? false : { width: 0 }}
-                          animate={{ width: `${metric.pct}%` }}
-                          transition={{ duration: 0.9, delay: 0.2 + index * 0.05 }}
-                        />
+                      <p className="mt-1 flex items-center gap-2 text-[26px] font-semibold tracking-[-0.02em]">
+                        <span className="size-2 rounded-full bg-[#34D399]" aria-hidden />
+                        Healthy
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p
+                        className="font-mono-pulse text-[34px] leading-none"
+                        style={{ color: MIDNIGHT.lime }}
+                      >
+                        92
+                      </p>
+                      <p className="mt-1 text-[10px] text-white/60">Health score</p>
+                    </div>
+                  </div>
+                  <p className="mt-1 text-[12px] text-white/65">
+                    Everything looks normal. Up for 15h 56m.
+                  </p>
+                  <p className="mt-3 flex justify-between text-[10px] text-white/55">
+                    <span>CPU · last 60 seconds</span>
+                    <span>Just now</span>
+                  </p>
+                  <svg
+                    viewBox="0 0 300 40"
+                    className="mt-auto h-10 w-full"
+                    preserveAspectRatio="none"
+                    aria-hidden
+                  >
+                    <motion.path
+                      d="M0 22 L40 24 L80 27 L120 30 L160 29 L200 31 L240 27 L270 29 L300 30"
+                      fill="none"
+                      stroke={MIDNIGHT.lime}
+                      strokeWidth="1.6"
+                      initial={reduceMotion ? false : { pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.1, delay: 0.2 }}
+                    />
+                  </svg>
+                  <div className="mt-2 grid grid-cols-3 border-t border-white/[0.08] pt-2">
+                    {[
+                      ['CPU', '7%'],
+                      ['Memory', '63%'],
+                      ['GPU', '1%'],
+                    ].map(([label, value]) => (
+                      <div key={label}>
+                        <p className="text-[10px] text-white/55">{label}</p>
+                        <p className="font-mono-pulse text-[15px]">{value}</p>
                       </div>
-                      <svg viewBox="0 0 48 22" className="mt-2 h-5 w-full" aria-hidden>
-                        <motion.path
-                          d={metric.spark}
-                          fill="none"
-                          stroke={tone.bar}
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          initial={reduceMotion ? false : { pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 1.1, delay: 0.2 + index * 0.05, ease: 'easeOut' }}
-                        />
-                      </svg>
-                    </motion.div>
-                  )
-                })}
+                    ))}
+                  </div>
+                </motion.div>
+
+                <motion.div {...appear(0.1)} className={`${TILE} flex items-center gap-4 p-3.5`}>
+                  <svg viewBox="0 0 96 96" className="size-[86px] shrink-0 -rotate-90" aria-hidden>
+                    <circle
+                      cx="48"
+                      cy="48"
+                      r={RING_RADIUS}
+                      fill="none"
+                      stroke="rgba(255,255,255,0.08)"
+                      strokeWidth="7"
+                    />
+                    <motion.circle
+                      cx="48"
+                      cy="48"
+                      r={RING_RADIUS}
+                      fill="none"
+                      stroke={utilizationColor(MEMORY_PERCENT)}
+                      strokeWidth="7"
+                      strokeLinecap="round"
+                      strokeDasharray={RING_CIRCUMFERENCE}
+                      initial={reduceMotion ? false : { strokeDashoffset: RING_CIRCUMFERENCE }}
+                      animate={{
+                        strokeDashoffset: RING_CIRCUMFERENCE * (1 - MEMORY_PERCENT / 100),
+                      }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                    />
+                  </svg>
+                  <div>
+                    <p className="text-[11px] font-semibold">Memory</p>
+                    <p className="font-mono-pulse text-[24px] leading-tight">{MEMORY_PERCENT}%</p>
+                    <p className="text-[10px] text-white/60">20.0 GB of 32 GB</p>
+                  </div>
+                </motion.div>
+
+                <motion.div {...appear(0.15)} className={`${TILE} flex flex-col p-3.5`}>
+                  <p className="text-[11px] font-semibold">CPU</p>
+                  <p className="font-mono-pulse text-[24px] leading-tight">
+                    7 <span className="text-[12px] text-white/55">%</span>
+                  </p>
+                  <Sparkline color={utilizationColor(7)} />
+                  <p className="mt-auto truncate text-[10px] text-white/60">
+                    AMD Ryzen 5 7500F 6-Core Processor
+                  </p>
+                </motion.div>
+
+                <motion.div {...appear(0.2)} className={`${TILE} flex flex-col p-3.5`}>
+                  <p className="flex items-center justify-between text-[11px] font-semibold">
+                    GPU
+                    <span className="font-mono-pulse rounded-full bg-white/[0.08] px-1.5 py-px text-[9px] text-white/80">
+                      35 °C
+                    </span>
+                  </p>
+                  <p className="font-mono-pulse text-[24px] leading-tight">
+                    1 <span className="text-[12px] text-white/55">%</span>
+                  </p>
+                  <Sparkline color={utilizationColor(1)} flat />
+                  <p className="mt-auto truncate text-[10px] text-white/60">
+                    NVIDIA GeForce RTX 3060
+                  </p>
+                </motion.div>
+
+                <motion.div {...appear(0.25)} className={`${TILE} flex flex-col p-3.5`}>
+                  <p className="text-[11px] font-semibold">Network</p>
+                  <div className="mt-1 grid grid-cols-2">
+                    <div>
+                      <p className="text-[10px] text-white/55">Down</p>
+                      <p className="font-mono-pulse text-[15px]">14 Kbps</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-white/55">Up</p>
+                      <p className="font-mono-pulse text-[15px]">12 Kbps</p>
+                    </div>
+                  </div>
+                  <Sparkline color={MIDNIGHT.info} />
+                  <p className="mt-auto truncate text-[10px] text-white/60">
+                    Realtek Gaming 2.5GbE
+                  </p>
+                </motion.div>
               </div>
 
-              <div className="mb-3 rounded-lg border border-white/[0.05] bg-white/[0.02] px-3 py-2 font-mono-pulse text-[9px] text-white/35">
-                Windows 10 Pro 25H2 · AMD Ryzen 5 7500F · RTX 3060 · 34 GiB · Uptime 3h 8m
-              </div>
-
-              <p className="mb-2 text-[10px] font-semibold tracking-[0.12em] text-white/35 uppercase">
-                Performance · Last 60 seconds
+              <p className="font-mono-pulse mt-3 mb-1.5 text-[9px] tracking-[0.12em] text-white/50 uppercase">
+                Performance <span className="normal-case">(Last 60 seconds)</span>
               </p>
-              <div className="grid grid-cols-4 gap-2">
-                {CHARTS.map((chart, i) => {
-                  const tone = TONE[chart.tone]
+              <div className="grid grid-cols-4 gap-2.5">
+                {CHARTS.map((chart, index) => {
+                  const color =
+                    chart.label === 'Disk'
+                      ? 'rgba(255,255,255,0.45)'
+                      : utilizationColor(chart.percent)
                   return (
                     <motion.div
                       key={chart.label}
-                      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 + i * 0.06 }}
-                      className="rounded-xl border border-white/[0.06] bg-[#15181e] p-2.5"
+                      {...appear(0.3 + index * 0.05)}
+                      className={`${TILE} p-3`}
                     >
-                      <div className="flex items-baseline justify-between gap-2">
-                        <p className="text-[11px] font-medium text-white/70">{chart.label}</p>
-                        <p className={cn('font-mono-pulse text-[10px]', tone.text)}>{chart.value}</p>
-                      </div>
-                      <svg viewBox="0 0 120 48" className="mt-2 h-14 w-full" aria-hidden>
+                      <p className="flex justify-between text-[10px]">
+                        <span className="text-white/60">{chart.label}</span>
+                        <span className="font-semibold">{chart.value}</span>
+                      </p>
+                      <svg
+                        viewBox="0 0 150 52"
+                        className="mt-1.5 h-[62px] w-full"
+                        preserveAspectRatio="none"
+                        aria-hidden
+                      >
+                        <path d={`${chart.path} L150 52 L0 52 Z`} fill={color} opacity="0.08" />
                         <motion.path
-                          d={
-                            [
-                              'M0 30 L15 28 L30 22 L45 26 L60 12 L75 18 L90 10 L105 16 L120 14',
-                              'M0 24 L15 22 L30 20 L45 18 L60 16 L75 15 L90 14 L105 13 L120 12',
-                              'M0 28 L15 26 L30 18 L45 24 L60 14 L75 20 L90 16 L105 18 L120 17',
-                              'M0 32 L15 30 L30 28 L45 20 L60 24 L75 18 L90 22 L105 16 L120 18',
-                            ][i]
-                          }
+                          d={chart.path}
                           fill="none"
-                          stroke={tone.bar}
-                          strokeWidth="1.6"
-                          strokeLinecap="round"
+                          stroke={color}
+                          strokeWidth="1.4"
                           initial={reduceMotion ? false : { pathLength: 0 }}
                           animate={{ pathLength: 1 }}
-                          transition={{ duration: 1.2, delay: 0.4 + i * 0.08, ease: 'easeOut' }}
+                          transition={{ duration: 1.1, delay: 0.35 + index * 0.06 }}
                         />
                       </svg>
                     </motion.div>
                   )
                 })}
+              </div>
+
+              <div className="mt-2.5 flex items-center justify-between rounded-[12px] border border-white/[0.08] bg-[#111114] px-3 py-2">
+                {IDENTITY.map(({ icon: Icon, label, value }) => (
+                  <span key={label} className="flex items-center gap-1.5 text-[9.5px]">
+                    <Icon className="size-3 text-white/45" aria-hidden />
+                    <span className="text-white/45">{label}</span>
+                    <span className="text-white/85">{value}</span>
+                  </span>
+                ))}
               </div>
             </div>
           </PulseAppShell>
@@ -198,11 +264,19 @@ export function HealthDemo() {
   )
 }
 
-function Legend({ swatch, label }: { swatch: string; label: string }) {
+function Sparkline({ color, flat }: { color: string; flat?: boolean }) {
+  const reduceMotion = useReducedMotion()
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.03] px-2 py-0.5">
-      <span className="size-1.5 rounded-full" style={{ background: swatch }} aria-hidden />
-      {label}
-    </span>
+    <svg viewBox="0 0 200 20" className="mt-1.5 h-4 w-full" preserveAspectRatio="none" aria-hidden>
+      <motion.path
+        d={flat ? 'M0 14 L200 14' : 'M0 12 L30 13 L60 12 L90 13 L120 12 L150 11 L180 13 L200 12'}
+        fill="none"
+        stroke={color}
+        strokeWidth="1.6"
+        initial={reduceMotion ? false : { pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1, delay: 0.25 }}
+      />
+    </svg>
   )
 }
