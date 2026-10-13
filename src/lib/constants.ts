@@ -8,12 +8,12 @@ export const SITE = {
   github: 'https://github.com/Regncreative/Pulse',
   releases: 'https://github.com/Regncreative/Pulse/releases',
   latestRelease: 'https://github.com/Regncreative/Pulse/releases/latest',
-  release: 'https://github.com/Regncreative/Pulse/releases/tag/v1.2.0',
+  release: 'https://github.com/Regncreative/Pulse/releases/tag/v1.3.0',
   license: 'https://github.com/Regncreative/Pulse/blob/master/LICENSE',
   repo: 'Regncreative/Pulse',
-  versionFallback: '1.2.0',
+  versionFallback: '1.3.0',
   download:
-    'https://github.com/Regncreative/Pulse/releases/download/v1.2.0/Pulse-Setup-1.2.0-windows-x64.exe',
+    'https://github.com/Regncreative/Pulse/releases/download/v1.3.0/Pulse-Setup-1.3.0-windows-x64.exe',
   microsoftStoreId: '9PNDTLNTJ82T',
   microsoftStore: 'https://apps.microsoft.com/detail/9PNDTLNTJ82T?hl=neutral&gl=TR&ocid=pdpshare',
   productHunt:

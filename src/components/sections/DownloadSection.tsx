@@ -56,6 +56,16 @@ export function DownloadSection({ version, releaseUrl }: DownloadSectionProps) {
         </div>
 
         <p className="mt-5 text-sm text-[var(--muted)]">{t.download.comingSoon}</p>
+        <p className="mt-3 text-xs text-[var(--muted)]">
+          <a
+            href="https://about.signpath.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            {t.download.signing}
+          </a>
+        </p>
       </div>
     </Section>
   )

@@ -22,7 +22,7 @@ const en = {
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
-    whatsNew: 'New: the Midnight redesign',
+    whatsNew: 'New: smaller and more stable',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -170,6 +170,7 @@ const en = {
     sourcePrefix: 'Source and installer',
     comingSoon:
       'Preferred install path is Microsoft Store — source and release notes stay on GitHub.',
+    signing: 'Free code signing provided by SignPath.io, certificate by SignPath Foundation.',
   },
   faq: {
     eyebrow: 'FAQ',
@@ -202,7 +203,7 @@ const en = {
       },
       {
         q: 'Does Pulse include AI?',
-        a: 'Yes — Pulse Assistant runs locally through Ollama or LM Studio. It can analyze CPU, memory, GPU, storage, network, processes, and events with read-only tools. No cloud AI is required, and it cannot execute commands or modify the system. Optional MCP for external clients remains available.',
+        a: 'Yes — Pulse Assistant runs locally through Ollama or LM Studio. It can analyze CPU, memory, GPU, storage, network, processes, and events with read-only tools. No cloud AI is required, and it cannot execute commands or modify the system.',
       },
     ],
   },
@@ -255,7 +256,7 @@ const tr: Dict = {
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
-    whatsNew: 'Yeni: Midnight tasarımı',
+    whatsNew: 'Yeni: daha küçük, daha kararlı',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -403,6 +404,7 @@ const tr: Dict = {
     releasesBtn: 'Sürüm notları',
     sourcePrefix: 'Kaynak ve kurulum',
     comingSoon: 'Önerilen kurulum Microsoft Store — kaynak ve sürüm notları GitHub’da.',
+    signing: 'Ücretsiz kod imzalama SignPath.io, sertifika SignPath Foundation tarafından sağlanır.',
   },
   faq: {
     eyebrow: 'SSS',
@@ -435,7 +437,7 @@ const tr: Dict = {
       },
       {
         q: 'Pulse yapay zekâ içeriyor mu?',
-        a: 'Evet — Pulse Assistant yerelde Ollama veya LM Studio ile çalışır. CPU, bellek, GPU, depolama, ağ, süreç ve olayları salt okunur araçlarla analiz eder. Bulut AI gerekmez; komut çalıştıramaz veya sistemi değiştiremez. İsteğe bağlı MCP dış istemciler için hâlâ mevcuttur.',
+        a: 'Evet — Pulse Assistant yerelde Ollama veya LM Studio ile çalışır. CPU, bellek, GPU, depolama, ağ, süreç ve olayları salt okunur araçlarla analiz eder. Bulut AI gerekmez; komut çalıştıramaz veya sistemi değiştiremez.',
       },
     ],
   },
