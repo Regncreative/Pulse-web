@@ -26,9 +26,9 @@ export function WhatsNew() {
       title={t.whatsNew.title}
       description={t.whatsNew.description}
     >
-      <div className="grid items-start gap-6 lg:grid-cols-5">
+      <div className="mx-auto max-w-5xl">
         <motion.div
-          className="overflow-hidden rounded-3xl bg-[#08080A] shadow-[var(--shadow-lg)] ring-1 ring-[var(--border)] lg:col-span-3"
+          className="overflow-hidden rounded-3xl bg-[#08080A] shadow-[var(--shadow-lg)] ring-1 ring-[var(--border)]"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
@@ -48,15 +48,15 @@ export function WhatsNew() {
           </video>
         </motion.div>
 
-        <ul className="space-y-3 lg:col-span-2">
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.whatsNew.items.map((item, index) => {
             const Icon = ICONS[index % ICONS.length]
             return (
               <motion.li
                 key={item.title}
-                className="flex gap-4 rounded-2xl bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] ring-1 ring-[var(--border)]"
-                initial={reduceMotion ? false : { opacity: 0, x: 12 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="flex h-full flex-col gap-3 rounded-2xl bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)] ring-1 ring-[var(--border)]"
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.08 * index, duration: 0.4 }}
               >

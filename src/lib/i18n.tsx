@@ -265,9 +265,9 @@ const en = {
     unsupported: 'Your browser does not support this video.',
   },
   productHunt: {
-    live: 'Coming soon',
-    title: 'Pulse is launching on Product Hunt',
-    subtitle: 'follow along and be ready to upvote',
+    live: 'Live',
+    title: 'Pulse is live on Product Hunt',
+    subtitle: 'take a look and share your feedback',
   },
 }
 
@@ -533,9 +533,9 @@ const tr: Dict = {
     unsupported: 'Tarayıcınız bu videoyu desteklemiyor.',
   },
   productHunt: {
-    live: 'Yakında',
-    title: 'Pulse yakında Product Hunt’ta',
-    subtitle: 'takipte kal, upvote için hazır ol',
+    live: 'Yayında',
+    title: 'Pulse Product Hunt’ta yayında',
+    subtitle: 'göz at, yorumunu paylaş',
   },
 }
 
