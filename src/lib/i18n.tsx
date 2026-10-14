@@ -225,6 +225,35 @@ const en = {
     open: 'Open Pulse demo',
     close: 'Close',
   },
+  whatsNew: {
+    eyebrow: 'New in 1.4',
+    title: 'Pulse 1.4 explains the crash.',
+    description:
+      'Blue screens and sudden restarts in plain language, logs from other PCs, and reports you can share safely.',
+    videoLabel: 'Pulse 1.4 release video',
+    items: [
+      {
+        title: 'Blue screens, explained',
+        description:
+          'The stop code, what usually causes it and what to check next — not just “Kernel-Power 41”.',
+      },
+      {
+        title: 'Power loss or hardware?',
+        description:
+          'Tells a blue screen, a forced power-off, a power loss and WHEA hardware errors apart.',
+      },
+      {
+        title: 'Logs from another PC',
+        description:
+          'Open an .evtx exported from the PC you are helping and read it the same way.',
+      },
+      {
+        title: 'Reports you can share',
+        description:
+          'User and computer names, IPs and serial numbers are masked in exports by default.',
+      },
+    ],
+  },
   intro: {
     title: 'Pulse intro',
     subtitle: 'Optional — close anytime to browse the site',
@@ -463,6 +492,35 @@ const tr: Dict = {
     note: 'Demo önizlemesi — olaylar yalnızca bu sekmede kalır',
     open: 'Pulse demosunu aç',
     close: 'Kapat',
+  },
+  whatsNew: {
+    eyebrow: '1.4’te yeni',
+    title: 'Pulse 1.4 çökmeyi açıklıyor.',
+    description:
+      'Mavi ekranlar ve ani yeniden başlamalar sade dille, başka bilgisayarların günlükleri ve güvenle paylaşılabilen raporlar.',
+    videoLabel: 'Pulse 1.4 tanıtım videosu',
+    items: [
+      {
+        title: 'Mavi ekranlar açıklanıyor',
+        description:
+          'Stop kodu, genellikle neden kaynaklandığı ve neye bakmanız gerektiği — yalnızca “Kernel-Power 41” değil.',
+      },
+      {
+        title: 'Elektrik mi, donanım mı?',
+        description:
+          'Mavi ekranı, zorla kapatmayı, elektrik kesintisini ve WHEA donanım hatalarını birbirinden ayırır.',
+      },
+      {
+        title: 'Başka PC’lerin günlükleri',
+        description:
+          'Yardım ettiğiniz bilgisayardan alınan .evtx dosyasını açın, aynı şekilde okuyun.',
+      },
+      {
+        title: 'Paylaşılabilir raporlar',
+        description:
+          'Kullanıcı ve bilgisayar adları, IP’ler ve seri numaraları dışa aktarmalarda varsayılan olarak gizlenir.',
+      },
+    ],
   },
   intro: {
     title: 'Pulse tanıtımı',
