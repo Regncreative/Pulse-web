@@ -14,7 +14,6 @@ const SUBNAV = [
   'Diagnostics',
   'Performance',
   'Privacy',
-  'AI Integration',
   'Updates',
   'Developer',
 ]
