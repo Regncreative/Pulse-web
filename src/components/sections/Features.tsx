@@ -7,11 +7,11 @@ import {
   Box,
   Bot,
   FileDown,
+  FolderOpen,
   HardDrive,
   LayoutList,
+  MonitorX,
   Palette,
-  Radio,
-  Server,
   Shield,
   Stethoscope,
 } from 'lucide-react'
@@ -22,7 +22,7 @@ import { useLang } from '@/lib/i18n'
 const ICONS: LucideIcon[] = [
   Bot,
   LayoutList,
-  Radio,
+  MonitorX,
   Activity,
   Box,
   FileDown,
@@ -31,7 +31,7 @@ const ICONS: LucideIcon[] = [
   Palette,
   Shield,
   HardDrive,
-  Server,
+  FolderOpen,
 ]
 
 export function Features() {

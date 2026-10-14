@@ -22,7 +22,7 @@ const en = {
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
-    whatsNew: 'New: smaller and more stable',
+    whatsNew: 'New: blue screens explained',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -84,8 +84,9 @@ const en = {
           'Live event feed with severity filters — plain language first, raw detail when you ask.',
       },
       {
-        title: 'Live Monitoring',
-        description: 'Windows Event Log via EvtSubscribe, pushed over named-pipe IPC in real time.',
+        title: 'Crash Explainer',
+        description:
+          'Blue screens with the stop code and its usual cause, forced power-offs, power loss and hardware errors — in one plain sentence.',
       },
       {
         title: 'System Health',
@@ -99,7 +100,7 @@ const en = {
       {
         title: 'Local Reports',
         description:
-          'Export health, timeline, diagnostics, or inventory as JSON, CSV, HTML, or PDF.',
+          'Export health, timeline, diagnostics, or inventory as JSON, CSV, HTML, or PDF — with names, IPs and serial numbers masked so they are safe to share.',
       },
       {
         title: 'Background & tray',
@@ -126,8 +127,9 @@ const en = {
           'No account, no sync, no telemetry. Preferences, exports, and local AI stay on-device.',
       },
       {
-        title: 'Native Service',
-        description: 'C++ PulseService collects and humanizes; Flutter Desktop renders the UI.',
+        title: 'Logs From Other PCs',
+        description:
+          'Open an .evtx exported from another computer and read it in plain language — handy for IT support.',
       },
     ],
   },
@@ -202,6 +204,10 @@ const en = {
         a: 'No. Pulse never adds cleaner, optimizer, or antivirus features — only observability.',
       },
       {
+        q: 'Can Pulse explain a blue screen or a random restart?',
+        a: 'Yes. Pulse reads the stop code and the restart event and says what happened in one sentence — a blue screen (with its usual cause), a forced power-off, or a power loss or hardware fault — plus what to check next.',
+      },
+      {
         q: 'Does Pulse include AI?',
         a: 'Yes — Pulse Assistant runs locally through Ollama or LM Studio. It can analyze CPU, memory, GPU, storage, network, processes, and events with read-only tools. No cloud AI is required, and it cannot execute commands or modify the system.',
       },
@@ -256,7 +262,7 @@ const tr: Dict = {
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
-    whatsNew: 'Yeni: daha küçük, daha kararlı',
+    whatsNew: 'Yeni: mavi ekranlar artık açıklanıyor',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -317,9 +323,9 @@ const tr: Dict = {
         description: 'Şiddet filtreli canlı akış — önce düz dil, ham detay yalnızca istediğinizde.',
       },
       {
-        title: 'Canlı İzleme',
+        title: 'Çökme Açıklayıcı',
         description:
-          'EvtSubscribe ile Windows Olay Günlüğü; named-pipe IPC üzerinden gerçek zamanlı.',
+          'Stop kodu ve olası sebebiyle mavi ekranlar, zorla kapatmalar, elektrik kesintileri ve donanım hataları — tek bir sade cümlede.',
       },
       {
         title: 'Sistem Sağlığı',
@@ -334,7 +340,7 @@ const tr: Dict = {
       {
         title: 'Yerel Raporlar',
         description:
-          'Sağlık, timeline, tanılama veya envanteri JSON, CSV, HTML veya PDF olarak aktarın.',
+          'Sağlık, timeline, tanılama veya envanteri JSON, CSV, HTML veya PDF olarak aktarın — paylaşmak için isimler, IP’ler ve seri numaraları gizlenir.',
       },
       {
         title: 'Arka plan ve tepsi',
@@ -361,8 +367,9 @@ const tr: Dict = {
           'Hesap yok, senkron yok, telemetri yok. Tercihler, dışa aktarımlar ve yerel AI cihazda kalır.',
       },
       {
-        title: 'Yerel Servis',
-        description: 'C++ PulseService toplar ve insanlaştırır; Flutter Desktop arayüzü çizer.',
+        title: 'Başka PC’lerin Günlükleri',
+        description:
+          'Başka bir bilgisayardan alınan .evtx dosyasını açın ve sade dille okuyun — teknik destek için ideal.',
       },
     ],
   },
@@ -434,6 +441,10 @@ const tr: Dict = {
       {
         q: 'Bu bir temizleyici veya antivirüs mü?',
         a: 'Hayır. Pulse temizleyici, optimizasyon veya antivirüs özellikleri eklemez — yalnızca gözlemlenebilirlik.',
+      },
+      {
+        q: 'Pulse mavi ekranı veya rastgele yeniden başlamayı açıklayabilir mi?',
+        a: 'Evet. Pulse stop kodunu ve yeniden başlama olayını okuyup ne olduğunu tek cümleyle söyler — mavi ekran (olası sebebiyle), zorla kapatma ya da elektrik kesintisi / donanım arızası — ve neye bakmanız gerektiğini gösterir.',
       },
       {
         q: 'Pulse yapay zekâ içeriyor mu?',
