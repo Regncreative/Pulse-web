@@ -33,9 +33,7 @@ export function Hero({ version }: HeroProps) {
           className="mx-auto mb-12 max-w-3xl text-center"
         >
           <a
-            href={SITE.release}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#whats-new"
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[#08080A] py-1 pr-3 pl-1 text-[13px] font-medium text-white shadow-[var(--shadow-sm)] transition hover:brightness-125"
           >
             <span className="rounded-full bg-[#C8F04A] px-2 py-0.5 text-[11px] font-semibold text-[#08080A]">
