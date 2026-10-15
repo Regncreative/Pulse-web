@@ -1,6 +1,7 @@
 'use client'
 
-import { ArrowUpRight, Newspaper } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { useLang } from '@/lib/i18n'
 
@@ -8,47 +9,70 @@ import { useLang } from '@/lib/i18n'
 const ARTICLES = [
   {
     outlet: 'IlSoftware.it',
+    country: { en: 'Italy', tr: 'İtalya' },
+    date: '2026-10-13',
+    author: 'Michele Nasi',
     title: 'Visualizzatore eventi Windows 11 più comprensibile con un tool open source',
     url: 'https://www.ilsoftware.it/focus/visualizzatore-eventi-windows-11-migliorato-pulse/',
   },
 ] as const
 
 export function PressStrip() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
+  const reduceMotion = useReducedMotion()
+  const formatDate = (iso: string) =>
+    new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(new Date(iso))
 
   return (
-    <section aria-label={t.press.label} className="pb-4">
+    <section aria-label={t.press.label} className="py-6 sm:py-10">
       <Container>
-        <div className="flex flex-col items-center gap-3">
-          <p className="font-mono-pulse text-[11px] tracking-[0.18em] text-[var(--fg-dim)] uppercase">
-            {t.press.label}
-          </p>
-          {ARTICLES.map((article) => (
-            <a
-              key={article.url}
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex max-w-full items-center gap-3 rounded-2xl bg-[var(--surface)] px-4 py-3 shadow-[var(--shadow-sm)] ring-1 ring-[var(--border)] transition hover:ring-[var(--accent-ring)]"
-            >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] ring-1 ring-[var(--accent-ring)]">
-                <Newspaper className="size-4" aria-hidden />
-              </span>
-              <span className="min-w-0 text-left">
-                <span className="block text-sm font-semibold text-[var(--foreground)]">
-                  {t.press.featured} {article.outlet}
-                </span>
-                <span className="block truncate text-sm text-[var(--fg-dim)] italic">
-                  {article.title}
-                </span>
-              </span>
-              <ArrowUpRight
-                className="size-4 shrink-0 text-[var(--fg-dim)] transition group-hover:text-[var(--accent)]"
-                aria-hidden
-              />
-            </a>
-          ))}
-        </div>
+        {ARTICLES.map((article) => (
+          <motion.a
+            key={article.url}
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative mx-auto grid max-w-5xl items-center gap-6 overflow-hidden rounded-3xl bg-[#08080A] p-6 text-white shadow-[var(--shadow-lg)] ring-1 ring-white/10 transition hover:ring-[#C8F04A]/40 sm:p-8 md:grid-cols-[auto_1fr_auto] md:gap-10"
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* lime glow */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -top-24 -left-24 size-72 rounded-full bg-[#C8F04A]/15 blur-3xl transition group-hover:bg-[#C8F04A]/25"
+            />
+
+            <div className="relative">
+              <p className="font-mono-pulse text-[11px] tracking-[0.2em] text-[#C8F04A] uppercase">
+                {t.press.label}
+              </p>
+              <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{article.outlet}</p>
+              <p className="mt-1 text-sm text-white/50">
+                {article.country[lang]} · {formatDate(article.date)}
+              </p>
+            </div>
+
+            <blockquote className="relative border-white/10 md:border-l md:pl-10">
+              <p className="text-lg leading-snug font-semibold text-white/90 sm:text-xl">
+                “{article.title}”
+              </p>
+              <p className="mt-2 text-sm text-white/50">
+                {t.press.by} {article.author}
+              </p>
+            </blockquote>
+
+            <span className="relative inline-flex w-fit items-center gap-2 rounded-full bg-[#C8F04A] px-5 py-2.5 text-sm font-semibold text-[#08080A] transition group-hover:brightness-110">
+              {t.press.read}
+              <ArrowUpRight className="size-4" aria-hidden />
+            </span>
+          </motion.a>
+        ))}
       </Container>
     </section>
   )
