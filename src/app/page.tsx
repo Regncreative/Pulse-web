@@ -1,6 +1,7 @@
 import { VideoIntro } from '@/components/VideoIntro'
 import { Navbar } from '@/components/sections/Navbar'
 import { Hero } from '@/components/sections/Hero'
+import { PressStrip } from '@/components/sections/PressStrip'
 import { WhatsNew } from '@/components/sections/WhatsNew'
 import { Translate } from '@/components/sections/Translate'
 import { ProductDemo } from '@/components/sections/ProductDemo'
@@ -25,6 +26,7 @@ export default async function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero version={release.version} />
+        <PressStrip />
         <WhatsNew />
         <Translate />
         <ProductDemo />
