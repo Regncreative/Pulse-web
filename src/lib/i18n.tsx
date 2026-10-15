@@ -227,7 +227,8 @@ const en = {
   },
   press: {
     label: 'In the press',
-    featured: 'Featured on',
+    by: 'by',
+    read: 'Read the article',
   },
   whatsNew: {
     eyebrow: 'New in 1.4',
@@ -499,7 +500,8 @@ const tr: Dict = {
   },
   press: {
     label: 'Basında',
-    featured: 'Haber oldu:',
+    by: 'Yazar:',
+    read: 'Makaleyi oku',
   },
   whatsNew: {
     eyebrow: '1.4’te yeni',
