@@ -225,6 +225,10 @@ const en = {
     open: 'Open Pulse demo',
     close: 'Close',
   },
+  press: {
+    label: 'In the press',
+    featured: 'Featured on',
+  },
   whatsNew: {
     eyebrow: 'New in 1.4',
     title: 'Pulse 1.4 explains the crash.',
@@ -492,6 +496,10 @@ const tr: Dict = {
     note: 'Demo önizlemesi — olaylar yalnızca bu sekmede kalır',
     open: 'Pulse demosunu aç',
     close: 'Kapat',
+  },
+  press: {
+    label: 'Basında',
+    featured: 'Haber oldu:',
   },
   whatsNew: {
     eyebrow: '1.4’te yeni',
