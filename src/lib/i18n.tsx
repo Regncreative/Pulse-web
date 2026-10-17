@@ -22,7 +22,7 @@ const en = {
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
-    whatsNew: 'New: blue screens explained',
+    whatsNew: 'New in 1.4.1: health for every disk',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -258,6 +258,29 @@ const en = {
           'User and computer names, IPs and serial numbers are masked in exports by default.',
       },
     ],
+    patchTitle: 'Also new in 1.4.1',
+    patchItems: [
+      {
+        title: 'Health for every disk',
+        description:
+          'Temperature and SMART for each disk; wear, spare capacity and power-on time for NVMe drives.',
+      },
+      {
+        title: 'What woke your PC',
+        description:
+          'The device or scheduled task behind a wake from sleep, and how to stop it.',
+      },
+      {
+        title: 'Secure Boot events, explained',
+        description:
+          'Certificate and SBAT update events in plain language, following Microsoft’s documentation.',
+      },
+      {
+        title: 'A deeper Assistant',
+        description:
+          'Command lines, CPU time, private memory and Windows services. Still only a local AI on this PC.',
+      },
+    ],
   },
   intro: {
     title: 'Pulse intro',
@@ -296,7 +319,7 @@ const tr: Dict = {
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
-    whatsNew: 'Yeni: mavi ekranlar artık açıklanıyor',
+    whatsNew: '1.4.1’de yeni: her disk için sağlık',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -529,6 +552,29 @@ const tr: Dict = {
         title: 'Paylaşılabilir raporlar',
         description:
           'Kullanıcı ve bilgisayar adları, IP’ler ve seri numaraları dışa aktarmalarda varsayılan olarak gizlenir.',
+      },
+    ],
+    patchTitle: '1.4.1’de ayrıca',
+    patchItems: [
+      {
+        title: 'Her disk için sağlık',
+        description:
+          'Her diskin sıcaklığı ve SMART durumu; NVMe disklerde aşınma, yedek alan ve açık kalma süresi.',
+      },
+      {
+        title: 'Bilgisayarı ne uyandırdı',
+        description:
+          'Uykudan uyandıran aygıt ya da zamanlanmış görev ve bunun nasıl durdurulacağı.',
+      },
+      {
+        title: 'Secure Boot olayları sade dille',
+        description:
+          'Sertifika ve SBAT güncelleme olayları, Microsoft belgelerine göre anlaşılır başlıklarla.',
+      },
+      {
+        title: 'Daha yetenekli Asistan',
+        description:
+          'Komut satırları, CPU süresi, özel bellek ve Windows servisleri. Hâlâ yalnızca bu bilgisayardaki yerel yapay zekâ.',
       },
     ],
   },
