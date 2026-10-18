@@ -3,10 +3,14 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   Bot,
+  CalendarRange,
   FileSearch,
   HardDrive,
+  MessageSquareText,
   MonitorX,
   Moon,
+  PackageX,
+  Power,
   ShieldCheck,
   Zap,
   type LucideIcon,
@@ -22,6 +26,8 @@ const VIDEO = {
 } as const
 
 const ICONS = [MonitorX, Zap, FileSearch, ShieldCheck]
+// 1.4.3: date range, Assistant replies, clean exit, clean uninstall.
+const LATEST_ICONS = [CalendarRange, MessageSquareText, Power, PackageX]
 // 1.4.1: disk health, wake source, Secure Boot events, Assistant.
 const PATCH_ICONS = [HardDrive, Moon, ShieldCheck, Bot]
 
@@ -103,6 +109,15 @@ export function WhatsNew() {
         </motion.div>
 
         <FeatureGrid items={t.whatsNew.items} icons={ICONS} className="mt-8" />
+
+        <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
+          {t.whatsNew.latestTitle}
+        </p>
+        <FeatureGrid
+          items={t.whatsNew.latestItems}
+          icons={LATEST_ICONS}
+          className="mt-5"
+        />
 
         <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
           {t.whatsNew.patchTitle}

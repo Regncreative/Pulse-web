@@ -22,7 +22,7 @@ const en = {
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
-    whatsNew: 'New in 1.4.1: health for every disk',
+    whatsNew: 'New in 1.4.3: pick any date range',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -258,6 +258,29 @@ const en = {
           'User and computer names, IPs and serial numbers are masked in exports by default.',
       },
     ],
+    latestTitle: 'New in 1.4.3',
+    latestItems: [
+      {
+        title: 'Any date range',
+        description:
+          'Pick a from and to time in the Timeline. Saved searches keep the range.',
+      },
+      {
+        title: 'Readable Assistant replies',
+        description:
+          'Bold, lists and code blocks render properly, and Enter sends your message.',
+      },
+      {
+        title: 'Closes cleanly',
+        description:
+          'Fixed a crash that could happen when Pulse closed.',
+      },
+      {
+        title: 'Clean uninstall',
+        description:
+          'The uninstaller closes Pulse first, so nothing is left running.',
+      },
+    ],
     patchTitle: 'Also new in 1.4.1',
     patchItems: [
       {
@@ -319,7 +342,7 @@ const tr: Dict = {
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
-    whatsNew: '1.4.1’de yeni: her disk için sağlık',
+    whatsNew: '1.4.3’te yeni: istediğiniz tarih aralığı',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -552,6 +575,29 @@ const tr: Dict = {
         title: 'Paylaşılabilir raporlar',
         description:
           'Kullanıcı ve bilgisayar adları, IP’ler ve seri numaraları dışa aktarmalarda varsayılan olarak gizlenir.',
+      },
+    ],
+    latestTitle: '1.4.3’te yeni',
+    latestItems: [
+      {
+        title: 'İstediğiniz tarih aralığı',
+        description:
+          'Timeline’da başlangıç ve bitiş zamanını seçin. Kayıtlı aramalar aralığı korur.',
+      },
+      {
+        title: 'Okunaklı Asistan yanıtları',
+        description:
+          'Kalın yazı, listeler ve kod blokları düzgün görünür; Enter mesajı gönderir.',
+      },
+      {
+        title: 'Sorunsuz kapanış',
+        description:
+          'Pulse kapanırken oluşabilen çökme giderildi.',
+      },
+      {
+        title: 'Temiz kaldırma',
+        description:
+          'Kaldırıcı önce Pulse’u kapatır, arkada çalışan bir şey kalmaz.',
       },
     ],
     patchTitle: '1.4.1’de ayrıca',
