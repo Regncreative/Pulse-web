@@ -2,15 +2,15 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import {
+  AppWindow,
   Bot,
-  CalendarRange,
   FileSearch,
   HardDrive,
-  MessageSquareText,
   MonitorX,
+  EyeOff,
+  Gauge,
+  Gpu,
   Moon,
-  PackageX,
-  Power,
   ShieldCheck,
   Zap,
   type LucideIcon,
@@ -26,8 +26,8 @@ const VIDEO = {
 } as const
 
 const ICONS = [MonitorX, Zap, FileSearch, ShieldCheck]
-// 1.4.3: date range, Assistant replies, clean exit, clean uninstall.
-const LATEST_ICONS = [CalendarRange, MessageSquareText, Power, PackageX]
+// 1.5: every GPU, Task Manager GPU load, hidden events, one Pulse.
+const LATEST_ICONS = [Gpu, Gauge, EyeOff, AppWindow]
 // 1.4.1: disk health, wake source, Secure Boot events, Assistant.
 const PATCH_ICONS = [HardDrive, Moon, ShieldCheck, Bot]
 
