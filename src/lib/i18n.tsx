@@ -22,7 +22,7 @@ const en = {
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
-    whatsNew: 'New in 1.4.3: pick any date range',
+    whatsNew: 'New in 1.5: every GPU, quieter Timeline',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -258,27 +258,27 @@ const en = {
           'User and computer names, IPs and serial numbers are masked in exports by default.',
       },
     ],
-    latestTitle: 'New in 1.4.3',
+    latestTitle: 'New in 1.5',
     latestItems: [
       {
-        title: 'Any date range',
+        title: 'Every GPU',
         description:
-          'Pick a from and to time in the Timeline. Saved searches keep the range.',
+          'Integrated and dedicated GPUs side by side, each with its load and memory.',
       },
       {
-        title: 'Readable Assistant replies',
+        title: 'GPU load like Task Manager',
         description:
-          'Bold, lists and code blocks render properly, and Enter sends your message.',
+          'Worked out the same way as Task Manager, so the numbers match.',
       },
       {
-        title: 'Closes cleanly',
+        title: 'Hide events you expect',
         description:
-          'Fixed a crash that could happen when Pulse closed.',
+          'Take a known event type out of the Timeline. Reports still keep every event.',
       },
       {
-        title: 'Clean uninstall',
+        title: 'One Pulse at a time',
         description:
-          'The uninstaller closes Pulse first, so nothing is left running.',
+          'Starting Pulse again brings the open window forward, even from the tray.',
       },
     ],
     patchTitle: 'Also new in 1.4.1',
@@ -342,7 +342,7 @@ const tr: Dict = {
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
-    whatsNew: '1.4.3’te yeni: istediğiniz tarih aralığı',
+    whatsNew: '1.5’te yeni: tüm GPU’lar, daha sakin Timeline',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -577,27 +577,27 @@ const tr: Dict = {
           'Kullanıcı ve bilgisayar adları, IP’ler ve seri numaraları dışa aktarmalarda varsayılan olarak gizlenir.',
       },
     ],
-    latestTitle: '1.4.3’te yeni',
+    latestTitle: '1.5’te yeni',
     latestItems: [
       {
-        title: 'İstediğiniz tarih aralığı',
+        title: 'Tüm GPU’lar',
         description:
-          'Timeline’da başlangıç ve bitiş zamanını seçin. Kayıtlı aramalar aralığı korur.',
+          'Dahili ve harici GPU yan yana; her birinin yükü ve belleğiyle.',
       },
       {
-        title: 'Okunaklı Asistan yanıtları',
+        title: 'Görev Yöneticisi gibi GPU yükü',
         description:
-          'Kalın yazı, listeler ve kod blokları düzgün görünür; Enter mesajı gönderir.',
+          'Görev Yöneticisi ile aynı yöntemle hesaplanır, sayılar örtüşür.',
       },
       {
-        title: 'Sorunsuz kapanış',
+        title: 'Beklenen olayları gizleyin',
         description:
-          'Pulse kapanırken oluşabilen çökme giderildi.',
+          'Bildiğiniz bir olay türünü Timeline’dan kaldırın. Raporlar yine her olayı içerir.',
       },
       {
-        title: 'Temiz kaldırma',
+        title: 'Tek Pulse',
         description:
-          'Kaldırıcı önce Pulse’u kapatır, arkada çalışan bir şey kalmaz.',
+          'Pulse’u yeniden açınca açık pencere öne gelir, tepsideyken bile.',
       },
     ],
     patchTitle: '1.4.1’de ayrıca',
