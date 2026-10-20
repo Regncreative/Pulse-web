@@ -5,8 +5,17 @@ import { ArrowUpRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { useLang } from '@/lib/i18n'
 
-/** Articles about Pulse. Titles stay in the article's own language. */
+/** Articles about Pulse, newest first. Titles stay in the article's own
+ * language. */
 const ARTICLES = [
+  {
+    outlet: 'TecnoAndroid',
+    country: { en: 'Italy', tr: 'İtalya' },
+    date: '2026-10-18',
+    author: 'Manuel De Pandis',
+    title: 'Pulse per Windows 11: il Visualizzatore eventi diventa leggibile',
+    url: 'https://www.tecnoandroid.it/news/pulse-per-windows-11-il-visualizzatore-eventi-diventa-leggibile-1994644/',
+  },
   {
     outlet: 'IlSoftware.it',
     country: { en: 'Italy', tr: 'İtalya' },
@@ -29,7 +38,7 @@ export function PressStrip() {
 
   return (
     <section aria-label={t.press.label} className="py-6 sm:py-10">
-      <Container>
+      <Container className="space-y-4">
         {ARTICLES.map((article) => (
           <motion.a
             key={article.url}
