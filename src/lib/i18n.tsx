@@ -231,12 +231,35 @@ const en = {
     read: 'Read the article',
   },
   whatsNew: {
-    eyebrow: 'New in 1.4',
-    title: 'Pulse 1.4 explains the crash.',
+    eyebrow: 'New in 1.5',
+    title: 'Pulse 1.5 finds the events that matter.',
     description:
-      'Blue screens and sudden restarts in plain language, logs from other PCs, and reports you can share safely.',
-    videoLabel: 'Pulse 1.4 release video',
+      'Every GPU side by side, GPU load measured like Task Manager, and one click to hide the events you already know.',
+    videoLabel: 'Pulse 1.5 release video',
     items: [
+      {
+        title: 'Every GPU',
+        description:
+          'Integrated and dedicated GPUs side by side, each with its load and memory.',
+      },
+      {
+        title: 'GPU load like Task Manager',
+        description:
+          'Worked out the same way as Task Manager, so the numbers match.',
+      },
+      {
+        title: 'Hide events you expect',
+        description:
+          'Take a known event type out of the Timeline. Reports still keep every event.',
+      },
+      {
+        title: 'Quieter notifications',
+        description:
+          'A critical event of a type you hid no longer pops up on your desktop.',
+      },
+    ],
+    earlierTitle: 'New in 1.4',
+    earlierItems: [
       {
         title: 'Blue screens, explained',
         description:
@@ -256,29 +279,6 @@ const en = {
         title: 'Reports you can share',
         description:
           'User and computer names, IPs and serial numbers are masked in exports by default.',
-      },
-    ],
-    latestTitle: 'New in 1.5',
-    latestItems: [
-      {
-        title: 'Every GPU',
-        description:
-          'Integrated and dedicated GPUs side by side, each with its load and memory.',
-      },
-      {
-        title: 'GPU load like Task Manager',
-        description:
-          'Worked out the same way as Task Manager, so the numbers match.',
-      },
-      {
-        title: 'Hide events you expect',
-        description:
-          'Take a known event type out of the Timeline. Reports still keep every event.',
-      },
-      {
-        title: 'One Pulse at a time',
-        description:
-          'Starting Pulse again brings the open window forward, even from the tray.',
       },
     ],
     patchTitle: 'Also new in 1.4.1',
@@ -550,12 +550,35 @@ const tr: Dict = {
     read: 'Makaleyi oku',
   },
   whatsNew: {
-    eyebrow: '1.4’te yeni',
-    title: 'Pulse 1.4 çökmeyi açıklıyor.',
+    eyebrow: '1.5’te yeni',
+    title: 'Pulse 1.5 önemli olayları buluyor.',
     description:
-      'Mavi ekranlar ve ani yeniden başlamalar sade dille, başka bilgisayarların günlükleri ve güvenle paylaşılabilen raporlar.',
-    videoLabel: 'Pulse 1.4 tanıtım videosu',
+      'Tüm GPU’lar yan yana, Görev Yöneticisi gibi ölçülen GPU yükü ve bildiğiniz olayları tek tıkla gizleme.',
+    videoLabel: 'Pulse 1.5 tanıtım videosu',
     items: [
+      {
+        title: 'Tüm GPU’lar',
+        description:
+          'Dahili ve harici GPU yan yana; her birinin yükü ve belleğiyle.',
+      },
+      {
+        title: 'Görev Yöneticisi gibi GPU yükü',
+        description:
+          'Görev Yöneticisi ile aynı yöntemle hesaplanır, sayılar örtüşür.',
+      },
+      {
+        title: 'Beklenen olayları gizleyin',
+        description:
+          'Bildiğiniz bir olay türünü Timeline’dan kaldırın. Raporlar yine her olayı içerir.',
+      },
+      {
+        title: 'Daha sakin bildirimler',
+        description:
+          'Gizlediğiniz türden kritik bir olay artık masaüstünde bildirim göstermez.',
+      },
+    ],
+    earlierTitle: '1.4’te yeni',
+    earlierItems: [
       {
         title: 'Mavi ekranlar açıklanıyor',
         description:
@@ -575,29 +598,6 @@ const tr: Dict = {
         title: 'Paylaşılabilir raporlar',
         description:
           'Kullanıcı ve bilgisayar adları, IP’ler ve seri numaraları dışa aktarmalarda varsayılan olarak gizlenir.',
-      },
-    ],
-    latestTitle: '1.5’te yeni',
-    latestItems: [
-      {
-        title: 'Tüm GPU’lar',
-        description:
-          'Dahili ve harici GPU yan yana; her birinin yükü ve belleğiyle.',
-      },
-      {
-        title: 'Görev Yöneticisi gibi GPU yükü',
-        description:
-          'Görev Yöneticisi ile aynı yöntemle hesaplanır, sayılar örtüşür.',
-      },
-      {
-        title: 'Beklenen olayları gizleyin',
-        description:
-          'Bildiğiniz bir olay türünü Timeline’dan kaldırın. Raporlar yine her olayı içerir.',
-      },
-      {
-        title: 'Tek Pulse',
-        description:
-          'Pulse’u yeniden açınca açık pencere öne gelir, tepsideyken bile.',
       },
     ],
     patchTitle: '1.4.1’de ayrıca',

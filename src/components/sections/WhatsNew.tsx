@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import {
-  AppWindow,
+  BellOff,
   Bot,
   FileSearch,
   HardDrive,
@@ -18,16 +18,17 @@ import {
 import { Section } from '@/components/ui/Section'
 import { useLang } from '@/lib/i18n'
 
-// Release video for 1.4, one per language (rendered in the Pulse-Video
+// Release video for 1.5, one per language (rendered in the Pulse-Video
 // project; captions are burned in).
 const VIDEO = {
-  en: { src: '/media/pulse-1.4-en.mp4', poster: '/media/pulse-1.4-en.jpg' },
-  tr: { src: '/media/pulse-1.4-tr.mp4', poster: '/media/pulse-1.4-tr.jpg' },
+  en: { src: '/media/pulse-1.5-en.mp4', poster: '/media/pulse-1.5-en.jpg' },
+  tr: { src: '/media/pulse-1.5-tr.mp4', poster: '/media/pulse-1.5-tr.jpg' },
 } as const
 
-const ICONS = [MonitorX, Zap, FileSearch, ShieldCheck]
-// 1.5: every GPU, Task Manager GPU load, hidden events, one Pulse.
-const LATEST_ICONS = [Gpu, Gauge, EyeOff, AppWindow]
+// 1.5: every GPU, Task Manager GPU load, hidden events, quieter alerts.
+const ICONS = [Gpu, Gauge, EyeOff, BellOff]
+// 1.4: crash explainer, power loss vs hardware, .evtx, masked reports.
+const EARLIER_ICONS = [MonitorX, Zap, FileSearch, ShieldCheck]
 // 1.4.1: disk health, wake source, Secure Boot events, Assistant.
 const PATCH_ICONS = [HardDrive, Moon, ShieldCheck, Bot]
 
@@ -111,11 +112,11 @@ export function WhatsNew() {
         <FeatureGrid items={t.whatsNew.items} icons={ICONS} className="mt-8" />
 
         <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
-          {t.whatsNew.latestTitle}
+          {t.whatsNew.earlierTitle}
         </p>
         <FeatureGrid
-          items={t.whatsNew.latestItems}
-          icons={LATEST_ICONS}
+          items={t.whatsNew.earlierItems}
+          icons={EARLIER_ICONS}
           className="mt-5"
         />
 
