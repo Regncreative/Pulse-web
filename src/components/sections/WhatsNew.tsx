@@ -19,11 +19,19 @@ import {
 import { Section } from '@/components/ui/Section'
 import { useLang } from '@/lib/i18n'
 
-// Release video for 1.5, one per language (rendered in the Pulse-Video
-// project; captions are burned in).
+// Release video for 1.6, one per language (rendered in the Pulse-Video
+// project). The type is the message, so captions are an optional track.
 const VIDEO = {
-  en: { src: '/media/pulse-1.5-en.mp4', poster: '/media/pulse-1.5-en.jpg' },
-  tr: { src: '/media/pulse-1.5-tr.mp4', poster: '/media/pulse-1.5-tr.jpg' },
+  en: {
+    src: '/media/pulse-1.6-en.mp4',
+    poster: '/media/pulse-1.6-en.jpg',
+    captions: '/media/pulse-1.6-en.vtt',
+  },
+  tr: {
+    src: '/media/pulse-1.6-tr.mp4',
+    poster: '/media/pulse-1.6-tr.jpg',
+    captions: '/media/pulse-1.6-tr.vtt',
+  },
 } as const
 
 // 1.6: Crashes page, faulting file, named crashes, crash history report.
@@ -89,13 +97,8 @@ export function WhatsNew() {
       description={t.whatsNew.description}
     >
       <div className="mx-auto max-w-5xl">
-        <FeatureGrid items={t.whatsNew.items} icons={ICONS} className="" />
-
-        <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
-          {t.whatsNew.previousTitle}
-        </p>
         <motion.div
-          className="mt-5 overflow-hidden rounded-3xl bg-[#08080A] shadow-[var(--shadow-lg)] ring-1 ring-[var(--border)]"
+          className="overflow-hidden rounded-3xl bg-[#08080A] shadow-[var(--shadow-lg)] ring-1 ring-[var(--border)]"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
@@ -111,14 +114,20 @@ export function WhatsNew() {
             aria-label={t.whatsNew.videoLabel}
           >
             <source src={video.src} type="video/mp4" />
+            <track kind="captions" src={video.captions} srcLang={lang} label={t.whatsNew.captionsLabel} />
             {t.intro.unsupported}
           </video>
         </motion.div>
 
+        <FeatureGrid items={t.whatsNew.items} icons={ICONS} className="mt-8" />
+
+        <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
+          {t.whatsNew.previousTitle}
+        </p>
         <FeatureGrid
           items={t.whatsNew.previousItems}
           icons={PREVIOUS_ICONS}
-          className="mt-8"
+          className="mt-5"
         />
 
         <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
