@@ -9,6 +9,14 @@ import { useLang } from '@/lib/i18n'
  * language. */
 const ARTICLES = [
   {
+    outlet: 'IT-Connect',
+    country: { en: 'France', tr: 'Fransa' },
+    date: '2026-10-24',
+    author: 'Florian Burnel',
+    title: 'Pulse : les journaux d’événements de Windows facilement lisibles, avec de l’IA locale',
+    url: 'https://www.it-connect.fr/pulse-journaux-evenements-de-windows-facilement-lisibles-avec-ia-locale/',
+  },
+  {
     outlet: 'TecnoAndroid',
     country: { en: 'Italy', tr: 'İtalya' },
     date: '2026-10-18',
