@@ -259,7 +259,8 @@ const en = {
       },
     ],
     previousTitle: 'New in 1.5',
-    videoLabel: 'Pulse 1.5 release video',
+    videoLabel: 'Pulse 1.6 release video',
+    captionsLabel: 'English',
     previousItems: [
       {
         title: 'Every GPU',
@@ -579,7 +580,8 @@ const tr: Dict = {
       },
     ],
     previousTitle: '1.5’te yeni',
-    videoLabel: 'Pulse 1.5 tanıtım videosu',
+    videoLabel: 'Pulse 1.6 tanıtım videosu',
+    captionsLabel: 'Türkçe',
     previousItems: [
       {
         title: 'Tüm GPU’lar',
