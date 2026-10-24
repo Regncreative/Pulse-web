@@ -34,6 +34,20 @@ const ARTICLES = [
   },
 ] as const
 
+/** Trendshift's own embed badges (repository 102083). The GitHub Trending
+ * badge does not name the list, so the caption says Dart. */
+const TRENDSHIFT_URL = 'https://trendshift.io/repositories/102083'
+const BADGES = [
+  {
+    src: 'https://trendshift.io/api/badge/repositories/102083',
+    alt: 'Regncreative/Pulse on GitHub Trending (Dart) | Trendshift',
+  },
+  {
+    src: 'https://trendshift.io/api/badge/trendshift/repositories/102083/weekly?language=Dart',
+    alt: 'Regncreative/Pulse on the Trendshift weekly list for Dart',
+  },
+] as const
+
 export function PressStrip() {
   const { t, lang } = useLang()
   const reduceMotion = useReducedMotion()
@@ -90,6 +104,24 @@ export function PressStrip() {
             </span>
           </motion.a>
         ))}
+
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 pt-4">
+          <p className="text-sm text-[var(--fg-dim)]">{t.press.featured}</p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {BADGES.map((badge) => (
+              <a
+                key={badge.src}
+                href={TRENDSHIFT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl transition hover:opacity-90"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={badge.src} alt={badge.alt} width={250} height={55} loading="lazy" />
+              </a>
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   )

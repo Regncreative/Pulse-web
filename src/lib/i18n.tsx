@@ -22,7 +22,7 @@ const en = {
     secondaryBtn: 'Get it from Microsoft Store',
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
-    whatsNew: 'New in 1.5: every GPU, quieter Timeline',
+    whatsNew: 'New in 1.6: see what crashed, and why',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -86,7 +86,7 @@ const en = {
       {
         title: 'Crash Explainer',
         description:
-          'Blue screens with the stop code and its usual cause, forced power-offs, power loss and hardware errors — in one plain sentence.',
+          'Blue screens, app crashes and sudden restarts grouped by cause — with the stop code, the file an app crashed in and what to check next.',
       },
       {
         title: 'System Health',
@@ -229,14 +229,38 @@ const en = {
     label: 'In the press',
     by: 'by',
     read: 'Read the article',
+    featured: 'Featured on GitHub Trending (Dart) and Trendshift',
   },
   whatsNew: {
-    eyebrow: 'New in 1.5',
-    title: 'Pulse 1.5 finds the events that matter.',
+    eyebrow: 'New in 1.6',
+    title: 'Pulse 1.6 shows what crashed, and why.',
     description:
-      'Every GPU side by side, GPU load measured like Task Manager, and one click to hide the events you already know.',
-    videoLabel: 'Pulse 1.5 release video',
+      'A Crashes page for blue screens, app crashes and sudden restarts, grouped by cause and explained in plain words.',
     items: [
+      {
+        title: 'Crashes page',
+        description:
+          'Blue screens, app crashes, hangs and sudden restarts of the last 7, 30 or 90 days, grouped by cause.',
+      },
+      {
+        title: 'Why it crashed',
+        description:
+          'The file an app crashed in, and whether it belongs to the app, Windows or a driver.',
+      },
+      {
+        title: 'Named in the Timeline',
+        description:
+          '“Discord Crashed” instead of “Application Crashed”, with the error and the file.',
+      },
+      {
+        title: 'Crash history report',
+        description:
+          'Export it as PDF, HTML, CSV or JSON, or ask the local Assistant what crashed.',
+      },
+    ],
+    previousTitle: 'New in 1.5',
+    videoLabel: 'Pulse 1.5 release video',
+    previousItems: [
       {
         title: 'Every GPU',
         description:
@@ -281,29 +305,6 @@ const en = {
           'User and computer names, IPs and serial numbers are masked in exports by default.',
       },
     ],
-    patchTitle: 'Also new in 1.4.1',
-    patchItems: [
-      {
-        title: 'Health for every disk',
-        description:
-          'Temperature and SMART for each disk; wear, spare capacity and power-on time for NVMe drives.',
-      },
-      {
-        title: 'What woke your PC',
-        description:
-          'The device or scheduled task behind a wake from sleep, and how to stop it.',
-      },
-      {
-        title: 'Secure Boot events, explained',
-        description:
-          'Certificate and SBAT update events in plain language, following Microsoft’s documentation.',
-      },
-      {
-        title: 'A deeper Assistant',
-        description:
-          'Command lines, CPU time, private memory and Windows services. Still only a local AI on this PC.',
-      },
-    ],
   },
   intro: {
     title: 'Pulse intro',
@@ -342,7 +343,7 @@ const tr: Dict = {
     secondaryBtn: 'Microsoft Store’dan edinin',
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
-    whatsNew: '1.5’te yeni: tüm GPU’lar, daha sakin Timeline',
+    whatsNew: '1.6’da yeni: neyin neden çöktüğünü görün',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -405,7 +406,7 @@ const tr: Dict = {
       {
         title: 'Çökme Açıklayıcı',
         description:
-          'Stop kodu ve olası sebebiyle mavi ekranlar, zorla kapatmalar, elektrik kesintileri ve donanım hataları — tek bir sade cümlede.',
+          'Mavi ekranlar, uygulama çökmeleri ve ani yeniden başlatmalar nedenine göre gruplanır — stop kodu, uygulamanın çöktüğü dosya ve neye bakmanız gerektiğiyle.',
       },
       {
         title: 'Sistem Sağlığı',
@@ -548,14 +549,38 @@ const tr: Dict = {
     label: 'Basında',
     by: 'Yazar:',
     read: 'Makaleyi oku',
+    featured: 'GitHub Trending (Dart) ve Trendshift’te öne çıktı',
   },
   whatsNew: {
-    eyebrow: '1.5’te yeni',
-    title: 'Pulse 1.5 önemli olayları buluyor.',
+    eyebrow: '1.6’da yeni',
+    title: 'Pulse 1.6 neyin neden çöktüğünü gösteriyor.',
     description:
-      'Tüm GPU’lar yan yana, Görev Yöneticisi gibi ölçülen GPU yükü ve bildiğiniz olayları tek tıkla gizleme.',
-    videoLabel: 'Pulse 1.5 tanıtım videosu',
+      'Mavi ekranlar, uygulama çökmeleri ve ani yeniden başlatmalar için bir Crashes sayfası; nedenine göre gruplanmış ve sade bir dille açıklanmış.',
     items: [
+      {
+        title: 'Crashes sayfası',
+        description:
+          'Son 7, 30 ya da 90 günün mavi ekranları, uygulama çökmeleri, donmaları ve ani yeniden başlatmaları; nedenine göre gruplanmış.',
+      },
+      {
+        title: 'Neden çöktü?',
+        description:
+          'Uygulamanın hangi dosyada çöktüğü ve o dosyanın uygulamaya mı, Windows’a mı yoksa bir sürücüye mi ait olduğu.',
+      },
+      {
+        title: 'Timeline’da adıyla',
+        description:
+          '“Application Crashed” yerine “Discord Crashed”; hata ve dosyayla birlikte.',
+      },
+      {
+        title: 'Çökme geçmişi raporu',
+        description:
+          'PDF, HTML, CSV ya da JSON olarak dışa aktarın veya yerel Asistan’a neyin çöktüğünü sorun.',
+      },
+    ],
+    previousTitle: '1.5’te yeni',
+    videoLabel: 'Pulse 1.5 tanıtım videosu',
+    previousItems: [
       {
         title: 'Tüm GPU’lar',
         description:
@@ -598,29 +623,6 @@ const tr: Dict = {
         title: 'Paylaşılabilir raporlar',
         description:
           'Kullanıcı ve bilgisayar adları, IP’ler ve seri numaraları dışa aktarmalarda varsayılan olarak gizlenir.',
-      },
-    ],
-    patchTitle: '1.4.1’de ayrıca',
-    patchItems: [
-      {
-        title: 'Her disk için sağlık',
-        description:
-          'Her diskin sıcaklığı ve SMART durumu; NVMe disklerde aşınma, yedek alan ve açık kalma süresi.',
-      },
-      {
-        title: 'Bilgisayarı ne uyandırdı',
-        description:
-          'Uykudan uyandıran aygıt ya da zamanlanmış görev ve bunun nasıl durdurulacağı.',
-      },
-      {
-        title: 'Secure Boot olayları sade dille',
-        description:
-          'Sertifika ve SBAT güncelleme olayları, Microsoft belgelerine göre anlaşılır başlıklarla.',
-      },
-      {
-        title: 'Daha yetenekli Asistan',
-        description:
-          'Komut satırları, CPU süresi, özel bellek ve Windows servisleri. Hâlâ yalnızca bu bilgisayardaki yerel yapay zekâ.',
       },
     ],
   },

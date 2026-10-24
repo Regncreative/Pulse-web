@@ -3,15 +3,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   BellOff,
-  Bot,
+  FileDown,
   FileSearch,
-  HardDrive,
+  FileWarning,
   MonitorX,
   EyeOff,
   Gauge,
   Gpu,
-  Moon,
+  OctagonAlert,
   ShieldCheck,
+  Tag,
   Zap,
   type LucideIcon,
 } from 'lucide-react'
@@ -25,12 +26,12 @@ const VIDEO = {
   tr: { src: '/media/pulse-1.5-tr.mp4', poster: '/media/pulse-1.5-tr.jpg' },
 } as const
 
+// 1.6: Crashes page, faulting file, named crashes, crash history report.
+const ICONS = [OctagonAlert, FileWarning, Tag, FileDown]
 // 1.5: every GPU, Task Manager GPU load, hidden events, quieter alerts.
-const ICONS = [Gpu, Gauge, EyeOff, BellOff]
+const PREVIOUS_ICONS = [Gpu, Gauge, EyeOff, BellOff]
 // 1.4: crash explainer, power loss vs hardware, .evtx, masked reports.
 const EARLIER_ICONS = [MonitorX, Zap, FileSearch, ShieldCheck]
-// 1.4.1: disk health, wake source, Secure Boot events, Assistant.
-const PATCH_ICONS = [HardDrive, Moon, ShieldCheck, Bot]
 
 type Feature = { title: string; description: string }
 
@@ -88,8 +89,13 @@ export function WhatsNew() {
       description={t.whatsNew.description}
     >
       <div className="mx-auto max-w-5xl">
+        <FeatureGrid items={t.whatsNew.items} icons={ICONS} className="" />
+
+        <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
+          {t.whatsNew.previousTitle}
+        </p>
         <motion.div
-          className="overflow-hidden rounded-3xl bg-[#08080A] shadow-[var(--shadow-lg)] ring-1 ring-[var(--border)]"
+          className="mt-5 overflow-hidden rounded-3xl bg-[#08080A] shadow-[var(--shadow-lg)] ring-1 ring-[var(--border)]"
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
@@ -109,7 +115,11 @@ export function WhatsNew() {
           </video>
         </motion.div>
 
-        <FeatureGrid items={t.whatsNew.items} icons={ICONS} className="mt-8" />
+        <FeatureGrid
+          items={t.whatsNew.previousItems}
+          icons={PREVIOUS_ICONS}
+          className="mt-8"
+        />
 
         <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
           {t.whatsNew.earlierTitle}
@@ -117,15 +127,6 @@ export function WhatsNew() {
         <FeatureGrid
           items={t.whatsNew.earlierItems}
           icons={EARLIER_ICONS}
-          className="mt-5"
-        />
-
-        <p className="mt-12 text-center font-mono-pulse text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
-          {t.whatsNew.patchTitle}
-        </p>
-        <FeatureGrid
-          items={t.whatsNew.patchItems}
-          icons={PATCH_ICONS}
           className="mt-5"
         />
       </div>
