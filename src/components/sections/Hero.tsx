@@ -33,6 +33,8 @@ export function Hero({ version }: HeroProps) {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mb-12 max-w-3xl text-center"
         >
+          <TrendshiftBadges className="mb-6" />
+
           <a
             href="#whats-new"
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[#08080A] py-1 pr-3 pl-1 text-[13px] font-medium text-white shadow-[var(--shadow-sm)] transition hover:brightness-125"
@@ -78,8 +80,6 @@ export function Hero({ version }: HeroProps) {
           </div>
 
           <p className="mt-5 text-sm text-[var(--fg-dim)]">{t.hero.promise}</p>
-
-          <TrendshiftBadges className="mt-6" />
         </motion.div>
 
         <div className="relative">
