@@ -21,7 +21,6 @@ export function TrendshiftBadges({ className = '' }: { className?: string }) {
 
   return (
     <div className={`flex flex-col items-center gap-2 ${className}`}>
-      <p className="text-xs text-[var(--fg-dim)]">{t.hero.featured}</p>
       <div className="flex flex-wrap items-center justify-center gap-3">
         {BADGES.map((badge) => (
           <a
@@ -36,6 +35,7 @@ export function TrendshiftBadges({ className = '' }: { className?: string }) {
           </a>
         ))}
       </div>
+      <p className="text-xs text-[var(--fg-dim)]">{t.hero.featured}</p>
     </div>
   )
 }
