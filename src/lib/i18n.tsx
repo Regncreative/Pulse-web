@@ -23,6 +23,7 @@ const en = {
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
     whatsNew: 'New in 1.6: see what crashed, and why',
+    featured: 'Featured on GitHub Trending (Dart) and Trendshift',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -229,7 +230,6 @@ const en = {
     label: 'In the press',
     by: 'by',
     read: 'Read the article',
-    featured: 'Featured on GitHub Trending (Dart) and Trendshift',
   },
   whatsNew: {
     eyebrow: 'New in 1.6',
@@ -344,6 +344,7 @@ const tr: Dict = {
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
     whatsNew: '1.6’da yeni: neyin neden çöktüğünü görün',
+    featured: 'GitHub Trending (Dart) ve Trendshift’te öne çıktı',
   },
   translate: {
     eyebrow: 'Pulse fikri',
@@ -549,7 +550,6 @@ const tr: Dict = {
     label: 'Basında',
     by: 'Yazar:',
     read: 'Makaleyi oku',
-    featured: 'GitHub Trending (Dart) ve Trendshift’te öne çıktı',
   },
   whatsNew: {
     eyebrow: '1.6’da yeni',
