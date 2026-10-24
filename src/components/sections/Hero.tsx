@@ -8,6 +8,7 @@ import { PulseShields } from '@/components/ui/Shield'
 import { PulseLogo } from '@/components/icons/PulseLogo'
 import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { MicrosoftStoreBadge } from '@/components/MicrosoftStoreBadge'
+import { TrendshiftBadges } from '@/components/TrendshiftBadges'
 import { AiDemo } from '@/components/demo/AiDemo'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
@@ -77,6 +78,8 @@ export function Hero({ version }: HeroProps) {
           </div>
 
           <p className="mt-5 text-sm text-[var(--fg-dim)]">{t.hero.promise}</p>
+
+          <TrendshiftBadges className="mt-6" />
         </motion.div>
 
         <div className="relative">
