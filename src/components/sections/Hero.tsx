@@ -8,7 +8,7 @@ import { PulseShields } from '@/components/ui/Shield'
 import { PulseLogo } from '@/components/icons/PulseLogo'
 import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { MicrosoftStoreBadge } from '@/components/MicrosoftStoreBadge'
-import { TrendshiftBadges } from '@/components/TrendshiftBadges'
+import { TrendingBadges } from '@/components/TrendingBadges'
 import { AiDemo } from '@/components/demo/AiDemo'
 import { SITE } from '@/lib/constants'
 import { useLang } from '@/lib/i18n'
@@ -33,7 +33,7 @@ export function Hero({ version }: HeroProps) {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mb-12 max-w-3xl text-center"
         >
-          <TrendshiftBadges className="mb-6" />
+          <TrendingBadges className="mb-6" />
 
           <a
             href="#whats-new"
