@@ -26,7 +26,7 @@ export function Footer({ releaseUrl = SITE.latestRelease }: FooterProps) {
         <div className="flex items-center gap-3">
           <PulseLogo size={24} className="rounded-md" />
           <div>
-            <p className="text-sm font-semibold text-[var(--fg)]">Pulse</p>
+            <p className="text-sm font-semibold text-[var(--fg)]">{SITE.name}</p>
             <p className="font-mono-pulse text-[11px] text-[var(--fg-dim)]">{SITE.author}</p>
           </div>
         </div>

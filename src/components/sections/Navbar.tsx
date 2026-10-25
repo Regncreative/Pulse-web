@@ -7,6 +7,7 @@ import { PulseLogo } from '@/components/icons/PulseLogo'
 import { FlagEn, FlagTr } from '@/components/demo/flags'
 import { MicrosoftStoreBadge } from '@/components/MicrosoftStoreBadge'
 import { ProductHuntBanner } from '@/components/sections/ProductHuntBanner'
+import { SITE } from '@/lib/constants'
 import { useLang, type Lang } from '@/lib/i18n'
 import { cn } from '@/lib/cn'
 
@@ -42,9 +43,9 @@ export function Navbar() {
         )}
       >
         <Container className="flex h-16 items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Pulse home">
+          <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name} home`}>
             <PulseLogo size={28} className="rounded-lg" />
-            <span className="text-[15px] font-semibold tracking-tight text-[var(--fg)]">Pulse</span>
+            <span className="text-[15px] font-semibold tracking-tight text-[var(--fg)]">{SITE.name}</span>
           </Link>
 
           <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">

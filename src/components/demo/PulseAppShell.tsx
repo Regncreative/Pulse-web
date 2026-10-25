@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import { PulseMark } from '@/components/icons/PulseLogo'
 import { cn } from '@/lib/cn'
+import { SITE } from '@/lib/constants'
 import { MIDNIGHT } from './shared'
 
 export type PulseNav =
@@ -83,7 +84,7 @@ export function PulseAppShell({
 function TitleBar() {
   return (
     <div className="flex h-9 shrink-0 items-center px-4">
-      <span className="w-24 text-[11px] font-medium text-white/70">Pulse</span>
+      <span className="w-28 text-[11px] font-medium whitespace-nowrap text-white/70">{SITE.name}</span>
       <div className="mx-auto flex h-6 w-[300px] items-center gap-2 rounded-full border border-white/[0.08] bg-[#111114] px-3">
         <Search className="size-3 text-white/40" aria-hidden />
         <span className="text-[10px] text-white/40">Search or jump to…</span>

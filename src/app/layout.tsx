@@ -42,6 +42,7 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.author }],
   creator: SITE.author,
   keywords: [
+    'Pulse Diagnostics',
     'Pulse',
     'Windows 11',
     'Event Viewer',
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
         url: '/brand/logo-512.png',
         width: 512,
         height: 512,
-        alt: 'Pulse — see what Windows is really doing',
+        alt: `${SITE.name} — see what Windows is really doing`,
       },
     ],
   },
