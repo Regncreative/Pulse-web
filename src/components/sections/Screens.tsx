@@ -6,17 +6,18 @@ import { Section } from '@/components/ui/Section'
 import { useLang } from '@/lib/i18n'
 import { cn } from '@/lib/cn'
 
-/** Captures from the Pulse 1.2 Windows app at 1440×900. */
+/** The Pulse app at 1440×900 with sample data, rendered by the app repository's
+ * screenshot tool (apps/pulse_app/test/screenshots). */
 const SHOT_WIDTH = 1440
 const SHOT_HEIGHT = 900
 
 const SHOTS = [
   { src: '/screens/timeline.png', key: 'timeline' as const, featured: true },
+  { src: '/screens/crashes.png', key: 'crashes' as const },
   { src: '/screens/health.png', key: 'health' as const },
   { src: '/screens/assistant.png', key: 'assistant' as const },
   { src: '/screens/inventory.png', key: 'inventory' as const },
   { src: '/screens/reports.png', key: 'reports' as const },
-  { src: '/screens/diagnostics.png', key: 'diagnostics' as const },
 ]
 
 export function Screens() {
@@ -25,11 +26,11 @@ export function Screens() {
 
   const captions = {
     timeline: t.productDemo.timelineTitle,
+    crashes: t.productDemo.crashesTitle,
     health: t.productDemo.healthTitle,
     assistant: t.productDemo.assistantTitle,
     inventory: t.productDemo.inventoryTitle,
     reports: t.productDemo.reportsTitle,
-    diagnostics: t.productDemo.diagnosticsTitle,
   }
 
   return (
