@@ -23,7 +23,7 @@ const en = {
     downloadBtn: 'Get it from Microsoft Store',
     promise: 'Observation only. Local AI Assistant. No telemetry cloud. Read-only tools.',
     whatsNew: 'New in 1.6: see what crashed, and why',
-    featured: 'Featured on GitHub Trending (Dart) and Trendshift',
+    featured: 'Featured on GitHub Trending (Dart), Trendshift and Upstar',
   },
   translate: {
     eyebrow: 'The Pulse idea',
@@ -346,7 +346,7 @@ const tr: Dict = {
     downloadBtn: 'Microsoft Store’dan edinin',
     promise: 'Yalnızca gözlem. Yerel AI Assistant. Telemetri bulutu yok. Salt okunur araçlar.',
     whatsNew: '1.6’da yeni: neyin neden çöktüğünü görün',
-    featured: 'GitHub Trending (Dart) ve Trendshift’te öne çıktı',
+    featured: 'GitHub Trending (Dart), Trendshift ve Upstar’da öne çıktı',
   },
   translate: {
     eyebrow: 'Pulse fikri',
