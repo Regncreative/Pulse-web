@@ -65,9 +65,9 @@ export function PrivacyPolicy() {
 
       <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--bg-elevated)]/75 backdrop-blur-xl">
         <Container className="flex h-16 items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Pulse home">
+          <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name} home`}>
             <PulseLogo size={28} className="rounded-lg" />
-            <span className="text-[15px] font-semibold tracking-tight">Pulse</span>
+            <span className="text-[15px] font-semibold tracking-tight">{SITE.name}</span>
           </Link>
           <Link
             href="/"

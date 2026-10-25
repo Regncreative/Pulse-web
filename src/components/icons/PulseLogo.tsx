@@ -1,4 +1,5 @@
 import { cn } from '@/lib/cn'
+import { SITE } from '@/lib/constants'
 
 type PulseLogoProps = {
   size?: number
@@ -10,7 +11,7 @@ type PulseLogoProps = {
  * The Pulse app icon: lime tile with the dark peak mark. Same geometry as
  * the app (tools/branding/make_app_icons.py in the Pulse repo).
  */
-export function PulseLogo({ size = 32, className, title = 'Pulse' }: PulseLogoProps) {
+export function PulseLogo({ size = 32, className, title = SITE.name }: PulseLogoProps) {
   return (
     <svg
       width={size}

@@ -59,8 +59,8 @@ export function Hero({ version }: HeroProps) {
             </div>
           </div>
 
-          <h1 className="text-[clamp(3rem,8vw,5rem)] leading-[0.94] font-semibold tracking-tight text-[var(--fg)]">
-            Pulse
+          <h1 className="text-[clamp(3rem,8vw,5rem)] leading-[0.94] font-semibold tracking-tight text-balance text-[var(--fg)]">
+            {SITE.name}
           </h1>
           <p className="mt-3 text-xl font-medium tracking-tight text-[var(--accent)] sm:text-2xl">
             {SITE.tagline}
