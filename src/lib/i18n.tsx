@@ -52,6 +52,7 @@ const en = {
     description:
       'Timeline, System Health, Inventory, Reports, Diagnostics, Settings — plus the built-in local AI Assistant.',
     timelineTitle: 'Timeline',
+    crashesTitle: 'Crashes',
     timelineDesc:
       'A plain-language summary of the last hour, a 24-hour activity strip, and a story feed — detail on demand.',
     healthTitle: 'System Health',
@@ -158,7 +159,7 @@ const en = {
     eyebrow: 'Interface',
     title: 'The real Pulse app',
     description:
-      'Timeline, Health, Inventory, Reports, Diagnostics, Settings, and Assistant — from the latest Windows build.',
+      'Timeline, Crashes, Health, Assistant, Inventory and Reports — Pulse 1.6 with sample data.',
   },
   download: {
     eyebrow: 'Download',
@@ -374,6 +375,7 @@ const tr: Dict = {
     description:
       'Timeline, Sistem Sağlığı, Envanter, Raporlar, Tanılama, Ayarlar — ve yerleşik yerel AI Assistant.',
     timelineTitle: 'Timeline',
+    crashesTitle: 'Çökmeler',
     timelineDesc:
       'Son bir saatin sade bir özeti, 24 saatlik etkinlik şeridi ve olay akışı — detay isteğe bağlı.',
     healthTitle: 'Sistem Sağlığı',
@@ -480,7 +482,7 @@ const tr: Dict = {
     eyebrow: 'Arayüz',
     title: 'Gerçek Pulse uygulaması',
     description:
-      'Timeline, Sağlık, Envanter, Raporlar, Tanılama, Ayarlar ve Assistant — en son Windows derlemesinden.',
+      'Timeline, Çökmeler, Sağlık, Asistan, Envanter ve Raporlar — Pulse 1.6, örnek verilerle.',
   },
   download: {
     eyebrow: 'İndir',
