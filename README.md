@@ -1,6 +1,6 @@
 # Pulse Website
 
-Official landing page for [Pulse](https://github.com/Regncreative/Pulse) — a modern, read-only Windows diagnostics platform.
+Official landing page for [Pulse](https://github.com/Regncreative/PulseDiagnostics) — a modern, read-only Windows diagnostics platform.
 
 Live: [pulse.regncreative.com](https://pulse.regncreative.com)
 
