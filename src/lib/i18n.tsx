@@ -174,6 +174,7 @@ const en = {
     sourcePrefix: 'Source and installer',
     comingSoon:
       'Preferred install path is Microsoft Store — source and release notes stay on GitHub.',
+    signingPolicy: 'Code signing policy',
     signing: 'Free code signing provided by SignPath.io, certificate by SignPath Foundation.',
   },
   faq: {
@@ -496,6 +497,7 @@ const tr: Dict = {
     releasesBtn: 'Sürüm notları',
     sourcePrefix: 'Kaynak ve kurulum',
     comingSoon: 'Önerilen kurulum Microsoft Store — kaynak ve sürüm notları GitHub’da.',
+    signingPolicy: 'Kod imzalama politikası',
     signing: 'Ücretsiz kod imzalama SignPath.io, sertifika SignPath Foundation tarafından sağlanır.',
   },
   faq: {
