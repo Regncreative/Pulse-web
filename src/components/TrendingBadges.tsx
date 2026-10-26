@@ -8,11 +8,11 @@ const TRENDSHIFT_URL = 'https://trendshift.io/repositories/102083'
 const TRENDSHIFT_BADGES = [
   {
     src: 'https://trendshift.io/api/badge/repositories/102083',
-    alt: 'Regncreative/Pulse on GitHub Trending (Dart) | Trendshift',
+    alt: 'Regncreative/PulseDiagnostics on GitHub Trending (Dart) | Trendshift',
   },
   {
     src: 'https://trendshift.io/api/badge/trendshift/repositories/102083/weekly?language=Dart',
-    alt: 'Regncreative/Pulse on the Trendshift weekly list for Dart',
+    alt: 'Regncreative/PulseDiagnostics on the Trendshift weekly list for Dart',
   },
 ] as const
 

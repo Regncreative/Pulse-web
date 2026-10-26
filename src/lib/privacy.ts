@@ -14,9 +14,9 @@ export const PRIVACY_META = {
   lastUpdatedIso: '2026-08-03',
   subtitle:
     'How Pulse Diagnostics accesses system information, what stays on your device, and what never leaves your PC.',
-  canonical: 'https://pulse.regncreative.com/privacy',
+  canonical: 'https://pulsediagnostics.regncreative.com/privacy',
   contactEmail: 'support@regncreative.com',
-  contactWebsite: 'https://pulse.regncreative.com',
+  contactWebsite: 'https://pulsediagnostics.regncreative.com',
 } as const
 
 function slugify(title: string) {
