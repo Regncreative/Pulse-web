@@ -3,7 +3,7 @@ export const SITE = {
   tagline: 'See what Windows is really doing.',
   description:
     'A modern, read-only diagnostics platform for Windows — human-readable events, local AI Assistant via Ollama or LM Studio, no telemetry, no cloud.',
-  url: 'https://pulse.regncreative.com',
+  url: 'https://pulsediagnostics.regncreative.com',
   author: 'Regn Creative',
   github: 'https://github.com/Regncreative/PulseDiagnostics',
   releases: 'https://github.com/Regncreative/PulseDiagnostics/releases',
