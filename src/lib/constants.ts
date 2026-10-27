@@ -8,12 +8,12 @@ export const SITE = {
   github: 'https://github.com/Regncreative/PulseDiagnostics',
   releases: 'https://github.com/Regncreative/PulseDiagnostics/releases',
   latestRelease: 'https://github.com/Regncreative/PulseDiagnostics/releases/latest',
-  release: 'https://github.com/Regncreative/PulseDiagnostics/releases/tag/v1.6.0',
+  release: 'https://github.com/Regncreative/PulseDiagnostics/releases/tag/v1.6.1',
   license: 'https://github.com/Regncreative/PulseDiagnostics/blob/master/LICENSE',
   repo: 'Regncreative/PulseDiagnostics',
-  versionFallback: '1.6.0',
+  versionFallback: '1.6.1',
   download:
-    'https://github.com/Regncreative/PulseDiagnostics/releases/download/v1.6.0/Pulse-Setup-1.6.0-windows-x64.exe',
+    'https://github.com/Regncreative/PulseDiagnostics/releases/download/v1.6.1/PulseDiagnostics-Setup-1.6.1-windows-x64.exe',
   microsoftStoreId: '9PNDTLNTJ82T',
   microsoftStore: 'https://apps.microsoft.com/detail/9PNDTLNTJ82T?hl=neutral&gl=TR&ocid=pdpshare',
   productHunt:
